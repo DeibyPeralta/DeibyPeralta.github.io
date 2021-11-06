@@ -1,0 +1,987 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Bandit0: Bash para principiantes - Pentester - Ctf’s</title>
+<meta name="description" content="El mejor metodo de aprendizaje es practicando">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Pentester - Ctf's">
+<meta property="og:title" content="Bandit0: Bash para principiantes">
+<meta property="og:url" content="http://localhost:4000/first-bandit/">
+
+
+  <meta property="og:description" content="El mejor metodo de aprendizaje es practicando">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/bandit0/bash-logo.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-19T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/first-bandit/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Deiby Espinosa",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Pentester - Ctf's Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Bandit0: Bash para principiantes</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/perfil.png" alt="Deiby Espinosa" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Deiby Espinosa</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Ingeniero de sistemas, entusiasta por la seguridad informatica.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Bogota - Colombia</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/DeibyPeralta" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/deiby.peralta" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:deibysp39@gmail.com">
+            <meta itemprop="email" content="deibysp39@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Bandit0: Bash para principiantes">
+    <meta itemprop="description" content="El mejor metodo de aprendizaje es practicando">
+    <meta itemprop="datePublished" content="October 19, 2021">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Bandit0: Bash para principiantes
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-10-19T00:00:00-05:00">October 19, 2021 </time>&emsp;
+          
+          
+        </p>
+        <p>En este post obtendremos las flags de la maquina bandit que se encuentra en la pagina <a href="https://overthewire.org/wargames/bandit/">bandit0</a></p>
+
+<p>Esta maquina basicamente consiste en que para subir de nivel debemos obtener la flag de la maquina, esta flag sera la contraseña para la siguiente maquina</p>
+
+<p>Antes de iniciar debemos crear nuestro entorno de trabajo</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>bandit0
+<span class="nb">cd </span>bandit0
+</code></pre></div></div>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="banquid-0--1">Banquid 0 –&gt; 1</h1>
+<p>Esta primera maquina consiste en que debemos conectarnos a ella mediante SSH <strong>bandit.labs.overthewire.org</strong> usando el puerto 2220, como usuario y contraseña
+usaremos <strong>bandit0</strong></p>
+
+<p>A continuacion nos conectamos a la maquina</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">ssh</span> <span class="n">bandit0</span><span class="o">@</span><span class="n">bandit</span><span class="p">.</span><span class="n">labs</span><span class="p">.</span><span class="n">overthewire</span><span class="p">.</span><span class="n">org</span> <span class="o">-</span><span class="n">p</span> <span class="mi">2220</span>
+
+</code></pre></div></div>
+
+<p>lo primero que hacemos es un <strong>ls</strong> para ver los archivos que hay en la maquina…
+En este caso solo hay un archivo llamado <strong>readme</strong> 
+le hacemos un <em>cat readme</em> y vemos la flag
+Debemos copiarla en un archivo txt (o de vuestra preferencia) puesto que esta sera la key para la siguiente maquina</p>
+
+<p><img src="/assets/images/bandit0/0.png" alt="obtenemos la flag" /></p>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-1--2">bandit 1 –&gt; 2</h1>
+
+<p>Usamos la <em>flag</em> que obtuvimos en la maquina pasada y la usamos como contraseña en esta maquina.</p>
+
+<p>Ahora ya estamos en el nivel 1 de bandit, la descripcion de la maquina nos dice</p>
+<blockquote>
+  <p>The password for the next level is stored in a file called - located in the home directory</p>
+</blockquote>
+
+<p>Por tanto, sabemos que la proxima contraseña se encuentra dentro de un directorio de nombre <strong>-</strong></p>
+
+<p>Para poder leer archivo hay diferentes metodos, en este caso usaremos <em>cat ./*</em> , lo que nos permite el comando <strong>cat</strong> es leer todo dentro del directorio <em>./*</em>
+lo podemos hacer puesto que sabemos que el directorio solo contiene un archivo a leer</p>
+
+<p><img src="/assets/images/bandit0/1.png" alt="Obtenemos la flag" /></p>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-2--3">bandit 2 –&gt; 3</h1>
+
+<p>Usamos la <em>flag</em> que obtuvimos en la maquina pasada y la usamos como contraseña en esta maquina.</p>
+
+<p>leemos lo que nos dice la descripcion de la maquina</p>
+<blockquote>
+  <p>The password for the next level is stored in a file called spaces in this filename located in the home directory</p>
+</blockquote>
+
+<p>Aca iniciamos con pequeños inconvenientes puesto que no podemos leer directamente con el comando <em>cat</em></p>
+
+<h3 id="vemos-el-archivo">vemos el archivo</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit2@bandit:~<span class="nv">$ </span><span class="nb">ls
+</span>spaces <span class="k">in </span>this filename
+</code></pre></div></div>
+
+<p>Estos metodos lo que nos permite es “escapar” de los espacios
+<img src="/assets/images/bandit0/2.png" alt="Obtenemos la flag" /></p>
+
+<h3 id="vemos-2-formas-de-cumplir-nuestro-objetivo-obtener-la-flag-sin-embargo-hay-metodos-mas-practicos-de-hacerlos-por-ejemplo">Vemos 2 formas de cumplir nuestro objetivo (obtener la flag), sin embargo, hay metodos mas practicos de hacerlos por ejemplo:</h3>
+
+<p>Es un poco mas practico puesto (para este caso) puesto que “escapamos” de los espacios y visualizamos la flag con menos comando</p>
+
+<ul>
+  <li>El primero, con <em>cat</em> nos muestra la informacion de los ficheros dentro de la ruta en donde estamos (para este caso solo tenemos un documento)</li>
+  <li>El segundo, nos muestra la información que contengan los ficheros que inicien con <em>s</em></li>
+</ul>
+
+<p><img src="/assets/images/bandit0/2_1.png" alt="Flag" /></p>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-3--4">bandit 3 –&gt; 4</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in a hidden file in the inhere directory.</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit3@bandit:~<span class="nv">$ </span><span class="nb">ls
+</span>inhere
+bandit3@bandit:~<span class="nv">$ </span><span class="nb">cd </span>inhere
+bandit3@bandit:~/inhere<span class="nv">$ </span><span class="nb">pwd</span>
+/home/bandit3/inhere
+</code></pre></div></div>
+<ul>
+  <li>Vemos que solo existe el directorio <em>inhere</em>, entramos en el</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit3@bandit:~/inhere<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-la</span>
+total 12
+drwxr-xr-x 2 root    root    4096 May  7  2020 <span class="nb">.</span>
+drwxr-xr-x 3 root    root    4096 May  7  2020 ..
+<span class="nt">-rw-r-----</span> 1 bandit4 bandit3   33 May  7  2020 .hidden
+
+</code></pre></div></div>
+<ul>
+  <li>Usamos los comando <em>ls -la</em> para los listar directorios ocultos (en linux inician con <em>.</em>)</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit3@bandit:~/inhere<span class="nv">$ </span><span class="nb">cat</span> .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+</code></pre></div></div>
+<ul>
+  <li>Para poder leer el contenido del fichero debemos usar <em>cat</em> incluyendo el punto que tiene en el nombre el archivo</li>
+</ul>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandi-4--5">bandi 4 –&gt; 5</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.</p>
+</blockquote>
+
+<h1 id="solucion-1">solucion 1</h1>
+
+<ul>
+  <li>Despues de entrar en el directorio inhere listamos el contenido</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit4@bandit:~/inhere<span class="nv">$ </span>find ./<span class="k">*</span>
+./-file00
+./-file01
+./-file02
+./-file03
+./-file04
+./-file05
+./-file06
+./-file07
+./-file08
+./-file09
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>al comando anterior le agregamos *</td>
+          <td>xargs file* lo cual nos especifica el tipo de archico que tenemos</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit4@bandit:~/inhere<span class="nv">$ </span>find ./<span class="k">*</span> | xargs file
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+</code></pre></div></div>
+
+<ul>
+  <li>Le añadimos el <em>grep TEXT -i</em>, la funcion de este comando es filtrar los archivos solo en <em>texto legible por humanos</em> la bandera <em>-i</em> es para que no distinga entre m&gt;</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit4@bandit:~/inhere<span class="nv">$ </span>find ./<span class="k">*</span> | xargs file | <span class="nb">grep </span>TEXT <span class="nt">-i</span>
+./-file07: ASCII text
+</code></pre></div></div>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Finalmente le hacemos el ultimo filtro con <em>awk</em> y la bandera <em>-F</em> la cual solo nos tomara el primer parametro <em>./-file07</em> y con el *</td>
+          <td>xargs cat* leemos la flag</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit4@bandit:~/inhere<span class="nv">$ </span>find ./<span class="k">*</span> | xargs file | <span class="nb">grep </span>TEXT <span class="nt">-i</span> | <span class="nb">awk</span> <span class="nt">-F</span>: <span class="s1">'{print $1}'</span> | xargs <span class="nb">cat
+</span>koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+</code></pre></div></div>
+
+<h1 id="solucion-2-mas-corta">Solucion 2 (mas corta)</h1>
+
+<ul>
+  <li>Para este caso nos funciona puesto que es el unico archivo de texto <em>./-file07: ASCII text</em></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit4@bandit:~/inhere<span class="nv">$ </span>find ./<span class="k">*</span> | xargs file
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+</code></pre></div></div>
+<ul>
+  <li>simplemente le hacemos un <em>cat FileName</em> y obtenemos la flag</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit4@bandit:~/inhere<span class="nv">$ </span><span class="nb">cat</span> ./-file07
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+</code></pre></div></div>
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-5--6">bandit 5 –&gt; 6</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:</p>
+
+  <ul>
+    <li>human-readable</li>
+    <li>1033 bytes in size</li>
+    <li>not executable</li>
+  </ul>
+</blockquote>
+
+<ul>
+  <li>Inicialmente hacemos un <em>ls</em> para ver a que nos enfrentamos y vemos que existen multiples carpetas.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit5@bandit:~/inhere<span class="nv">$ </span><span class="nb">ls
+</span>maybehere00  maybehere02  maybehere04  maybehere06  maybehere08  maybehere10  maybehere12  maybehere14  maybehere16  maybehere18
+maybehere01  maybehere03  maybehere05  maybehere07  maybehere09  maybehere11  maybehere13  maybehere15  maybehere17  maybehere19
+</code></pre></div></div>
+<ul>
+  <li>Especificamos varios filtros <em>-readable</em> para ver archivos legibles por humanos</li>
+  <li><em>find</em> posee la bandera <em>-execuatable</em> para buscar archivs con permisos de ejecucion</li>
+  <li>size <em>1033c</em> nos permite buscar archivos de 1033 bytes (usando la opción c)</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit5@bandit:~/inhere<span class="nv">$ </span>find <span class="nb">.</span> <span class="nt">-readable</span> <span class="o">!</span> <span class="nt">-executable</span> <span class="nt">-size</span> 1033c | xargs <span class="nb">cat</span> | xargs
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+</code></pre></div></div>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-6--7">bandit 6 –&gt; 7</h1>
+
+<blockquote>
+  <p>The password for the next level is stored somewhere on the server and has all of the following properties:</p>
+
+  <ul>
+    <li>owned by user bandit7</li>
+    <li>owned by group bandit6</li>
+    <li>33 bytes in size</li>
+  </ul>
+</blockquote>
+
+<ul>
+  <li>Hacemos uso nuevamente del manual de <em>find</em> para poder buscar las banderas indicadas</li>
+  <li><em>-user bandi7</em> filtra por archivos de propiedad de <em>bandit7</em></li>
+  <li><em>-group bandit6</em> filtra por propiedad del <em>grupo bandit6</em></li>
+  <li><em>-zise 33c</em> filtra por archivo de 33bytes</li>
+  <li>El STDERR es identificado con el número 2, y sus mensajes pueden ser redirigidos (usando el símbolo &gt;) a /dev/null (archivo especial utilizado para descartar información):</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit6@bandit:~<span class="nv">$ </span>find / <span class="nt">-user</span> bandit7 <span class="nt">-group</span> bandit6 <span class="nt">-size</span> 33c 2&gt;/dev/null | xargs <span class="nb">cat
+</span>HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+</code></pre></div></div>
+
+<h1 id="bandit-7--8">bandit 7 –&gt; 8</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in the file data.txt next to the word millionth</p>
+</blockquote>
+
+<ul>
+  <li>usamos el comando <em>cat data.txt</em> pero al ver el contendio de <em>data.txt</em></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit7@bandit:~<span class="nv">$ </span><span class="nb">cat </span>data.txt 
+canonization<span class="s1">'s  7ITrZvFVzsjujBHVlu4gfcHbW1gWQUcN
+reserve AHO3PedgUR05aCaQVGVFQRgY2oR1SBYh
+Zanuck  30KRlOQjnCq5DyqNZePHAD6tCZbVjT1f
+baritone        XSodKcCZa05ckkLyP4uXwrjIVaCzKcpq
+lineman'</span>s       Gh8HTLmWxnXJxZF4DzhuiRpV8xejb6yw
+aquas   RkI4EWYAjHPMexRFTY9Rq7vQtjhiKgZw
+swaddled        snDpr6ve7nuPsjBoTGLrmpOYomdhVzAH
+garishness<span class="s1">'s    UbK1yZ2nC02GEjArlASLw0bT8jgOp9rx
+Benny'</span>s QQkZrdiFs47KckVLi5ifsFqtLcRxyjvZ
+regulated       sxJ8HT73fvZMMIicL50nhawcrsYGUiWP
+knotting        vh268WJXw1OSnszed9MVaHD4rTP69lZr
+hymnals 7MqsN32lfDbPigtAX6cwFbMZcPAMUoae
+Fremont tCy02wC8xdpFqjlZ8xdBQYAHFZPHk7ls
+punter<span class="s1">'s        zAfzaA1IOuBSamCR6eMmRoc9oNXPQ16a
+junking 6Tlr5K8YZ1d2Xsdku3TTFYXWB6WOMXyT
+Aymara  zSeUS0UyD8Q6a6YPwaClRBbk1x8kFBEc
+waned   gL59r6xvewh5y8t0mgiNtHtCUMG8S6Id
+conceded        TWLUptX3HbwD4qsYOQ9sENOnOiNy79sC
+kilned  kLjrgoJvftIyUyotuOI4cxFcxQXbC6aS
+Santayana       KKn1I4fuWdzKyvffp1aYrBDzQa3Tr3Pk
+Antigua dRyNieqAg0OkCgrKVQFXMXS06vFArL55
+heyday  UAGwMlFzylGa4fHpQZEelUQEZ5JlUpyX
+praiseworthiness'</span>s      bjRB0uGXM4dH7ip9hHB3mbFBMMwlNKNq
+</code></pre></div></div>
+
+<p>tiene demasiadas lineas para buscar manualmente</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>usamos _cat data.txt</td>
+          <td>wc_ para ver el total de lineas de texto que contien el archivo</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit7@bandit:~<span class="nv">$ </span><span class="nb">cat </span>data.txt | <span class="nb">wc
+  </span>98567  197133 4184396
+</code></pre></div></div>
+<p>Como ya se mensiono anteriormente, buscar linea a linea la que contenga la palabra millionth seria bastante engorroso, para omitir eso, usaremos grep junto 
+con una bandera</p>
+
+<ul>
+  <li>Usando <em>grep</em> podemos filtrar por la palabra <em>millionth</em> usando la bandera <em>-i</em> para que no distinga entre mayusculas y minusculas</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit7@bandit:~<span class="nv">$ </span><span class="nb">cat </span>data.txt | <span class="nb">grep</span> <span class="nt">-i</span> millionth
+millionth       cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+</code></pre></div></div>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-8--9">bandit 8 –&gt; 9</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in the file data.txt and is the only line of text that occurs only once</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Usamos el comando <em>sort</em> para ordenar el input en orden alfabetico</p>
+  </li>
+  <li>
+    <p>Usamos el <em>uniq -u</em> para mostrar solo las lineas que no estan repetidas</p>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit8@bandit:~<span class="nv">$ </span><span class="nb">cat </span>data.txt | <span class="nb">sort</span> | <span class="nb">uniq</span> <span class="nt">-u</span>
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+</code></pre></div></div>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandi-9--10">bandi 9 –&gt; 10</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.</p>
+</blockquote>
+
+<ul>
+  <li>Usamos el comando <em>strings cat</em> para ver los caracteres legibles por humanos</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit9@bandit:~<span class="nv">$ </span>strings data.txt
+Z/,_
+WW<span class="s2">"&amp;8
+2Qk)
+xWa_
+x?Xn
+//M</span><span class="err">$</span><span class="s2">
+;yzEt!
+WpU~e
+</span><span class="sb">`</span>Rn,I
+VSXdK
+WB|<span class="o">{</span>
+GhG<span class="err">$</span>
+<span class="o">==========</span> the<span class="k">*</span>2i<span class="s2">"4
+DUJmU
+</span></code></pre></div></div>
+
+<ul>
+  <li>ahora vamos a filtrar con <em>grep ‘=’</em></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>andit9@bandit:~<span class="nv">$ </span>strings data.txt | <span class="nb">grep</span> <span class="s1">'='</span>
+<span class="o">==========</span> the<span class="k">*</span>2i<span class="s2">"4
+=:G e
+========== password
+&lt;I=zsGi
+Z)========== is
+A=|t&amp;E
+Zdb=
+c^ LAh=3G
+*SF=s
+&amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+S=A.H&amp;^
+</span></code></pre></div></div>
+
+<ul>
+  <li>con el comando <em>tail -n 2</em>, tomamos las 2 ultimas lineas del output anterior</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit9@bandit:~<span class="nv">$ </span>strings data.txt | <span class="nb">grep</span> <span class="s1">'='</span> | <span class="nb">tail</span> <span class="nt">-n</span> 2
+&amp;<span class="o">==========</span> truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+<span class="nv">S</span><span class="o">=</span>A.H&amp;^
+</code></pre></div></div>
+
+<ul>
+  <li>el comando <em>head -n 1</em> nos toma la primer liena del output anterior</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit9@bandit:~<span class="nv">$ </span>strings data.txt | <span class="nb">grep</span> <span class="s1">'='</span> | <span class="nb">tail</span> <span class="nt">-n</span> 2 | <span class="nb">head</span> <span class="nt">-n</span> 1
+&amp;<span class="o">==========</span> truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+</code></pre></div></div>
+
+<ul>
+  <li>Finalmente, agregamos el filtro <em>awk ‘{print $2}’</em> para filtrar el output anterior y solo tomamos la 2 cadena de texto</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit9@bandit:~<span class="nv">$ </span>strings data.txt | <span class="nb">grep</span> <span class="s1">'='</span> | <span class="nb">tail</span> <span class="nt">-n</span> 2 | <span class="nb">head</span> <span class="nt">-n</span> 1 | <span class="nb">awk</span> <span class="s1">'{print $2}'</span>
+truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+</code></pre></div></div>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-10--11">bandit 10 –&gt; 11</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in the file data.txt, which contains base64 encoded data</p>
+</blockquote>
+
+<ul>
+  <li>Comprovamos lo mencionado anteriormente, esta codificado en base64</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit10@bandit:~<span class="nv">$ </span><span class="nb">cat </span>data.txt
+<span class="nv">VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg</span><span class="o">==</span>
+</code></pre></div></div>
+
+<ul>
+  <li>usamos <em>base64 -d</em> para decodificarlo, y obtenemos la flag</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit10@bandit:~<span class="nv">$ </span><span class="nb">cat </span>data.txt | <span class="nb">base64</span> <span class="nt">-d</span>
+The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+</code></pre></div></div>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-11--12">bandit 11 –&gt; 12</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions</p>
+</blockquote>
+
+<ul>
+  <li>La guia de bandit nos dice que esta <em>cifrado en Cesar</em>, la diferencia es que esta modido 13 posiciones</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit11@bandit:~<span class="nv">$ </span><span class="nb">cat </span>data.txt
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+</code></pre></div></div>
+
+<ul>
+  <li>Usamos <a href="https://cryptii.com/pipes/caesar-cipher">decrypt cesar 13 positions</a></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+</code></pre></div></div>
+
+<hr />
+<hr />
+<hr />
+
+<h1 id="bandit-12--13">bandit 12 –&gt; 13</h1>
+
+<blockquote>
+  <p>The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)</p>
+</blockquote>
+
+<ul>
+  <li>Antes de trabajar con el archivo, movemos el .rar en la ruta indicada</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit12@bandit:/tmp/myname123<span class="nv">$ </span><span class="nb">ls
+</span>data2.txt.bz2
+</code></pre></div></div>
+
+<ul>
+  <li>Para pasar el hexdump a un archivo normal, usamos el comando <em>xxd</em>. Este tiene la opción <em>-r</em>, que permite convertir un hexdump a un binario:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit12@bandit:/tmp/myname123<span class="nv">$ </span><span class="nb">ls
+</span>data  data2.txt
+</code></pre></div></div>
+
+<p>La idea de este reto es aprender a descomprimir diferentes tipos de archivos, pero
+se puede solucionar usando los siguientes comandos:</p>
+
+<ul>
+  <li><em>zcat</em> descomprime una lista de archivos (.gz) en la línea de comando o su <em>standard input</em> y escribe los datos sin comprimir en el standard <em>output</em></li>
+  <li><em>bzcat</em> es similar que zcat (descomprime todos los archivos indicados y lo envía <em>standard output</em>), pero de archivos <em>.bz2</em></li>
+  <li><em>tar xO</em>, donde <em>x</em> es para extraer, y <em>O</em> es para extraer el archivo a un <em>standard output</em></li>
+  <li><em>file -</em> permite ver el formato del archivo descomprimido, donde el nombre de este es reemplazado por el símbolo <em>-</em>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bandit12@bandit:/tmp/myname123<span class="nv">$ </span>zcat data | bzcat | zcat | <span class="nb">tar </span>xO | <span class="nb">tar </span>xO | bzcat | <span class="nb">tar </span>xO | zcat | <span class="nb">cat
+</span>The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#bash" class="page__taxonomy-item" rel="tag">bash</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#scripting" class="page__taxonomy-item" rel="tag">scripting</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bandit" class="page__taxonomy-item" rel="tag">Bandit</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#bash" class="page__taxonomy-item" rel="tag">Bash</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-19T00:00:00-05:00">October 19, 2021</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/second-bandit0/" class="pagination--pager" title="Bandit0: Bash para principiantes - 2da parte
+">Previous</a>
+    
+    
+      <a href="/Rootme/" class="pagination--pager" title="tryhackme: Rootme
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Deiby Espinosa</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
