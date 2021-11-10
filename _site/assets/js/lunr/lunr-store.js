@@ -24,8 +24,8 @@ var store = [{
         "tags": ["web","wordpress"],
         "url": "http://localhost:4000/MrRobot/",
         "teaser":"http://localhost:4000/assets/images/MrRobot/logo.jpg"},{
-        "title": "tryhackme: Mr Robot",
-        "excerpt":"# Comprobaremos que la maquina se encuentre activa ```bash ❯ ping -c 1 10.10.115.49 PING 10.10.115.49 (10.10.115.49) 56(84) bytes of data. 64 bytes from 10.10.115.49: icmp_seq=1 ttl=63 time=162 ms --- 10.10.115.49 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt min/avg/max/mdev = 161.950/161.950/161.950/0.000 ms ```...","categories": ["tryhackme"],
-        "tags": ["web","wordpress"],
-        "url": "http://localhost:4000/MrRobot/",
-        "teaser":"http://localhost:4000/assets/images/MrRobot/logo.jpg"}]
+        "title": "Hackthebox: Secret",
+        "excerpt":"Iniciamos comprobando que la maquina este activa antes que nada hacemos el envio de un paquete mediante ping para confirmar que la maquina esta activa, al mismo tiempo comprovamos que estamos frente a una maquina linux mediante el ttl ❯ ping -c 1 10.10.11.120 PING 10.10.11.120 (10.10.11.120) 56(84) bytes of...","categories": ["hackthebox"],
+        "tags": [],
+        "url": "http://localhost:4000/Secret/",
+        "teaser":"http://localhost:4000/assets/images/secret/logo.jpg"}]
