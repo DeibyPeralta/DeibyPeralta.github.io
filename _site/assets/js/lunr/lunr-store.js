@@ -19,13 +19,28 @@ var store = [{
         "tags": ["FTP","SSH","SUID"],
         "url": "http://localhost:4000/kenobi/",
         "teaser":"http://localhost:4000/assets/images/kenobi/logo.jpg"},{
-        "title": "Mrrobot",
-        "excerpt":"title: “tryhackme: Mr Robot” share: false excerpt: “El mejor metodo de aprendizaje es practicando” share: false header: teaser: /assets/images/MrRobot/logo.jpg teaser_home_page: true categories: tryhackme tags: web wordpress Comprobaremos que la maquina se encuentre activa ❯ ping -c 1 10.10.115.49 PING 10.10.115.49 (10.10.115.49) 56(84) bytes of data. 64 bytes from 10.10.115.49: icmp_seq=1...","categories": [],
-        "tags": [],
+        "title": "tryhackme: Mr Robot",
+        "excerpt":"Comprobaremos que la maquina se encuentre activa ❯ ping -c 1 10.10.115.49 PING 10.10.115.49 (10.10.115.49) 56(84) bytes of data. 64 bytes from 10.10.115.49: icmp_seq=1 ttl=63 time=162 ms --- 10.10.115.49 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt min/avg/max/mdev = 161.950/161.950/161.950/0.000 ms Efectivamente, vemos que...","categories": ["tryhackme"],
+        "tags": ["web","wordpress"],
         "url": "http://localhost:4000/MrRobot/",
-        "teaser":null},{
+        "teaser":"http://localhost:4000/assets/images/MrRobot/logo.jpg"},{
         "title": "Hackthebox: Secret",
         "excerpt":"Iniciamos comprobando que la maquina este activa antes que nada hacemos el envio de un paquete mediante ping para confirmar que la maquina esta activa, al mismo tiempo comprovamos que estamos frente a una maquina linux mediante el ttl ❯ ping -c 1 10.10.11.120 PING 10.10.11.120 (10.10.11.120) 56(84) bytes of...","categories": ["hackthebox"],
         "tags": [],
         "url": "http://localhost:4000/Secret/",
-        "teaser":"http://localhost:4000/assets/images/secret/logo.jpg"}]
+        "teaser":"http://localhost:4000/assets/images/secret/logo.jpg"},{
+        "title": "tryhackme: vulnversity",
+        "excerpt":"Iniciamos la fase de reconocimiento Antes de iniciar, verificamos que la maquina este activa ❯ ping -c 1 10.10.249.39 PING 10.10.249.39 (10.10.249.39) 56(84) bytes of data. 64 bytes from 10.10.249.39: icmp_seq=1 ttl=63 time=1085 ms --- 10.10.249.39 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt...","categories": ["tryhackme"],
+        "tags": ["Nmap","Gobuster","Burp suite"],
+        "url": "http://localhost:4000/vulnversity/",
+        "teaser":"http://localhost:4000/assets/images/vulnversity/logo.jpeg"},{
+        "title": "tryhackme: blue",
+        "excerpt":"Iniciamos conprobando que la maquina este encendida ❯ ping -c 1 10.10.31.159 PING 10.10.31.159 (10.10.31.159) 56(84) bytes of data. 64 bytes from 10.10.31.159: icmp_seq=1 ttl=127 time=187 ms --- 10.10.31.159 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt min/avg/max/mdev = 186.669/186.669/186.669/0.000 ms ❯ settarget 10.10.31.159...","categories": ["tryhackme"],
+        "tags": ["Ethernal blue - ms08-067","Windows"],
+        "url": "http://localhost:4000/blue/",
+        "teaser":"http://localhost:4000/assets/images/blue/logo.jpeg"},{
+        "title": "Walking An Application",
+        "excerpt":" ","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/Walking-An-Application/",
+        "teaser":null}]
