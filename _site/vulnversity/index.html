@@ -356,7 +356,7 @@ rtt min/avg/max/mdev <span class="o">=</span> 1085.220/1085.220/1085.220/0.000 m
 </code></pre></div></div>
 
 <blockquote>
-  <p>Scan the box, how many ports are open?
+  <p>Scan the box, how many ports are open?<br />
 6</p>
 </blockquote>
 
@@ -373,7 +373,7 @@ rtt min/avg/max/mdev <span class="o">=</span> 1085.220/1085.220/1085.220/0.000 m
 </code></pre></div></div>
 
 <blockquote>
-  <p>What version of the squid proxy is running on the machine?
+  <p>What version of the squid proxy is running on the machine?<br />
 3128/tcp open  http-proxy  Squid http proxy 3.5.12</p>
 </blockquote>
 
@@ -426,22 +426,22 @@ Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up
 </code></pre></div></div>
 <p>(Vamos respondiendo las preguntas de la maquina)</p>
 <blockquote>
-  <p>How many ports will nmap scan if the flag -p-400 was used?
+  <p>How many ports will nmap scan if the flag -p-400 was used?<br />
 400</p>
 </blockquote>
 
 <blockquote>
-  <p>Using the nmap flag -n what will it not resolve?
+  <p>Using the nmap flag -n what will it not resolve?<br />
 DNS</p>
 </blockquote>
 
 <blockquote>
-  <p>What is the most likely operating system this machine is running?
+  <p>What is the most likely operating system this machine is running?<br />
 Ubuntu</p>
 </blockquote>
 
 <blockquote>
-  <p>What port is the web server running on?
+  <p>What port is the web server running on?<br />
 3333</p>
 </blockquote>
 
@@ -450,8 +450,8 @@ Ubuntu</p>
 <p>En esta fase utilizaremos Gobuster para ver posibles <em>urls</em> existentes</p>
 
 <blockquote>
-  <p>What is the directory that has an upload form page?
- /internal/</p>
+  <p>What is the directory that has an upload form page?<br />
+/internal/</p>
 </blockquote>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> gobuster <span class="nb">dir</span> <span class="nt">-u</span> http://10.10.1.188:3333 <span class="nt">-w</span> /usr/share/wordlists/dirb/common.txt <span class="nt">-o</span> gobuster.txt
@@ -479,18 +479,18 @@ un archivo en la maquina, probaremos obtener una <em>shell</em> mediante php</p>
 
 <p>para ello, modificaremos <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">esta</a> <em>shell</em> de php</p>
 
-<p><a href="/assets/images/vulnversity/server.png">cargar shell</a></p>
+<p><img src="/assets/images/vulnversity/server.png" alt="cargar shell" /></p>
 
 <h3 id="compromise-the-webserver">Compromise the webserver</h3>
 
 <p>En esta parte podemos hacerlo de varios metodos, pero seguiremos la maquina y utilizaremos <em>burp suite</em></p>
 
 <blockquote>
-  <p>Run this attack, what extension is allowed?
+  <p>Run this attack, what extension is allowed?<br />
 .phtml</p>
 </blockquote>
 
-<p><a href="/assets/images/vulnversity/shell.png">shell en el servidor</a></p>
+<p><img src="/assets/images/vulnversity/shell.png" alt="shell en el servidor" /></p>
 
 <p>ponemos nuestra maquina en escucha</p>
 
@@ -520,7 +520,7 @@ bill</p>
 </code></pre></div></div>
 
 <blockquote>
-  <p>What is the user flag?
+  <p>What is the user flag?<br />
 8xdx99xxxfexaxadxxa6x36x1x0xcxcxxb</p>
 </blockquote>
 
@@ -559,7 +559,7 @@ tambien es valido utilizar <em>find / -perm -u=s -type f 2&gt;/dev/null</em></p>
 </code></pre></div></div>
 
 <blockquote>
-  <p>On the system, search for all SUID files. What file stands out?
+  <p>On the system, search for all SUID files. What file stands out?<br />
 /bin/systemctl</p>
 </blockquote>
 
@@ -591,7 +591,7 @@ WantedBy=multi-user.target'</span> <span class="o">&gt;</span> <span class="nv">
 x5xfxxxx9fxax27x36xd3xax9x6c7xd5
 </code></pre></div>    </div>
     <blockquote>
-      <p>Become root and get the last flag (/root/root.txt)
+      <p>Become root and get the last flag (/root/root.txt)<br />
 x5xfx85x9x0x9x7x6xd33ax9x6cxfx5</p>
     </blockquote>
   </li>

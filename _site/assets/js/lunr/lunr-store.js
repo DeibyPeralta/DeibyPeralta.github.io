@@ -39,8 +39,8 @@ var store = [{
         "tags": ["Ethernal blue - ms08-067","Windows"],
         "url": "http://localhost:4000/blue/",
         "teaser":"http://localhost:4000/assets/images/blue/logo.jpeg"},{
-        "title": "Walking An Application",
-        "excerpt":" ","categories": [],
-        "tags": [],
-        "url": "http://localhost:4000/Walking-An-Application/",
-        "teaser":null}]
+        "title": "tryhackme: LFI",
+        "excerpt":"Local File Inclusion Esta técnica consiste en incluir ficheros locales, es decir, archivos que se encuentran en el mismo servidor de la web con este tipo de fallo (a diferencia de Remote File Inclusión RFI que incluye archivos alojados en otros servidores). Esto se produce como consecuencia de un fallo...","categories": ["tryhackme"],
+        "tags": ["LFI","Local File Inclusion"],
+        "url": "http://localhost:4000/LFI/",
+        "teaser":"http://localhost:4000/assets/images/lfi/logo.jpg"}]

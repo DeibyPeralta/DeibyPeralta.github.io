@@ -20,7 +20,7 @@ title                    : "Pentester - Ctf's"
 title_separator          : "-"
 name                     : "Deiby Espinosa"
 description              : "Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica."
-url                      : "https://NewSteven.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://deibyperalta.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "slemire/slemire.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 logo                     : #"/assets/images/icono.ico"
@@ -115,7 +115,7 @@ author:
 #  flickr           :
 #  facebook         :
 #  foursquare       :
-#  github           : "NewSteven"
+#  github           : ""
 #  gitlab           :
 #  google_plus      :
 #  keybase          : # "User"

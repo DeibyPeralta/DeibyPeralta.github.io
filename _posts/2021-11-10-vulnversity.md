@@ -39,7 +39,7 @@ Comprovamos que *OS* tiene la maquia antes de iniciar
 ```
 
 
-### Reconnaissance 
+### Reconnaissance
 
 Iniciamos haciendo un primer escaneo con _nmap_
 
@@ -47,8 +47,8 @@ Iniciamos haciendo un primer escaneo con _nmap_
 >sudo nmap --open -p- --min-rate 5000 -sS -Pn -n 10.10.249.39 -oG allPorts
 ```
 
-> Scan the box, how many ports are open?
-> 6
+> Scan the box, how many ports are open?  
+>6
 
 Vemos que tiene 6 puertos abiertos, ahora a ver que servicios estan corriendo en cada uno
 
@@ -64,8 +64,8 @@ Vemos que tiene 6 puertos abiertos, ahora a ver que servicios estan corriendo en
 ```
 
 
-> What version of the squid proxy is running on the machine?
-> 3128/tcp open  http-proxy  Squid http proxy 3.5.12
+> What version of the squid proxy is running on the machine?  
+>3128/tcp open  http-proxy  Squid http proxy 3.5.12
 
 
 ```bash
@@ -117,25 +117,25 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 30.84 seconds
 ```
 (Vamos respondiendo las preguntas de la maquina)
-> How many ports will nmap scan if the flag -p-400 was used?
-> 400
+> How many ports will nmap scan if the flag -p-400 was used?  
+>400
 
-> Using the nmap flag -n what will it not resolve?
-> DNS
+> Using the nmap flag -n what will it not resolve?  
+>DNS
 
-> What is the most likely operating system this machine is running?
-> Ubuntu
+> What is the most likely operating system this machine is running?  
+>Ubuntu
 
-> What port is the web server running on?
-> 3333 
+> What port is the web server running on?  
+>3333 
 
 
 ### Locating directories using GoBuster 
 
 En esta fase utilizaremos Gobuster para ver posibles _urls_ existentes
 
-> What is the directory that has an upload form page?
->  /internal/
+> What is the directory that has an upload form page?  
+>/internal/
 
 
 ```bash
@@ -164,17 +164,17 @@ un archivo en la maquina, probaremos obtener una _shell_ mediante php
 
 para ello, modificaremos [esta](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) _shell_ de php
 
-[cargar shell](/assets/images/vulnversity/server.png)
+![cargar shell](/assets/images/vulnversity/server.png)
 
 ### Compromise the webserver 
 
 En esta parte podemos hacerlo de varios metodos, pero seguiremos la maquina y utilizaremos *burp suite*
 
 
-> Run this attack, what extension is allowed?
-> .phtml
+> Run this attack, what extension is allowed?  
+>.phtml
 
-[shell en el servidor](/assets/images/vulnversity/shell.png)
+![shell en el servidor](/assets/images/vulnversity/shell.png)
 
 ponemos nuestra maquina en escucha
 
@@ -195,15 +195,15 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 
 
 > What is the name of the user who manages the webserver?
-> bill
+>bill
 
 ```bash
 $ cat user.txt
 8xx7x92xbexax6xa22x63x6x00xcfxexb
 ```
 
-> What is the user flag?
-> 8xdx99xxxfexaxadxxa6x36x1x0xcxcxxb
+> What is the user flag?  
+>8xdx99xxxfexaxadxxa6x36x1x0xcxcxxb
 
 ### Privilege Escalation 
 
@@ -240,8 +240,8 @@ $ find / -perm -u=s -type f 2>/dev/null
 /sbin/mount.cifs
 ```
 
-> On the system, search for all SUID files. What file stands out?
-> /bin/systemctl
+> On the system, search for all SUID files. What file stands out?  
+>/bin/systemctl
 
 Podemos observar que entre los binarios se encuentra systemctl, por lo cual vamos a utilizarlo para obtener privilegios root, con 
 los siguientes comandos.
@@ -270,5 +270,5 @@ uid=33(www-data) gid=33(www-data) euid=0(root) egid=0(root) groups=0(root),33(ww
 cat /root/root.txt
 x5xfxxxx9fxax27x36xd3xax9x6c7xd5
 ```
-> Become root and get the last flag (/root/root.txt)
-> x5xfx85x9x0x9x7x6xd33ax9x6cxfx5
+> Become root and get the last flag (/root/root.txt)  
+>x5xfx85x9x0x9x7x6xd33ax9x6cxfx5
