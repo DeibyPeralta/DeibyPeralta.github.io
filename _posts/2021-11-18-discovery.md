@@ -4,7 +4,7 @@ share: false
 excerpt: "El mejor metodo de aprendizaje es practicando"
 share: false
 header:
-  teaser:  /assets/images/discovery/logo.jpg
+  teaser:  /assets/images/discovery/logo.png
   teaser_home_page: true
 categories:
   - tryhackme
@@ -92,7 +92,7 @@ Nmap done: 1 IP address (1 host up) scanned in 14.13 seconds
 
 en la _url_ solo agregamos _robots.txt_ y encontramos *robots.txt*
 
-![robots.txt](/assets/images/discory/robots.txt)
+![robots.txt](/assets/images/discovery/robots.png)
 
 > What is the directory in the robots.txt that isn't allowed to be viewed by web crawlers?  
 > /staff-portal
@@ -147,4 +147,48 @@ f276b19aabcb4ae8cda4d22625c6735f  -
 > What is the flag from the framework's administration portal?  
 > THM{CHANGE_DEFAULT_CREDENTIALS}
 
+## OSINT - Google Hacking / Dorking 
 
+
+|Filter		|Example		|Description|
+|---------------|-----------------------|-------------|
+|site		|site:tryhackme.com	|returns results only from the specified website address|
+|inurl		|inurl:admin		|returns results that have the specified word in the URL|
+|filetype	|filetype:pdf		|returns results which are a particular file extension|
+|intitle	|intitle:admin		|returns results that contain the specified word in the title|
+
+
+> What Google dork operator can be used to only show results from a particular site  
+> site:
+
+## OSINT - Wappalyzer 
+
+- Basicamente es una extención que permite identificar que tecnologias usa un sitio web
+
+> What online tool can be used to identify what technologies a website is running?  
+> wappalyzer
+
+## OSINT - Wayback Machine 
+
+> What is the website address for the Wayback Machine?  
+> https://archive.org/web
+
+##  OSINT - GitHub 
+
+> What is Git?  
+> version control system 
+
+## OSINT - S3 Buckets 
+
+> What URL format do Amazon S3 buckets end in?  
+> .s3.amazonaws.com
+
+## Automated Discovery 
+
+![gobuster](/assets/images/discovery/gobuster.png)
+
+> What is the name of the directory beginning "/mo...." that was discovered?  
+> /monthly
+
+> What is the name of the log file that was discovered?  
+> /development.log

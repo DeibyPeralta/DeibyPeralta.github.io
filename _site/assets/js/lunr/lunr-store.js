@@ -43,4 +43,14 @@ var store = [{
         "excerpt":"Local File Inclusion Esta técnica consiste en incluir ficheros locales, es decir, archivos que se encuentran en el mismo servidor de la web con este tipo de fallo (a diferencia de Remote File Inclusión RFI que incluye archivos alojados en otros servidores). Esto se produce como consecuencia de un fallo...","categories": ["tryhackme"],
         "tags": ["LFI","Local File Inclusion"],
         "url": "http://localhost:4000/LFI/",
-        "teaser":"http://localhost:4000/assets/images/lfi/logo.jpg"}]
+        "teaser":"http://localhost:4000/assets/images/lfi/logo.png"},{
+        "title": "tryhackme: Content Discovery",
+        "excerpt":"iniciamos Realizamos un primer escaneo con nmap para ver los puertos abiertos e iniciar a “jugar” con la maquina ❯ sudo nmap --open --min-rate 5000 -sS -Pn -n 10.10.234.170 -oG allPorts [sudo] password for blanco: Starting Nmap 7.92 ( https://nmap.org ) at 2021-11-18 07:43 -05 Nmap scan report for 10.10.234.170...","categories": ["tryhackme"],
+        "tags": ["Gobuster","Robots.txt"],
+        "url": "http://localhost:4000/discovery/",
+        "teaser":"http://localhost:4000/assets/images/discovery/logo.png"},{
+        "title": "tryhackme: SQLInjection",
+        "excerpt":"Conocida principalmente como SQLI, es un ataque a un servidor de base de datos de aplicaciones web que proboca la ejecución de consultas maliciosas Brief What does SQL stand for? Structured Query Language What is a Database? Una base de datos es una forma de almacenar electrónicamente colecciones de datos...","categories": ["tryhackme"],
+        "tags": ["database","sql injection"],
+        "url": "http://localhost:4000/SQLInjection/",
+        "teaser":"http://localhost:4000/assets/images/sqli/logo.jpeg"}]
