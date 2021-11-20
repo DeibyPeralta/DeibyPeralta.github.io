@@ -50,7 +50,7 @@ var store = [{
         "url": "http://localhost:4000/discovery/",
         "teaser":"http://localhost:4000/assets/images/discovery/logo.png"},{
         "title": "tryhackme: SQLInjection",
-        "excerpt":"Conocida principalmente como SQLI, es un ataque a un servidor de base de datos de aplicaciones web que proboca la ejecución de consultas maliciosas Brief What does SQL stand for? Structured Query Language What is a Database? Una base de datos es una forma de almacenar electrónicamente colecciones de datos...","categories": ["tryhackme"],
+        "excerpt":"Conocida principalmente como SQLI, es un ataque a un servidor de base de datos de aplicaciones web que proboca la ejecución de consultas maliciosas Brief SQL es un lenguaje de dominio específico utilizado en programación, diseñado para administrar, y recuperar información de sistemas de gestión de bases de datos relacionales....","categories": ["tryhackme"],
         "tags": ["database","sql injection"],
         "url": "http://localhost:4000/SQLInjection/",
         "teaser":"http://localhost:4000/assets/images/sqli/logo.jpeg"}]

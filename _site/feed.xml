@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-19T09:42:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: SQLInjection</title><link href="http://localhost:4000/SQLInjection/" rel="alternate" type="text/html" title="tryhackme: SQLInjection" /><published>2021-11-19T00:00:00-05:00</published><updated>2021-11-19T00:00:00-05:00</updated><id>http://localhost:4000/SQLInjection</id><content type="html" xml:base="http://localhost:4000/SQLInjection/">&lt;ul&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-20T07:22:10-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: SQLInjection</title><link href="http://localhost:4000/SQLInjection/" rel="alternate" type="text/html" title="tryhackme: SQLInjection" /><published>2021-11-19T00:00:00-05:00</published><updated>2021-11-19T00:00:00-05:00</updated><id>http://localhost:4000/SQLInjection</id><content type="html" xml:base="http://localhost:4000/SQLInjection/">&lt;ul&gt;
   &lt;li&gt;Conocida principalmente como &lt;em&gt;SQLI&lt;/em&gt;, es un ataque a un servidor de base de datos de aplicaciones web que proboca la ejecución
 de consultas maliciosas&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;brief&quot;&gt;Brief&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SQL es un lenguaje de dominio específico utilizado en programación, diseñado para administrar, y recuperar información de 
+sistemas de gestión de bases de datos relacionales.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;What does SQL stand for?&lt;br /&gt;
@@ -14,6 +19,11 @@ Structured Query Language&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Una base de datos es una forma de almacenar electrónicamente colecciones de datos de manera organizada.&lt;/li&gt;
+  &lt;li&gt;Una base de datos es una recopilación organizada de información o datos estructurados, que normalmente 
+se almacena de forma electrónica en un sistema informático.&lt;/li&gt;
+  &lt;li&gt;Normalmente, una base de datos está controlada por un sistema de gestión de bases de datos (DBMS).&lt;/li&gt;
+  &lt;li&gt;En conjunto, los datos y el DBMS, junto con las aplicaciones asociadas a ellos, reciben el nombre de 
+sistema de bases de datos, abreviado normalmente a simplemente base de datos.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
@@ -60,7 +70,14 @@ THM{xxx_INJECTION_xxxx}&lt;/p&gt;
 &lt;h2 id=&quot;blind-sqli---authentication-bypass&quot;&gt;Blind SQLi - Authentication Bypass&lt;/h2&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What is the flag after completing level two? (and moving to level 3)&lt;/p&gt;
+  &lt;p&gt;What is the flag after completing level two? (and moving to level 3)&lt;br /&gt;
+THM{xxx_INJECTION_xxxx}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;blind-sqli---boolean-based&quot;&gt;Blind SQLi - Boolean Based&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What is the flag after completing level three?&lt;/p&gt;
 
 &lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="database" /><category term="sql injection" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Content Discovery</title><link href="http://localhost:4000/discovery/" rel="alternate" type="text/html" title="tryhackme: Content Discovery" /><published>2021-11-18T00:00:00-05:00</published><updated>2021-11-18T00:00:00-05:00</updated><id>http://localhost:4000/discovery</id><content type="html" xml:base="http://localhost:4000/discovery/">&lt;h3 id=&quot;iniciamos&quot;&gt;iniciamos&lt;/h3&gt;
 
