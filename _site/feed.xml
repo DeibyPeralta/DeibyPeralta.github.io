@@ -1,9 +1,308 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-20T07:22:10-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: SQLInjection</title><link href="http://localhost:4000/SQLInjection/" rel="alternate" type="text/html" title="tryhackme: SQLInjection" /><published>2021-11-19T00:00:00-05:00</published><updated>2021-11-19T00:00:00-05:00</updated><id>http://localhost:4000/SQLInjection</id><content type="html" xml:base="http://localhost:4000/SQLInjection/">&lt;ul&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-03T15:39:40-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: Basic pentesting</title><link href="http://localhost:4000/basicPentesting/" rel="alternate" type="text/html" title="tryhackme: Basic pentesting" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://localhost:4000/basicPentesting</id><content type="html" xml:base="http://localhost:4000/basicPentesting/"></content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="brute forcing" /><category term="hash cracking" /><category term="service enumeration" /><category term="Linux Enumeration" /><summary type="html">Esta es una máquina que le permite practicar la piratería de aplicaciones web y la escalada de privilegios.</summary></entry><entry><title type="html">tryhackme: attacktive directory</title><link href="http://localhost:4000/attacktive-directory/" rel="alternate" type="text/html" title="tryhackme: attacktive directory" /><published>2021-11-30T00:00:00-05:00</published><updated>2021-11-30T00:00:00-05:00</updated><id>http://localhost:4000/attacktive-directory</id><content type="html" xml:base="http://localhost:4000/attacktive-directory/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.170.66
+PING 10.10.170.66 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.170.66&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+64 bytes from 10.10.170.66: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;127 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;157 ms
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.170.66 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 157.244/157.244/157.244/0.000 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Como podemos ver, recibio el paquete enviado, ademas, mediante el &lt;em&gt;ttl&lt;/em&gt; podemos saber que es una maquina  &lt;em&gt;windows&lt;/em&gt;
+tambien podemos usar la utilidad &lt;em&gt;wichSystem.py&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ wichSystem.py 10.10.170.66
+
+10.10.170.66 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 127&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Windows
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;enumeration&quot;&gt;Enumeration&lt;/h2&gt;
+
+&lt;p&gt;Iniciamos el escaneo verificando los puertos abiertos&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-p-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--min-rate&lt;/span&gt; 5000 &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 10.10.170.66 &lt;span class=&quot;nt&quot;&gt;-oG&lt;/span&gt; allPorts
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; password &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;blanco: 
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-30 22:01 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.170.66
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.59s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Not shown: 38185 closed tcp ports &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;reset&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 27326 filtered tcp ports &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no-response&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Some closed ports may be reported as filtered due to &lt;span class=&quot;nt&quot;&gt;--defeat-rst-ratelimit&lt;/span&gt;
+PORT      STATE SERVICE
+53/tcp    open  domain
+80/tcp    open  http
+88/tcp    open  kerberos-sec
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+389/tcp   open  ldap
+445/tcp   open  microsoft-ds
+464/tcp   open  kpasswd5
+593/tcp   open  http-rpc-epmap
+636/tcp   open  ldapssl
+3268/tcp  open  globalcatLDAP
+3269/tcp  open  globalcatLDAPssl
+3389/tcp  open  ms-wbt-server
+5985/tcp  open  wsman
+9389/tcp  open  adws
+47001/tcp open  winrm
+49664/tcp open  unknown
+49665/tcp open  unknown
+49666/tcp open  unknown
+49672/tcp open  unknown
+49675/tcp open  unknown
+49684/tcp open  unknown
+49694/tcp open  unknown
+49700/tcp open  unknown
+
+Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;274.35 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;con la utilidad &lt;em&gt;extractPorts&lt;/em&gt; vemos un poco mejor los puertos abiertos y nos los copia en la clipboard&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ extractPorts allPorts
+───────┬───────────────────────────────────────────────────────────────────────────────────────────
+       │ File: extractPorts.tmp
+───────┼───────────────────────────────────────────────────────────────────────────────────────────
+   1   │ 
+   2   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Extracting information...
+   3   │ 
+   4   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; IP Address: 10.10.170.66
+   5   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Open ports: 53,80,88,135,139,389,445,464,593,636,3268,3269,3389,5985,9389,47001,49664,49665,49666,49672,49675,49684,4
+       │ 9694,49700
+   6   │ 
+   7   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Ports copied to clipboard
+   8   │ 
+───────┴─────────────────────────────────
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Ahora pasamos a verificar que serivicios corren en cada puerto y posibles vulnerabilidades&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p53&lt;/span&gt;,80,88,135,139,389,445,464,593,636,3268,3269,3389,5985,9389,47001,49664,49665,49666,49672,49675,49684,49694,49700 10.10.170.66 &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; targeted
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-30 22:12 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.170.66
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.18s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+PORT      STATE SERVICE       VERSION
+53/tcp    open  domain        Simple DNS Plus
+80/tcp    open  http          Microsoft IIS httpd 10.0
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+| http-methods: 
+|_  Potentially risky methods: TRACE
+88/tcp    open  kerberos-sec  Microsoft Windows Kerberos &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;server &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;: 2021-12-01 03:12:58Z&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+135/tcp   open  msrpc         Microsoft Windows RPC
+139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp   open  ldap          Microsoft Windows Active Directory LDAP &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Domain: spookysec.local0., Site: Default-First-Site-Name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+445/tcp   open  microsoft-ds?
+464/tcp   open  kpasswd5?
+593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped
+3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Domain: spookysec.local0., Site: Default-First-Site-Name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+3269/tcp  open  tcpwrapped
+3389/tcp  open  ms-wbt-server Microsoft Terminal Services
+| ssl-cert: Subject: &lt;span class=&quot;nv&quot;&gt;commonName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;AttacktiveDirectory.spookysec.local
+| Not valid before: 2021-11-30T02:52:27
+|_Not valid after:  2022-06-01T02:52:27
+|_ssl-date: 2021-12-01T03:14:01+00:00&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-2s&lt;/span&gt; from scanner time.
+| rdp-ntlm-info: 
+|   Target_Name: THM-AD
+|   NetBIOS_Domain_Name: THM-AD
+|   NetBIOS_Computer_Name: ATTACKTIVEDIREC
+|   DNS_Domain_Name: spookysec.local
+|   DNS_Computer_Name: AttacktiveDirectory.spookysec.local
+|   Product_Version: 10.0.17763
+|_  System_Time: 2021-12-01T03:13:50+00:00
+5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SSDP/UPnP&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+9389/tcp  open  mc-nmf        .NET Message Framing
+47001/tcp open  http          Microsoft HTTPAPI httpd 2.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SSDP/UPnP&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+49664/tcp open  msrpc         Microsoft Windows RPC
+49665/tcp open  msrpc         Microsoft Windows RPC
+49666/tcp open  msrpc         Microsoft Windows RPC
+49672/tcp open  msrpc         Microsoft Windows RPC
+49675/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+49684/tcp open  msrpc         Microsoft Windows RPC
+49694/tcp open  msrpc         Microsoft Windows RPC
+49700/tcp open  msrpc         Microsoft Windows RPC
+Service Info: Host: ATTACKTIVEDIREC&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; OS: Windows&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: &lt;span class=&quot;nt&quot;&gt;-2s&lt;/span&gt;, deviation: 0s, median: &lt;span class=&quot;nt&quot;&gt;-2s&lt;/span&gt;
+| smb2-time: 
+|   &lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;: 2021-12-01T03:13:53
+|_  start_date: N/A
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled and required
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;78.61 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;What tool will allow us to enumerate port 139/445?&lt;br /&gt;
+enum4linux&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What is the NetBIOS-Domain Name of the machine?&lt;br /&gt;
+THM-AD&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;What invalid TLD do people commonly use for their Active Directory Domain?&lt;br /&gt;
+.local&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;enum4linux-es-una-herramienta-para-enumerara-información-de-sistemas-windows-y-samba&quot;&gt;Enum4linux es una herramienta para enumerara información de sistemas windows y Samba&lt;/h2&gt;
+
+&lt;p&gt;la &lt;em&gt;flag&lt;/em&gt; -a Haga todas las enumeraciones simples (-U -S -G -P -r -o -n -i). 
+Esta opción está habilitada si no proporciona ninguna otra opción.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="attacktive directory" /><category term="enum4linux" /><category term="kerbeos" /><summary type="html">El 99% de las redes corporativas funcionan con AD.</summary></entry><entry><title type="html">tryhackme: Pickle Rick</title><link href="http://localhost:4000/rick/" rel="alternate" type="text/html" title="tryhackme: Pickle Rick" /><published>2021-11-23T00:00:00-05:00</published><updated>2021-11-23T00:00:00-05:00</updated><id>http://localhost:4000/rick</id><content type="html" xml:base="http://localhost:4000/rick/">&lt;h2 id=&quot;iniciamos-esta-maquina&quot;&gt;Iniciamos esta maquina&lt;/h2&gt;
+
+&lt;p&gt;Antes de iniciar verificamos que la maquina este activa mediante un &lt;em&gt;ping&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.103.222
+PING 10.10.103.222 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.103.222&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+64 bytes from 10.10.103.222: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;63 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;154 ms
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.103.222 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 153.727/153.727/153.727/0.000 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Como vemos, la maquina esta activa y mediante su &lt;em&gt;ttl&lt;/em&gt; vemos que nos enfrentamos a una maquina linux, podemos confirmarlo con la 
+herramiente &lt;em&gt;wichSystem&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ wichSystem.py 10.10.103.222
+
+10.10.103.222 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;ahora-si-pasamos-a-la-maquina&quot;&gt;Ahora si pasamos a la maquina&lt;/h2&gt;
+
+&lt;p&gt;inicamos con un escaneo de los puertos con &lt;em&gt;nmap&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;-p-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--min-rate&lt;/span&gt; 5000 &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 10.10.103.222 &lt;span class=&quot;nt&quot;&gt;-oG&lt;/span&gt; allPorts
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; password &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;blanco: 
+Sorry, try again.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; password &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;blanco: 
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-23 07:31 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.103.222
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.64s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Not shown: 52888 filtered tcp ports &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no-response&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 12645 closed tcp ports &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;reset&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Some closed ports may be reported as filtered due to &lt;span class=&quot;nt&quot;&gt;--defeat-rst-ratelimit&lt;/span&gt;
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;para ver el resultado usamos la utilidad &lt;em&gt;extracPorts&lt;/em&gt; de una vez nos copia los puertos en la &lt;em&gt;clipboard&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+❯ extractPorts allPorts
+
+   1   │ 
+   2   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Extracting information...
+   3   │ 
+   4   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; IP Address: 10.10.103.222
+   5   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Open ports: 22,80
+   6   │ 
+   7   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Ports copied to clipboard
+   8   │ 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;pasamos-a-verificar-alguna-posible-vulnerabilidad-en-los-puertos-y-que-servicios-estan-corriendo&quot;&gt;Pasamos a verificar alguna posible vulnerabilidad en los puertos y que servicios estan corriendo&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ nmap &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p22&lt;/span&gt;,80 10.10.103.222 &lt;span class=&quot;nt&quot;&gt;-oN&lt;/span&gt; targeted
+Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-23 07:58 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.103.222
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.17s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; protocol 2.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+| ssh-hostkey: 
+|   2048 8c:de:05:eb:09:98:e3:02:6c:f8:51:a8:1f:60:29:73 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;RSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|   256 0f:90:05:4c:66:4d:9f:45:b5:7e:17:19:9d:4f:b1:9e &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ECDSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_  256 bd:89:54:37:04:e5:07:bf:0d:fc:7b:1a:b0:f7:47:c9 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ED25519&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+80/tcp open  http    Apache httpd 2.4.18 &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+|_http-server-header: Apache/2.4.18 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_http-title: Rick is sup4r cool
+Service Info: OS: Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;13.32 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;No vemos nada que sea interesante y/o nos llame la atencion, pasamos usar &lt;em&gt;gobuster&lt;/em&gt; y buscar posibles directorios, esperamos
+a que termine de cargar el escanero.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;vemos el index del sitio web de la maquina&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rick/index.png&quot; alt=&quot;index&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;verificando el codigo fuente del index encontramos un nombre de usuario, lo guardamos para mas adelante&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rick/codigo.png&quot; alt=&quot;codigo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;verificamos en &lt;em&gt;robots.txt&lt;/em&gt; y vemos si hay algo que nos llame la atención&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rick/robots.png&quot; alt=&quot;robot&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Probamos la posible contraseña con el usuario que ya tenemos de antes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rick/porta.png&quot; alt=&quot;portal&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tenemos-acceso-inical&quot;&gt;Tenemos acceso “inical”&lt;/h2&gt;
+
+&lt;p&gt;vemos que tenemos un &lt;em&gt;input&lt;/em&gt; el cual nos permite ejecutar ciertos comandos de linux&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tenemos la primer &lt;em&gt;flag&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Encontramos una pista, y nos dice que debemos buscar en los archivos de sistema el otro ingrediente&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Luego de una busqueda en las rutas y ver que &lt;em&gt;cat&lt;/em&gt; (entre otros comandos) no permite leer &lt;em&gt;second ingredients&lt;/em&gt; probe mejor suerte
+con google y &lt;a href=&quot;https://computernewage.com/2013/05/14/como-leer-archivos-de-texto-desde-la-terminal-de-linux/&quot;&gt;aqui&lt;/a&gt; pude leer un poco
+sobre &lt;em&gt;less&lt;/em&gt;, probe con este comando y si permite ejecutarlo&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rick/2flag.png&quot; alt=&quot;2flag&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;user-root&quot;&gt;user root&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pasamos a la fase de escala de privilegios&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;probamos corrar &lt;em&gt;sudo id&lt;/em&gt; y ver que nos devuelve&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rick/sudo.png&quot; alt=&quot;sudo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Para sorpresa del caso, no requiere escalar privilegios puesto que ya nos permite ejecutar comandos con &lt;em&gt;sudo&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Solo falta encontrar el 3 ingrediente&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rick/flag3.png&quot; alt=&quot;flag3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/rick/3flag.png&quot; alt=&quot;3flag&quot; /&gt;&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Web Server" /><category term="Gobuster" /><summary type="html">Un CTF de Rick y Morty. ¡Ayuda a que Rick vuelva a ser humano!</summary></entry><entry><title type="html">tryhackme: SQLInjection</title><link href="http://localhost:4000/SQLInjection/" rel="alternate" type="text/html" title="tryhackme: SQLInjection" /><published>2021-11-19T00:00:00-05:00</published><updated>2021-11-19T00:00:00-05:00</updated><id>http://localhost:4000/SQLInjection</id><content type="html" xml:base="http://localhost:4000/SQLInjection/">&lt;ul&gt;
   &lt;li&gt;Conocida principalmente como &lt;em&gt;SQLI&lt;/em&gt;, es un ataque a un servidor de base de datos de aplicaciones web que proboca la ejecución
 de consultas maliciosas&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;brief&quot;&gt;Brief&lt;/h2&gt;
+&lt;h2 id=&quot;iniciamos&quot;&gt;Iniciamos&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;SQL es un lenguaje de dominio específico utilizado en programación, diseñado para administrar, y recuperar información de 
@@ -11,11 +310,11 @@ sistemas de gestión de bases de datos relacionales.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What does SQL stand for?&lt;br /&gt;
+  &lt;p&gt;¿Qué significa SQL?&lt;br /&gt;
 Structured Query Language&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;what-is-a-database&quot;&gt;What is a Database?&lt;/h2&gt;
+&lt;h2 id=&quot;qué-es-una-base-de-datos&quot;&gt;Qué es una base de datos?&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Una base de datos es una forma de almacenar electrónicamente colecciones de datos de manera organizada.&lt;/li&gt;
@@ -27,40 +326,67 @@ sistema de bases de datos, abreviado normalmente a simplemente base de datos.&lt
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What is the acronym for the software that controls a database?&lt;br /&gt;
+  &lt;p&gt;¿Cuál es el acrónimo del software que controla una base de datos?&lt;br /&gt;
 DBMS&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What is the name of the grid-like structure which holds the data?&lt;br /&gt;
+  &lt;p&gt;¿Cuál es el nombre de la estructura en forma de cuadrícula que contiene los datos? &lt;br /&gt;
 table&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;what-is-sql&quot;&gt;What is SQL?&lt;/h2&gt;
+&lt;h2 id=&quot;qué-es-sql&quot;&gt;¿Qué es SQL?&lt;/h2&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What SQL statement is used to retrieve data?&lt;br /&gt;
+  &lt;p&gt;¿Qué declaración SQL se utiliza para recuperar datos?&lt;br /&gt;
 select&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;example: &lt;em&gt;SELECT * FROM nameTable;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;blockquote&gt;
-  &lt;p&gt;What SQL clause can be used to retrieve data from multiple tables?&lt;br /&gt;
+  &lt;p&gt;¿Qué cláusula de SQL se puede utilizar para recuperar datos de varias tablas?&lt;br /&gt;
 union&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;SELECT City FROM tabla1 UNION SELECT City FROM tabla2;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;blockquote&gt;
-  &lt;p&gt;What SQL statement is used to add data?
+  &lt;p&gt;Cual es la declaracion usada para agregar datos?&lt;br /&gt;
 inset&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;what-is-sql-injection&quot;&gt;What is SQL Injection?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;INSERT INTO database (Name, City, Country) VALUES (‘Tom’, ‘4006’, ‘Norway’);&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;qué-es-sql-injection&quot;&gt;Qué es SQL Injection?&lt;/h2&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;What character signifies the end of an SQL query?&lt;br /&gt;
+  &lt;p&gt;¿Qué carácter significa el final de una consulta SQL?&lt;br /&gt;
 ;&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;Insert into database (nombre) values(‘sql server’);&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;in-band-sqli&quot;&gt;In-Band SQLi&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Inyección SQL en banda&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In-Band SQL Injection es el tipo más fácil de detectar y explotar; In-Band solo se refiere al mismo método de comunicación que se utiliza para explotar la vulnerabilidad y también recibir los resultados, por ejemplo, descubrir una vulnerabilidad de inyección SQL en una página web y luego poder extraer datos de la base de datos a la misma página.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sqli/one.png&quot; alt=&quot;sqli band&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;What is the flag after completing level 1?&lt;br /&gt;
@@ -69,6 +395,19 @@ THM{xxx_INJECTION_xxxx}&lt;/p&gt;
 
 &lt;h2 id=&quot;blind-sqli---authentication-bypass&quot;&gt;Blind SQLi - Authentication Bypass&lt;/h2&gt;
 
+&lt;ul&gt;
+  &lt;li&gt;A diferencia de la inyección SQL en banda, donde podemos ver los resultados de nuestro ataque directamente en la pantalla, SQLi ciego es cuando recibimos poca o ninguna retroalimentación para confirmar si nuestras consultas inyectadas fueron, de hecho, exitosas o no, esto se debe a que Los mensajes de error se han desactivado, pero la inyección sigue funcionando independientemente.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Puede que le sorprenda que todo lo que necesitamos es un poco de retroalimentación para enumerar con éxito una base de datos completa&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;Authentication Bypass&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Una de las técnicas de inyección SQL ciega más sencillas es cuando se omiten los métodos de autenticación, como los formularios de inicio de sesión. En este caso, no estamos tan interesados en recuperar datos de la base de datos; Solo queremos pasar del inicio de sesión.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sqli/two.png&quot; alt=&quot;sqli bypass&quot; /&gt;&lt;/p&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;What is the flag after completing level two? (and moving to level 3)&lt;br /&gt;
 THM{xxx_INJECTION_xxxx}&lt;/p&gt;
@@ -76,10 +415,37 @@ THM{xxx_INJECTION_xxxx}&lt;/p&gt;
 
 &lt;h2 id=&quot;blind-sqli---boolean-based&quot;&gt;Blind SQLi - Boolean Based&lt;/h2&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;What is the flag after completing level three?&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;La inyección SQL basada en booleanos se refiere a la respuesta que recibimos de nuestros intentos de inyección, que podría ser verdadero/falso, sí/no, encendido/apagado, 1/0 o cualquier respuesta que solo pueda tener dos resultados.&lt;/li&gt;
+  &lt;li&gt;Ese resultado nos confirma que nuestra carga útil de inyección SQL fue exitosa o no.&lt;/li&gt;
+  &lt;li&gt;En la primera inspección, es posible que sienta que esta respuesta limitada no puede proporcionar mucha información.&lt;/li&gt;
+  &lt;li&gt;Aún así, de hecho, con solo estas dos respuestas, es posible enumerar la estructura y el contenido de una base de datos completa.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="database" /><category term="sql injection" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Content Discovery</title><link href="http://localhost:4000/discovery/" rel="alternate" type="text/html" title="tryhackme: Content Discovery" /><published>2021-11-18T00:00:00-05:00</published><updated>2021-11-18T00:00:00-05:00</updated><id>http://localhost:4000/discovery</id><content type="html" xml:base="http://localhost:4000/discovery/">&lt;h3 id=&quot;iniciamos&quot;&gt;iniciamos&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sqli/tree.png&quot; alt=&quot;tres&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;¿Qué es la bandera después de completar el nivel tres? &lt;br /&gt;
+THM{xxx_INJECTION_xxxx}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;blind-sqli---time-based&quot;&gt;Blind SQLi - Time Based&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Basado en el tiempo - Time based&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Una inyección SQL ciega basada en el tiempo es muy similar a la basada en booleanos anterior, en el sentido de que se envían las mismas solicitudes, pero no hay un indicador visual de que sus consultas sean incorrectas o correctas esta vez. En cambio, su indicador de una consulta correcta se basa en el tiempo que tarda la consulta en completarse.&lt;/li&gt;
+  &lt;li&gt;Este retraso de tiempo se introduce mediante el uso de métodos integrados como SLEEP (x) junto con la instrucción UNION.&lt;/li&gt;
+  &lt;li&gt;El método SLEEP () solo se ejecutará con una declaración UNION SELECT exitosa.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sqli/four.png&quot; alt=&quot;cuarta&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;¿Cuál es la bandera final después de completar el nivel cuatro?&lt;br /&gt;
+THM{xxx_INJECTION_xxxxxx}&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="database" /><category term="sql injection" /><summary type="html">Aprenda a detectar y aprovechar las vulnerabilidades de inyección SQL</summary></entry><entry><title type="html">tryhackme: Content Discovery</title><link href="http://localhost:4000/discovery/" rel="alternate" type="text/html" title="tryhackme: Content Discovery" /><published>2021-11-18T00:00:00-05:00</published><updated>2021-11-18T00:00:00-05:00</updated><id>http://localhost:4000/discovery</id><content type="html" xml:base="http://localhost:4000/discovery/">&lt;h3 id=&quot;iniciamos&quot;&gt;iniciamos&lt;/h3&gt;
 
 &lt;p&gt;Realizamos un primer escaneo con &lt;em&gt;nmap&lt;/em&gt; para ver los puertos abiertos e iniciar a “jugar” con la maquina&lt;/p&gt;
 
@@ -305,7 +671,7 @@ version control system&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;What is the name of the log file that was discovered?&lt;br /&gt;
 /development.log&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Gobuster" /><category term="Robots.txt" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: LFI</title><link href="http://localhost:4000/LFI/" rel="alternate" type="text/html" title="tryhackme: LFI" /><published>2021-11-15T00:00:00-05:00</published><updated>2021-11-15T00:00:00-05:00</updated><id>http://localhost:4000/LFI</id><content type="html" xml:base="http://localhost:4000/LFI/">&lt;h1 id=&quot;local-file-inclusion&quot;&gt;Local File Inclusion&lt;/h1&gt;
+&lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Gobuster" /><category term="Robots.txt" /><summary type="html">Conozca las diversas formas de descubrir contenido oculto o privado en un servidor web que podría generar nuevas vulnerabilidades.</summary></entry><entry><title type="html">tryhackme: LFI</title><link href="http://localhost:4000/LFI/" rel="alternate" type="text/html" title="tryhackme: LFI" /><published>2021-11-15T00:00:00-05:00</published><updated>2021-11-15T00:00:00-05:00</updated><id>http://localhost:4000/LFI</id><content type="html" xml:base="http://localhost:4000/LFI/">&lt;h1 id=&quot;local-file-inclusion&quot;&gt;Local File Inclusion&lt;/h1&gt;
 
 &lt;p&gt;Esta técnica consiste en incluir ficheros locales, es decir, archivos que se encuentran en el mismo servidor de la web con 
 este tipo de fallo (a diferencia de Remote File Inclusión &lt;em&gt;RFI&lt;/em&gt; que incluye archivos alojados en otros servidores).&lt;/p&gt;
@@ -429,7 +795,7 @@ root@inclusion:~# &lt;span class=&quot;nb&quot;&gt;whoami
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@inclusion:/root# &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;root.txt
 xx96x1x4x4x4x5x5x9xx
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;listo, somos usuario &lt;em&gt;root&lt;/em&gt; y tenemos la &lt;em&gt;flag&lt;/em&gt;&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="LFI" /><category term="Local File Inclusion" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: blue</title><link href="http://localhost:4000/blue/" rel="alternate" type="text/html" title="tryhackme: blue" /><published>2021-11-11T00:00:00-05:00</published><updated>2021-11-11T00:00:00-05:00</updated><id>http://localhost:4000/blue</id><content type="html" xml:base="http://localhost:4000/blue/">&lt;h3 id=&quot;iniciamos-conprobando-que-la-maquina-este-encendida&quot;&gt;Iniciamos conprobando que la maquina este encendida&lt;/h3&gt;
+&lt;p&gt;listo, somos usuario &lt;em&gt;root&lt;/em&gt; y tenemos la &lt;em&gt;flag&lt;/em&gt;&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="LFI" /><category term="Local File Inclusion" /><summary type="html">Un desafío LFI para principiantes</summary></entry><entry><title type="html">tryhackme: blue</title><link href="http://localhost:4000/blue/" rel="alternate" type="text/html" title="tryhackme: blue" /><published>2021-11-11T00:00:00-05:00</published><updated>2021-11-11T00:00:00-05:00</updated><id>http://localhost:4000/blue</id><content type="html" xml:base="http://localhost:4000/blue/">&lt;h3 id=&quot;iniciamos-conprobando-que-la-maquina-este-encendida&quot;&gt;Iniciamos conprobando que la maquina este encendida&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.31.159
 PING 10.10.31.159 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.31.159&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -608,7 +974,7 @@ xxxx&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;xxcxsx_txe_mxcxixx&lt;span cla
 
 &lt;blockquote&gt;
   &lt;p&gt;dir flag /s /p&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Ethernal blue - ms08-067" /><category term="Windows" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: vulnversity</title><link href="http://localhost:4000/vulnversity/" rel="alternate" type="text/html" title="tryhackme: vulnversity" /><published>2021-11-10T00:00:00-05:00</published><updated>2021-11-10T00:00:00-05:00</updated><id>http://localhost:4000/vulnversity</id><content type="html" xml:base="http://localhost:4000/vulnversity/">&lt;h3 id=&quot;iniciamos-la-fase-de-reconocimiento&quot;&gt;Iniciamos la fase de reconocimiento&lt;/h3&gt;
+&lt;/blockquote&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Ethernal blue - ms08-067" /><category term="Windows" /><summary type="html">Implemente y piratee una máquina con Windows, aprovechando los problemas comunes de mala configuración.</summary></entry><entry><title type="html">tryhackme: vulnversity</title><link href="http://localhost:4000/vulnversity/" rel="alternate" type="text/html" title="tryhackme: vulnversity" /><published>2021-11-10T00:00:00-05:00</published><updated>2021-11-10T00:00:00-05:00</updated><id>http://localhost:4000/vulnversity</id><content type="html" xml:base="http://localhost:4000/vulnversity/">&lt;h3 id=&quot;iniciamos-la-fase-de-reconocimiento&quot;&gt;Iniciamos la fase de reconocimiento&lt;/h3&gt;
 
 &lt;p&gt;Antes de iniciar, verificamos que la maquina este activa&lt;/p&gt;
 
@@ -879,102 +1245,7 @@ x5xfxxxx9fxax27x36xd3xax9x6c7xd5
 x5xfx85x9x0x9x7x6xd33ax9x6cxfx5&lt;/p&gt;
     &lt;/blockquote&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Nmap" /><category term="Gobuster" /><category term="Burp suite" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">Hackthebox: Secret</title><link href="http://localhost:4000/Secret/" rel="alternate" type="text/html" title="Hackthebox: Secret" /><published>2021-11-09T00:00:00-05:00</published><updated>2021-11-09T00:00:00-05:00</updated><id>http://localhost:4000/Secret</id><content type="html" xml:base="http://localhost:4000/Secret/">&lt;h2 id=&quot;iniciamos-comprobando-que-la-maquina-este-activa-antes-que-nada&quot;&gt;Iniciamos comprobando que la maquina este activa antes que nada&lt;/h2&gt;
-
-&lt;p&gt;hacemos el envio de un paquete mediante ping para confirmar que la maquina esta activa, al mismo tiempo comprovamos que estamos
-frente a una maquina linux mediante el &lt;em&gt;ttl&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.11.120
-PING 10.10.11.120 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.11.120&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
-64 bytes from 10.10.11.120: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;63 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;101 ms
-
-&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.11.120 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
-1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
-rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 101.116/101.116/101.116/0.000 ms
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2do metodo, usando la herramienta &lt;em&gt;wichSystem.py&lt;/em&gt; directamente esta nos dice que &lt;em&gt;OS&lt;/em&gt; corre en la maquina&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ wichSystem.py 10.10.11.120
-
-10.10.11.120 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linux
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;hacemos-un-escaneo-con-nmap-para-ver-que-puertos-tiene-abiertos&quot;&gt;Hacemos un escaneo con nmap para ver que puertos tiene abiertos&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nmap &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--min-rate&lt;/span&gt; 5000 &lt;span class=&quot;nt&quot;&gt;-p-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Pn&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-vvv&lt;/span&gt; 10.10.11.120 &lt;span class=&quot;nt&quot;&gt;-oG&lt;/span&gt; allPorts
-
-❯ extractPorts allPorts
-───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-       │ File: extractPorts.tmp
-───────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1   │ 
-   2   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Extracting information...
-   3   │ 
-   4   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; IP Address: 10.10.11.120
-   5   │     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Open ports: 22,80,3000
-   6   │ 
-   7   │ &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Ports copied to clipboard
-   8   │ 
-───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;mediante &lt;em&gt;extractPorts&lt;/em&gt; vemos el resultado del escaneo de nmap y nos copia los puertos en la &lt;em&gt;clipboard&lt;/em&gt; vemos que tenemos 3 
-puertos abiertos, probaremos unos &lt;em&gt;scritps&lt;/em&gt; basicos de nmap para ver que servicios corren y que posibles vulnerabilidades existen&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ nmap &lt;span class=&quot;nt&quot;&gt;-sV&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-sC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p22&lt;/span&gt;,80,3000 10.10.11.120
-Starting Nmap 7.92 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; https://nmap.org &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; at 2021-11-09 07:45 &lt;span class=&quot;nt&quot;&gt;-05&lt;/span&gt;
-Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.11.120
-Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.10s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-
-PORT     STATE SERVICE VERSION
-22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; protocol 2.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-| ssh-hostkey: 
-|   3072 97:af:61:44:10:89:b9:53:f0:80:3f:d7:19:b1:e2:9c &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;RSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-|   256 95:ed:65:8d:cd:08:2b:55:dd:17:51:31:1e:3e:18:12 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ECDSA&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-|_  256 33:7b:c1:71:d3:33:0f:92:4e:83:5a:1f:52:02:93:5e &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ED25519&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-80/tcp   open  http    nginx 1.18.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-|_http-server-header: nginx/1.18.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-|_http-title: DUMB Docs
-3000/tcp open  http    Node.js &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Express middleware&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-|_http-title: DUMB Docs
-Service Info: OS: Linux&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; CPE: cpe:/o:linux:linux_kernel
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-Nmap &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;: 1 IP address &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1 host up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; scanned &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;15.91 seconds
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;El resultado nos da información interesante, sin embargo probaremos &lt;em&gt;gobuster&lt;/em&gt; ya que tiene un pagina web&lt;/p&gt;
-
-&lt;p&gt;luego de la espera no encontramos nada que nos pueda ser de mayor utilidad&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ gobuster &lt;span class=&quot;nb&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; http://10.10.11.120/ &lt;span class=&quot;nt&quot;&gt;-w&lt;/span&gt; /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt &lt;span class=&quot;nt&quot;&gt;--no-error&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; gobuster.txt
-&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
-Gobuster v3.1.0
-by OJ Reeves &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;@TheColonial&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &amp;amp; Christian Mehlmauer &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;@firefart&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Url:                     http://10.10.11.120/
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Method:                  GET
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Threads:                 10
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Negative Status codes:   404
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] User Agent:              gobuster/3.1.0
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Timeout:                 10s
-&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
-2021/11/09 07:55:45 Starting gobuster &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;directory enumeration mode
-&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
-/download             &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 183] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /download/]
-/docs                 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 20720]               
-/assets               &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 301&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 179] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /assets/]  
-/api                  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 93]                  
-/Docs                 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 20720]               
-/API                  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 93]                  
-/DOCS                 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Status: 200&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Size: 20720]               
-                                                                
-&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
-2021/11/09 08:35:09 Finished
-&lt;span class=&quot;o&quot;&gt;===============================================================&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="hackthebox" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Mr Robot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="tryhackme: Mr Robot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="Nmap" /><category term="Gobuster" /><category term="Burp suite" /><summary type="html">Obtenga información sobre reconocimiento activo, ataques a aplicaciones web y escalada de privilegios.</summary></entry><entry><title type="html">tryhackme: Mr Robot</title><link href="http://localhost:4000/MrRobot/" rel="alternate" type="text/html" title="tryhackme: Mr Robot" /><published>2021-11-01T00:00:00-05:00</published><updated>2021-11-01T00:00:00-05:00</updated><id>http://localhost:4000/MrRobot</id><content type="html" xml:base="http://localhost:4000/MrRobot/">&lt;h1 id=&quot;comprobaremos-que-la-maquina-se-encuentre-activa&quot;&gt;Comprobaremos que la maquina se encuentre activa&lt;/h1&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.115.49
 PING 10.10.115.49 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.115.49&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -1221,7 +1492,7 @@ Welcome to Interactive Mode &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; pre
 &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;key-3-of-3.txt
 x4x8xxxef27x3dee1ex161bx1x7xbxe4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h2 id=&quot;maquina-terminada&quot;&gt;Maquina terminada&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;maquina-terminada&quot;&gt;Maquina terminada&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">Basado en el programa Mr. Robot, ¿puedes rootear esta caja?</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.37.122
 PING 10.10.37.122 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.37.122&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -1418,670 +1689,4 @@ root.txt
 root.txt
 &lt;span class=&quot;c&quot;&gt;# cat root.txt&lt;/span&gt;
 177b3cd8562289f37382721c28381f02
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="FTP" /><category term="SSH" /><category term="SUID" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">tryhackme: Rootme</title><link href="http://localhost:4000/Rootme/" rel="alternate" type="text/html" title="tryhackme: Rootme" /><published>2021-10-21T00:00:00-05:00</published><updated>2021-10-21T00:00:00-05:00</updated><id>http://localhost:4000/Rootme</id><content type="html" xml:base="http://localhost:4000/Rootme/">&lt;h1 id=&quot;1-escaneo-de-puertos&quot;&gt;1. Escaneo de puertos&lt;/h1&gt;
-
-&lt;p&gt;Lo primero que haremos ser un &lt;em&gt;ping -c 1&lt;/em&gt; al &lt;em&gt;ip&lt;/em&gt; y ver si nuestra maquina ya esta activa&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/ping.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;usamos &lt;em&gt;wichSystem.py&lt;/em&gt; (utilidad desarrollada por @s4vitar) para ver con que clase de maquina estamos trabajando&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/linux.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Ahora realizamos un primer escaneo de puertos usando la &lt;em&gt;nmap&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/nmap1.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Descripción de los parámetros:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;-p- : Escanea los puertos especificados, en este caso escanea los 65535 puertos.&lt;/li&gt;
-  &lt;li&gt;-sS : Escanea TCP SYN&lt;/li&gt;
-  &lt;li&gt;–min-rate: Envía paquetes no mas lentos que el número indicado por segundo en nuestro caso 5000.&lt;/li&gt;
-  &lt;li&gt;–open: Muestra solo los puertos abiertos.&lt;/li&gt;
-  &lt;li&gt;-vvv : Muestra la información mientras se esta realizando el escaneo.&lt;/li&gt;
-  &lt;li&gt;-Pn : Omite el descubrimiento de host.&lt;/li&gt;
-  &lt;li&gt;-n : No realiza resolución DNS.&lt;/li&gt;
-  &lt;li&gt;ip: la ip que queremos escanear&lt;/li&gt;
-  &lt;li&gt;-oG : Guarda la salida del escaneo en un formato grepeable (no sea util mas adelante)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/linux1.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;vemos el resultado del escaneo usando un scripts llamado &lt;em&gt;extractPorts&lt;/em&gt; ya configurado en mi &lt;em&gt;~./zshrc&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/ports.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Ya que sabemos que la maquina tiene abierto los puerto s &lt;em&gt;80,22&lt;/em&gt;  intentaremos averiguar que servicios corren y en que versiones&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/nmap2.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;2-recoleccion-de-información&quot;&gt;2. Recoleccion de información&lt;/h1&gt;
-
-&lt;p&gt;Iniciamos buscando rutas usando la herramienta &lt;em&gt;gobuster&lt;/em&gt;, su metodo de uso es simple:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;dir : Utiliza el modo de enumeración de directorios/archivos.&lt;/li&gt;
-  &lt;li&gt;-u : Le indicamos que le vamos a pasar una url.&lt;/li&gt;
-  &lt;li&gt;ruta: la url objetivo&lt;/li&gt;
-  &lt;li&gt;-w : Le indicamos que vamos a usar un diccionario.&lt;/li&gt;
-  &lt;li&gt;/PATH/ : Le indicamos la ruta del diccionario a usar.&lt;/li&gt;
-  &lt;li&gt;–no-error : No muestra errores por pantalla.&lt;/li&gt;
-  &lt;li&gt;-o : Guarda la salida en un archivo.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/gobuster.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Vemos que tenemos varias rutas, iniciemos probando con &lt;em&gt;https://10.10.244.164/panel&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/panel.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Editamos la siguiente shell con nuestra ip y puerto a trabajar&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/shell.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://https://github.com/pentestmonkey/php-reverse-shell&quot;&gt;shell-php&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;al ver que no nos permite cargar archivos &lt;em&gt;php&lt;/em&gt;, intentamos cargar &lt;em&gt;php5&lt;/em&gt; y vermos que si nos puermite subirlo&lt;/p&gt;
-
-&lt;h1 id=&quot;3-ganando-acceso-a-la-maquina&quot;&gt;3. Ganando acceso a la maquina&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/shell2.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;vamos una de las rutas que encontramos con &lt;em&gt;gobuster&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/shell3.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ponemos nuestra maquina en escucha para recivir la conexion desde la maquina que estamos trabajando&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Descripción de los parametros utilizados:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;-n : Solo direcciones de IP numéricas.&lt;/li&gt;
-  &lt;li&gt;-l : Modo de escucha, para conexiones entrantes.&lt;/li&gt;
-  &lt;li&gt;-v : Muestra información por pantalla.&lt;/li&gt;
-  &lt;li&gt;-p : Numero del puerto.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;1234 : El puerto que se pondrá en escucha.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Vemos que usuario somos usando &lt;em&gt;whoami&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/user.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Estamos dentro del sistema siendo el usuario www-data, vamos buscar la flag&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/flag.png&quot; alt=&quot;flag&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;4-escalamos-privilegios&quot;&gt;4. Escalamos privilegios&lt;/h1&gt;
-
-&lt;p&gt;Continuando con la maquina, nos pregunta &lt;em&gt;Search for files with SUID permission, which file is weird?&lt;/em&gt;
-vamos a usar el comando&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;find / -perm -u=s -type f 2&amp;gt;/dev/null&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;el cual nos permiste buscar archivos con permisos &lt;em&gt;SUID&lt;/em&gt;, lo cual son permisos especial&lt;/li&gt;
-  &lt;li&gt;el 2&amp;gt;/dev/null nos envia los errores (no tiene permisos &lt;em&gt;SUID&lt;/em&gt; a dicha ruta&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/suid.png&quot; alt=&quot;permisos suid&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Entre los &lt;em&gt;files&lt;/em&gt; que podemos ver llama la atencion que &lt;em&gt;python&lt;/em&gt; tenga dichos permisos asi que buscamos en - &lt;a href=&quot;https://gtfobins.github.io/&quot;&gt;GTFOBins&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/rootme/root.png&quot; alt=&quot;root&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;comprovamos que usuario somos y pasamos a buscar la flag.&lt;/p&gt;
-
-&lt;h2 id=&quot;fin-de-la-maquina-rootme&quot;&gt;fin de la maquina Rootme&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="SUID" /><category term="RFI" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry><entry><title type="html">Bandit0: Bash para principiantes</title><link href="http://localhost:4000/first-bandit/" rel="alternate" type="text/html" title="Bandit0: Bash para principiantes" /><published>2021-10-19T00:00:00-05:00</published><updated>2021-10-19T00:00:00-05:00</updated><id>http://localhost:4000/first-bandit</id><content type="html" xml:base="http://localhost:4000/first-bandit/">&lt;p&gt;En este post obtendremos las flags de la maquina bandit que se encuentra en la pagina &lt;a href=&quot;https://overthewire.org/wargames/bandit/&quot;&gt;bandit0&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Esta maquina basicamente consiste en que para subir de nivel debemos obtener la flag de la maquina, esta flag sera la contraseña para la siguiente maquina&lt;/p&gt;
-
-&lt;p&gt;Antes de iniciar debemos crear nuestro entorno de trabajo&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;bandit0
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;bandit0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;banquid-0--1&quot;&gt;Banquid 0 –&amp;gt; 1&lt;/h1&gt;
-&lt;p&gt;Esta primera maquina consiste en que debemos conectarnos a ella mediante SSH &lt;strong&gt;bandit.labs.overthewire.org&lt;/strong&gt; usando el puerto 2220, como usuario y contraseña
-usaremos &lt;strong&gt;bandit0&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;A continuacion nos conectamos a la maquina&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;n&quot;&gt;ssh&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bandit0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bandit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;overthewire&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;org&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2220&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;lo primero que hacemos es un &lt;strong&gt;ls&lt;/strong&gt; para ver los archivos que hay en la maquina…
-En este caso solo hay un archivo llamado &lt;strong&gt;readme&lt;/strong&gt; 
-le hacemos un &lt;em&gt;cat readme&lt;/em&gt; y vemos la flag
-Debemos copiarla en un archivo txt (o de vuestra preferencia) puesto que esta sera la key para la siguiente maquina&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/bandit0/0.png&quot; alt=&quot;obtenemos la flag&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-1--2&quot;&gt;bandit 1 –&amp;gt; 2&lt;/h1&gt;
-
-&lt;p&gt;Usamos la &lt;em&gt;flag&lt;/em&gt; que obtuvimos en la maquina pasada y la usamos como contraseña en esta maquina.&lt;/p&gt;
-
-&lt;p&gt;Ahora ya estamos en el nivel 1 de bandit, la descripcion de la maquina nos dice&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in a file called - located in the home directory&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Por tanto, sabemos que la proxima contraseña se encuentra dentro de un directorio de nombre &lt;strong&gt;-&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Para poder leer archivo hay diferentes metodos, en este caso usaremos &lt;em&gt;cat ./*&lt;/em&gt; , lo que nos permite el comando &lt;strong&gt;cat&lt;/strong&gt; es leer todo dentro del directorio &lt;em&gt;./*&lt;/em&gt;
-lo podemos hacer puesto que sabemos que el directorio solo contiene un archivo a leer&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/bandit0/1.png&quot; alt=&quot;Obtenemos la flag&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-2--3&quot;&gt;bandit 2 –&amp;gt; 3&lt;/h1&gt;
-
-&lt;p&gt;Usamos la &lt;em&gt;flag&lt;/em&gt; que obtuvimos en la maquina pasada y la usamos como contraseña en esta maquina.&lt;/p&gt;
-
-&lt;p&gt;leemos lo que nos dice la descripcion de la maquina&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in a file called spaces in this filename located in the home directory&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Aca iniciamos con pequeños inconvenientes puesto que no podemos leer directamente con el comando &lt;em&gt;cat&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;vemos-el-archivo&quot;&gt;vemos el archivo&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit2@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
-&lt;/span&gt;spaces &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;this filename
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Estos metodos lo que nos permite es “escapar” de los espacios
-&lt;img src=&quot;/assets/images/bandit0/2.png&quot; alt=&quot;Obtenemos la flag&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;vemos-2-formas-de-cumplir-nuestro-objetivo-obtener-la-flag-sin-embargo-hay-metodos-mas-practicos-de-hacerlos-por-ejemplo&quot;&gt;Vemos 2 formas de cumplir nuestro objetivo (obtener la flag), sin embargo, hay metodos mas practicos de hacerlos por ejemplo:&lt;/h3&gt;
-
-&lt;p&gt;Es un poco mas practico puesto (para este caso) puesto que “escapamos” de los espacios y visualizamos la flag con menos comando&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;El primero, con &lt;em&gt;cat&lt;/em&gt; nos muestra la informacion de los ficheros dentro de la ruta en donde estamos (para este caso solo tenemos un documento)&lt;/li&gt;
-  &lt;li&gt;El segundo, nos muestra la información que contengan los ficheros que inicien con &lt;em&gt;s&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/bandit0/2_1.png&quot; alt=&quot;Flag&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-3--4&quot;&gt;bandit 3 –&amp;gt; 4&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in a hidden file in the inhere directory.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit3@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
-&lt;/span&gt;inhere
-bandit3@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;inhere
-bandit3@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;
-/home/bandit3/inhere
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;Vemos que solo existe el directorio &lt;em&gt;inhere&lt;/em&gt;, entramos en el&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit3@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;
-total 12
-drwxr-xr-x 2 root    root    4096 May  7  2020 &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-drwxr-xr-x 3 root    root    4096 May  7  2020 ..
-&lt;span class=&quot;nt&quot;&gt;-rw-r-----&lt;/span&gt; 1 bandit4 bandit3   33 May  7  2020 .hidden
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;Usamos los comando &lt;em&gt;ls -la&lt;/em&gt; para los listar directorios ocultos (en linux inician con &lt;em&gt;.&lt;/em&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit3@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; .hidden
-pIwrPrtPN36QITSp3EQaw936yaFoFgAB
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;Para poder leer el contenido del fichero debemos usar &lt;em&gt;cat&lt;/em&gt; incluyendo el punto que tiene en el nombre el archivo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandi-4--5&quot;&gt;bandi 4 –&amp;gt; 5&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;solucion-1&quot;&gt;solucion 1&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Despues de entrar en el directorio inhere listamos el contenido&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
-./-file00
-./-file01
-./-file02
-./-file03
-./-file04
-./-file05
-./-file06
-./-file07
-./-file08
-./-file09
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;al comando anterior le agregamos *&lt;/td&gt;
-          &lt;td&gt;xargs file* lo cual nos especifica el tipo de archico que tenemos&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | xargs file
-./-file00: data
-./-file01: data
-./-file02: data
-./-file03: data
-./-file04: data
-./-file05: data
-./-file06: data
-./-file07: ASCII text
-./-file08: data
-./-file09: data
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Le añadimos el &lt;em&gt;grep TEXT -i&lt;/em&gt;, la funcion de este comando es filtrar los archivos solo en &lt;em&gt;texto legible por humanos&lt;/em&gt; la bandera &lt;em&gt;-i&lt;/em&gt; es para que no distinga entre m&amp;gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | xargs file | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;TEXT &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt;
-./-file07: ASCII text
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;Finalmente le hacemos el ultimo filtro con &lt;em&gt;awk&lt;/em&gt; y la bandera &lt;em&gt;-F&lt;/em&gt; la cual solo nos tomara el primer parametro &lt;em&gt;./-file07&lt;/em&gt; y con el *&lt;/td&gt;
-          &lt;td&gt;xargs cat* leemos la flag&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | xargs file | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;TEXT &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;'{print $1}'&lt;/span&gt; | xargs &lt;span class=&quot;nb&quot;&gt;cat
-&lt;/span&gt;koReBOKuIDDepwhWk7jZC0RTdopnAYKh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;solucion-2-mas-corta&quot;&gt;Solucion 2 (mas corta)&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Para este caso nos funciona puesto que es el unico archivo de texto &lt;em&gt;./-file07: ASCII text&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | xargs file
-./-file00: data
-./-file01: data
-./-file02: data
-./-file03: data
-./-file04: data
-./-file05: data
-./-file06: data
-./-file07: ASCII text
-./-file08: data
-./-file09: data
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;simplemente le hacemos un &lt;em&gt;cat FileName&lt;/em&gt; y obtenemos la flag&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit4@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ./-file07
-koReBOKuIDDepwhWk7jZC0RTdopnAYKh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-5--6&quot;&gt;bandit 5 –&amp;gt; 6&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:&lt;/p&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;human-readable&lt;/li&gt;
-    &lt;li&gt;1033 bytes in size&lt;/li&gt;
-    &lt;li&gt;not executable&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Inicialmente hacemos un &lt;em&gt;ls&lt;/em&gt; para ver a que nos enfrentamos y vemos que existen multiples carpetas.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit5@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
-&lt;/span&gt;maybehere00  maybehere02  maybehere04  maybehere06  maybehere08  maybehere10  maybehere12  maybehere14  maybehere16  maybehere18
-maybehere01  maybehere03  maybehere05  maybehere07  maybehere09  maybehere11  maybehere13  maybehere15  maybehere17  maybehere19
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;Especificamos varios filtros &lt;em&gt;-readable&lt;/em&gt; para ver archivos legibles por humanos&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;find&lt;/em&gt; posee la bandera &lt;em&gt;-execuatable&lt;/em&gt; para buscar archivs con permisos de ejecucion&lt;/li&gt;
-  &lt;li&gt;size &lt;em&gt;1033c&lt;/em&gt; nos permite buscar archivos de 1033 bytes (usando la opción c)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit5@bandit:~/inhere&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-readable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-executable&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-size&lt;/span&gt; 1033c | xargs &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; | xargs
-DXjZPULLxYr17uwoI01bNLQbtFemEgo7
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-6--7&quot;&gt;bandit 6 –&amp;gt; 7&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored somewhere on the server and has all of the following properties:&lt;/p&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;owned by user bandit7&lt;/li&gt;
-    &lt;li&gt;owned by group bandit6&lt;/li&gt;
-    &lt;li&gt;33 bytes in size&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Hacemos uso nuevamente del manual de &lt;em&gt;find&lt;/em&gt; para poder buscar las banderas indicadas&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;-user bandi7&lt;/em&gt; filtra por archivos de propiedad de &lt;em&gt;bandit7&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;-group bandit6&lt;/em&gt; filtra por propiedad del &lt;em&gt;grupo bandit6&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;-zise 33c&lt;/em&gt; filtra por archivo de 33bytes&lt;/li&gt;
-  &lt;li&gt;El STDERR es identificado con el número 2, y sus mensajes pueden ser redirigidos (usando el símbolo &amp;gt;) a /dev/null (archivo especial utilizado para descartar información):&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit6@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find / &lt;span class=&quot;nt&quot;&gt;-user&lt;/span&gt; bandit7 &lt;span class=&quot;nt&quot;&gt;-group&lt;/span&gt; bandit6 &lt;span class=&quot;nt&quot;&gt;-size&lt;/span&gt; 33c 2&amp;gt;/dev/null | xargs &lt;span class=&quot;nb&quot;&gt;cat
-&lt;/span&gt;HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;bandit-7--8&quot;&gt;bandit 7 –&amp;gt; 8&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in the file data.txt next to the word millionth&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;usamos el comando &lt;em&gt;cat data.txt&lt;/em&gt; pero al ver el contendio de &lt;em&gt;data.txt&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit7@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt 
-canonization&lt;span class=&quot;s1&quot;&gt;'s  7ITrZvFVzsjujBHVlu4gfcHbW1gWQUcN
-reserve AHO3PedgUR05aCaQVGVFQRgY2oR1SBYh
-Zanuck  30KRlOQjnCq5DyqNZePHAD6tCZbVjT1f
-baritone        XSodKcCZa05ckkLyP4uXwrjIVaCzKcpq
-lineman'&lt;/span&gt;s       Gh8HTLmWxnXJxZF4DzhuiRpV8xejb6yw
-aquas   RkI4EWYAjHPMexRFTY9Rq7vQtjhiKgZw
-swaddled        snDpr6ve7nuPsjBoTGLrmpOYomdhVzAH
-garishness&lt;span class=&quot;s1&quot;&gt;'s    UbK1yZ2nC02GEjArlASLw0bT8jgOp9rx
-Benny'&lt;/span&gt;s QQkZrdiFs47KckVLi5ifsFqtLcRxyjvZ
-regulated       sxJ8HT73fvZMMIicL50nhawcrsYGUiWP
-knotting        vh268WJXw1OSnszed9MVaHD4rTP69lZr
-hymnals 7MqsN32lfDbPigtAX6cwFbMZcPAMUoae
-Fremont tCy02wC8xdpFqjlZ8xdBQYAHFZPHk7ls
-punter&lt;span class=&quot;s1&quot;&gt;'s        zAfzaA1IOuBSamCR6eMmRoc9oNXPQ16a
-junking 6Tlr5K8YZ1d2Xsdku3TTFYXWB6WOMXyT
-Aymara  zSeUS0UyD8Q6a6YPwaClRBbk1x8kFBEc
-waned   gL59r6xvewh5y8t0mgiNtHtCUMG8S6Id
-conceded        TWLUptX3HbwD4qsYOQ9sENOnOiNy79sC
-kilned  kLjrgoJvftIyUyotuOI4cxFcxQXbC6aS
-Santayana       KKn1I4fuWdzKyvffp1aYrBDzQa3Tr3Pk
-Antigua dRyNieqAg0OkCgrKVQFXMXS06vFArL55
-heyday  UAGwMlFzylGa4fHpQZEelUQEZ5JlUpyX
-praiseworthiness'&lt;/span&gt;s      bjRB0uGXM4dH7ip9hHB3mbFBMMwlNKNq
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;tiene demasiadas lineas para buscar manualmente&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;usamos _cat data.txt&lt;/td&gt;
-          &lt;td&gt;wc_ para ver el total de lineas de texto que contien el archivo&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit7@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt | &lt;span class=&quot;nb&quot;&gt;wc
-  &lt;/span&gt;98567  197133 4184396
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Como ya se mensiono anteriormente, buscar linea a linea la que contenga la palabra millionth seria bastante engorroso, para omitir eso, usaremos grep junto 
-con una bandera&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Usando &lt;em&gt;grep&lt;/em&gt; podemos filtrar por la palabra &lt;em&gt;millionth&lt;/em&gt; usando la bandera &lt;em&gt;-i&lt;/em&gt; para que no distinga entre mayusculas y minusculas&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit7@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; millionth
-millionth       cvX2JJa4CFALtqS87jk27qwqGhBM9plV
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-8--9&quot;&gt;bandit 8 –&amp;gt; 9&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in the file data.txt and is the only line of text that occurs only once&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Usamos el comando &lt;em&gt;sort&lt;/em&gt; para ordenar el input en orden alfabetico&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Usamos el &lt;em&gt;uniq -u&lt;/em&gt; para mostrar solo las lineas que no estan repetidas&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit8@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;uniq&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;
-UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandi-9--10&quot;&gt;bandi 9 –&amp;gt; 10&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Usamos el comando &lt;em&gt;strings cat&lt;/em&gt; para ver los caracteres legibles por humanos&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt
-Z/,_
-WW&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;8
-2Qk)
-xWa_
-x?Xn
-//M&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
-;yzEt!
-WpU~e
-&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;Rn,I
-VSXdK
-WB|&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-GhG&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; the&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;2i&lt;span class=&quot;s2&quot;&gt;&quot;4
-DUJmU
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ahora vamos a filtrar con &lt;em&gt;grep ‘=’&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;andit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; the&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;2i&lt;span class=&quot;s2&quot;&gt;&quot;4
-=:G e
-========== password
-&amp;lt;I=zsGi
-Z)========== is
-A=|t&amp;amp;E
-Zdb=
-c^ LAh=3G
-*SF=s
-&amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-S=A.H&amp;amp;^
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;con el comando &lt;em&gt;tail -n 2&lt;/em&gt;, tomamos las 2 ultimas lineas del output anterior&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 2
-&amp;amp;&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-&lt;span class=&quot;nv&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;A.H&amp;amp;^
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;el comando &lt;em&gt;head -n 1&lt;/em&gt; nos toma la primer liena del output anterior&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 2 | &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 1
-&amp;amp;&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Finalmente, agregamos el filtro &lt;em&gt;awk ‘{print $2}’&lt;/em&gt; para filtrar el output anterior y solo tomamos la 2 cadena de texto&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit9@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;strings data.txt | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'='&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 2 | &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 1 | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{print $2}'&lt;/span&gt;
-truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-10--11&quot;&gt;bandit 10 –&amp;gt; 11&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in the file data.txt, which contains base64 encoded data&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Comprovamos lo mencionado anteriormente, esta codificado en base64&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit10@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt
-&lt;span class=&quot;nv&quot;&gt;VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;usamos &lt;em&gt;base64 -d&lt;/em&gt; para decodificarlo, y obtenemos la flag&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit10@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;
-The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-11--12&quot;&gt;bandit 11 –&amp;gt; 12&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;La guia de bandit nos dice que esta &lt;em&gt;cifrado en Cesar&lt;/em&gt;, la diferencia es que esta modido 13 posiciones&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit11@bandit:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;data.txt
-Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Usamos &lt;a href=&quot;https://cryptii.com/pipes/caesar-cipher&quot;&gt;decrypt cesar 13 positions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-&lt;hr /&gt;
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;bandit-12--13&quot;&gt;bandit 12 –&amp;gt; 13&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Antes de trabajar con el archivo, movemos el .rar en la ruta indicada&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit12@bandit:/tmp/myname123&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
-&lt;/span&gt;data2.txt.bz2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Para pasar el hexdump a un archivo normal, usamos el comando &lt;em&gt;xxd&lt;/em&gt;. Este tiene la opción &lt;em&gt;-r&lt;/em&gt;, que permite convertir un hexdump a un binario:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit12@bandit:/tmp/myname123&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
-&lt;/span&gt;data  data2.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;La idea de este reto es aprender a descomprimir diferentes tipos de archivos, pero
-se puede solucionar usando los siguientes comandos:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;zcat&lt;/em&gt; descomprime una lista de archivos (.gz) en la línea de comando o su &lt;em&gt;standard input&lt;/em&gt; y escribe los datos sin comprimir en el standard &lt;em&gt;output&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;bzcat&lt;/em&gt; es similar que zcat (descomprime todos los archivos indicados y lo envía &lt;em&gt;standard output&lt;/em&gt;), pero de archivos &lt;em&gt;.bz2&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;tar xO&lt;/em&gt;, donde &lt;em&gt;x&lt;/em&gt; es para extraer, y &lt;em&gt;O&lt;/em&gt; es para extraer el archivo a un &lt;em&gt;standard output&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;file -&lt;/em&gt; permite ver el formato del archivo descomprimido, donde el nombre de este es reemplazado por el símbolo &lt;em&gt;-&lt;/em&gt;
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bandit12@bandit:/tmp/myname123&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;zcat data | bzcat | zcat | &lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xO | &lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xO | bzcat | &lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xO | zcat | &lt;span class=&quot;nb&quot;&gt;cat
-&lt;/span&gt;The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="Bash" /><category term="Bandit" /><category term="bash" /><category term="scripting" /><summary type="html">El mejor metodo de aprendizaje es practicando</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="FTP" /><category term="SSH" /><category term="SUID" /><summary type="html">Tutorial sobre la explotación de una máquina Linux. Enumere Samba para compartir, manipule una versión vulnerable de proftpd y aumente sus privilegios con la manipulación de la variable de ruta.</summary></entry></feed>

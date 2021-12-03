@@ -24,11 +24,6 @@ var store = [{
         "tags": ["web","wordpress"],
         "url": "http://localhost:4000/MrRobot/",
         "teaser":"http://localhost:4000/assets/images/MrRobot/logo.jpg"},{
-        "title": "Hackthebox: Secret",
-        "excerpt":"Iniciamos comprobando que la maquina este activa antes que nada hacemos el envio de un paquete mediante ping para confirmar que la maquina esta activa, al mismo tiempo comprovamos que estamos frente a una maquina linux mediante el ttl ❯ ping -c 1 10.10.11.120 PING 10.10.11.120 (10.10.11.120) 56(84) bytes of...","categories": ["hackthebox"],
-        "tags": [],
-        "url": "http://localhost:4000/Secret/",
-        "teaser":"http://localhost:4000/assets/images/secret/logo.jpg"},{
         "title": "tryhackme: vulnversity",
         "excerpt":"Iniciamos la fase de reconocimiento Antes de iniciar, verificamos que la maquina este activa ❯ ping -c 1 10.10.249.39 PING 10.10.249.39 (10.10.249.39) 56(84) bytes of data. 64 bytes from 10.10.249.39: icmp_seq=1 ttl=63 time=1085 ms --- 10.10.249.39 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt...","categories": ["tryhackme"],
         "tags": ["Nmap","Gobuster","Burp suite"],
@@ -50,7 +45,22 @@ var store = [{
         "url": "http://localhost:4000/discovery/",
         "teaser":"http://localhost:4000/assets/images/discovery/logo.png"},{
         "title": "tryhackme: SQLInjection",
-        "excerpt":"Conocida principalmente como SQLI, es un ataque a un servidor de base de datos de aplicaciones web que proboca la ejecución de consultas maliciosas Brief SQL es un lenguaje de dominio específico utilizado en programación, diseñado para administrar, y recuperar información de sistemas de gestión de bases de datos relacionales....","categories": ["tryhackme"],
+        "excerpt":"Conocida principalmente como SQLI, es un ataque a un servidor de base de datos de aplicaciones web que proboca la ejecución de consultas maliciosas Iniciamos SQL es un lenguaje de dominio específico utilizado en programación, diseñado para administrar, y recuperar información de sistemas de gestión de bases de datos relacionales....","categories": ["tryhackme"],
         "tags": ["database","sql injection"],
         "url": "http://localhost:4000/SQLInjection/",
-        "teaser":"http://localhost:4000/assets/images/sqli/logo.jpeg"}]
+        "teaser":"http://localhost:4000/assets/images/sqli/logo.jpeg"},{
+        "title": "tryhackme: Pickle Rick",
+        "excerpt":"Iniciamos esta maquina Antes de iniciar verificamos que la maquina este activa mediante un ping ❯ ping -c 1 10.10.103.222 PING 10.10.103.222 (10.10.103.222) 56(84) bytes of data. 64 bytes from 10.10.103.222: icmp_seq=1 ttl=63 time=154 ms --- 10.10.103.222 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms...","categories": ["tryhackme"],
+        "tags": ["Web Server","Gobuster"],
+        "url": "http://localhost:4000/rick/",
+        "teaser":"http://localhost:4000/assets/images/rick/logo.jpg"},{
+        "title": "tryhackme: attacktive directory",
+        "excerpt":"Comprovamos que la maquina este iniciada correctamente enviandole un ping ❯ ping -c 1 10.10.170.66 PING 10.10.170.66 (10.10.170.66) 56(84) bytes of data. 64 bytes from 10.10.170.66: icmp_seq=1 ttl=127 time=157 ms --- 10.10.170.66 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt min/avg/max/mdev = 157.244/157.244/157.244/0.000 ms...","categories": ["tryhackme"],
+        "tags": ["attacktive directory","enum4linux","kerbeos"],
+        "url": "http://localhost:4000/attacktive-directory/",
+        "teaser":"http://localhost:4000/assets/images/kenobi/logo.jpg"},{
+        "title": "tryhackme: Basic pentesting",
+        "excerpt":" ","categories": ["tryhackme"],
+        "tags": ["brute forcing","hash cracking","service enumeration","Linux Enumeration"],
+        "url": "http://localhost:4000/basicPentesting/",
+        "teaser":"http://localhost:4000/assets/images/basicPentesting/logo.png"}]

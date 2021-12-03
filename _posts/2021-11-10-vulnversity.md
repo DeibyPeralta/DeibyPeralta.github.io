@@ -1,7 +1,7 @@
 ---
 title: "tryhackme: vulnversity"
 share: false
-excerpt: "El mejor metodo de aprendizaje es practicando"
+excerpt: "Obtenga información sobre reconocimiento activo, ataques a aplicaciones web y escalada de privilegios. "
 share: false
 header:
   teaser:  /assets/images/vulnversity/logo.jpeg

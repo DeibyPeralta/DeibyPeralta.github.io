@@ -1,7 +1,7 @@
 ---
 title: "tryhackme: Content Discovery"
 share: false
-excerpt: "El mejor metodo de aprendizaje es practicando"
+excerpt: "Conozca las diversas formas de descubrir contenido oculto o privado en un servidor web que podría generar nuevas vulnerabilidades. "
 share: false
 header:
   teaser:  /assets/images/discovery/logo.png

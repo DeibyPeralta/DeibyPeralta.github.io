@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>tryhackme: SQLInjection - Pentester - Ctf’s</title>
-<meta name="description" content="El mejor metodo de aprendizaje es practicando">
+<meta name="description" content="Aprenda a detectar y aprovechar las vulnerabilidades de inyección SQL">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://localhost:4000/SQLInjection/">
 
 
-  <meta property="og:description" content="El mejor metodo de aprendizaje es practicando">
+  <meta property="og:description" content="Aprenda a detectar y aprovechar las vulnerabilidades de inyección SQL">
 
 
 
@@ -303,7 +303,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="tryhackme: SQLInjection">
-    <meta itemprop="description" content="El mejor metodo de aprendizaje es practicando">
+    <meta itemprop="description" content="Aprenda a detectar y aprovechar las vulnerabilidades de inyección SQL">
     <meta itemprop="datePublished" content="November 19, 2021">
     
 
@@ -329,7 +329,7 @@
 de consultas maliciosas</li>
 </ul>
 
-<h2 id="brief">Brief</h2>
+<h2 id="iniciamos">Iniciamos</h2>
 
 <ul>
   <li>SQL es un lenguaje de dominio específico utilizado en programación, diseñado para administrar, y recuperar información de 
@@ -337,11 +337,11 @@ sistemas de gestión de bases de datos relacionales.</li>
 </ul>
 
 <blockquote>
-  <p>What does SQL stand for?<br />
+  <p>¿Qué significa SQL?<br />
 Structured Query Language</p>
 </blockquote>
 
-<h2 id="what-is-a-database">What is a Database?</h2>
+<h2 id="qué-es-una-base-de-datos">Qué es una base de datos?</h2>
 
 <ul>
   <li>Una base de datos es una forma de almacenar electrónicamente colecciones de datos de manera organizada.</li>
@@ -353,40 +353,67 @@ sistema de bases de datos, abreviado normalmente a simplemente base de datos.</l
 </ul>
 
 <blockquote>
-  <p>What is the acronym for the software that controls a database?<br />
+  <p>¿Cuál es el acrónimo del software que controla una base de datos?<br />
 DBMS</p>
 </blockquote>
 
 <blockquote>
-  <p>What is the name of the grid-like structure which holds the data?<br />
+  <p>¿Cuál es el nombre de la estructura en forma de cuadrícula que contiene los datos? <br />
 table</p>
 </blockquote>
 
-<h2 id="what-is-sql">What is SQL?</h2>
+<h2 id="qué-es-sql">¿Qué es SQL?</h2>
 
 <blockquote>
-  <p>What SQL statement is used to retrieve data?<br />
+  <p>¿Qué declaración SQL se utiliza para recuperar datos?<br />
 select</p>
 </blockquote>
 
+<ul>
+  <li>example: <em>SELECT * FROM nameTable;</em></li>
+</ul>
+
 <blockquote>
-  <p>What SQL clause can be used to retrieve data from multiple tables?<br />
+  <p>¿Qué cláusula de SQL se puede utilizar para recuperar datos de varias tablas?<br />
 union</p>
 </blockquote>
 
+<ul>
+  <li>SELECT City FROM tabla1 UNION SELECT City FROM tabla2;</li>
+</ul>
+
 <blockquote>
-  <p>What SQL statement is used to add data?
+  <p>Cual es la declaracion usada para agregar datos?<br />
 inset</p>
 </blockquote>
 
-<h2 id="what-is-sql-injection">What is SQL Injection?</h2>
+<ul>
+  <li>INSERT INTO database (Name, City, Country) VALUES (‘Tom’, ‘4006’, ‘Norway’);</li>
+</ul>
+
+<h2 id="qué-es-sql-injection">Qué es SQL Injection?</h2>
 
 <blockquote>
-  <p>What character signifies the end of an SQL query?<br />
+  <p>¿Qué carácter significa el final de una consulta SQL?<br />
 ;</p>
 </blockquote>
 
+<ul>
+  <li>Insert into database (nombre) values(‘sql server’);</li>
+</ul>
+
 <h2 id="in-band-sqli">In-Band SQLi</h2>
+
+<ul>
+  <li>
+    <p>Inyección SQL en banda</p>
+  </li>
+  <li>
+    <p>In-Band SQL Injection es el tipo más fácil de detectar y explotar; In-Band solo se refiere al mismo método de comunicación que se utiliza para explotar la vulnerabilidad y también recibir los resultados, por ejemplo, descubrir una vulnerabilidad de inyección SQL en una página web y luego poder extraer datos de la base de datos a la misma página.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/sqli/one.png" alt="sqli band" /></p>
 
 <blockquote>
   <p>What is the flag after completing level 1?<br />
@@ -395,6 +422,19 @@ THM{xxx_INJECTION_xxxx}</p>
 
 <h2 id="blind-sqli---authentication-bypass">Blind SQLi - Authentication Bypass</h2>
 
+<ul>
+  <li>A diferencia de la inyección SQL en banda, donde podemos ver los resultados de nuestro ataque directamente en la pantalla, SQLi ciego es cuando recibimos poca o ninguna retroalimentación para confirmar si nuestras consultas inyectadas fueron, de hecho, exitosas o no, esto se debe a que Los mensajes de error se han desactivado, pero la inyección sigue funcionando independientemente.</li>
+  <li>
+    <p>Puede que le sorprenda que todo lo que necesitamos es un poco de retroalimentación para enumerar con éxito una base de datos completa</p>
+  </li>
+  <li>
+    <p><em>Authentication Bypass</em></p>
+  </li>
+  <li>Una de las técnicas de inyección SQL ciega más sencillas es cuando se omiten los métodos de autenticación, como los formularios de inicio de sesión. En este caso, no estamos tan interesados en recuperar datos de la base de datos; Solo queremos pasar del inicio de sesión.</li>
+</ul>
+
+<p><img src="/assets/images/sqli/two.png" alt="sqli bypass" /></p>
+
 <blockquote>
   <p>What is the flag after completing level two? (and moving to level 3)<br />
 THM{xxx_INJECTION_xxxx}</p>
@@ -402,9 +442,36 @@ THM{xxx_INJECTION_xxxx}</p>
 
 <h2 id="blind-sqli---boolean-based">Blind SQLi - Boolean Based</h2>
 
-<blockquote>
-  <p>What is the flag after completing level three?</p>
+<ul>
+  <li>La inyección SQL basada en booleanos se refiere a la respuesta que recibimos de nuestros intentos de inyección, que podría ser verdadero/falso, sí/no, encendido/apagado, 1/0 o cualquier respuesta que solo pueda tener dos resultados.</li>
+  <li>Ese resultado nos confirma que nuestra carga útil de inyección SQL fue exitosa o no.</li>
+  <li>En la primera inspección, es posible que sienta que esta respuesta limitada no puede proporcionar mucha información.</li>
+  <li>Aún así, de hecho, con solo estas dos respuestas, es posible enumerar la estructura y el contenido de una base de datos completa.</li>
+</ul>
 
+<p><img src="/assets/images/sqli/tree.png" alt="tres" /></p>
+
+<blockquote>
+  <p>¿Qué es la bandera después de completar el nivel tres? <br />
+THM{xxx_INJECTION_xxxx}</p>
+</blockquote>
+
+<h2 id="blind-sqli---time-based">Blind SQLi - Time Based</h2>
+
+<ul>
+  <li>
+    <p>Basado en el tiempo - Time based</p>
+  </li>
+  <li>Una inyección SQL ciega basada en el tiempo es muy similar a la basada en booleanos anterior, en el sentido de que se envían las mismas solicitudes, pero no hay un indicador visual de que sus consultas sean incorrectas o correctas esta vez. En cambio, su indicador de una consulta correcta se basa en el tiempo que tarda la consulta en completarse.</li>
+  <li>Este retraso de tiempo se introduce mediante el uso de métodos integrados como SLEEP (x) junto con la instrucción UNION.</li>
+  <li>El método SLEEP () solo se ejecutará con una declaración UNION SELECT exitosa.</li>
+</ul>
+
+<p><img src="/assets/images/sqli/four.png" alt="cuarta" /></p>
+
+<blockquote>
+  <p>¿Cuál es la bandera final después de completar el nivel cuatro?<br />
+THM{xxx_INJECTION_xxxxxx}</p>
 </blockquote>
 
         
@@ -471,7 +538,8 @@ THM{xxx_INJECTION_xxxx}</p>
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/rick/" class="pagination--pager" title="tryhackme: Pickle Rick
+">Next</a>
     
   </nav>
 

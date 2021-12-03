@@ -1,7 +1,7 @@
 ---
 title: "tryhackme: SQLInjection"
 share: false
-excerpt: "El mejor metodo de aprendizaje es practicando"
+excerpt: "Aprenda a detectar y aprovechar las vulnerabilidades de inyección SQL "
 share: false
 header:
   teaser:  /assets/images/sqli/logo.jpeg
