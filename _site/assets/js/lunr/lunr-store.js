@@ -10,7 +10,7 @@ var store = [{
         "url": "http://localhost:4000/first-bandit/",
         "teaser":"http://localhost:4000/assets/images/bandit0/bash-logo.jpg"},{
         "title": "tryhackme: Rootme",
-        "excerpt":"1. Escaneo de puertos Lo primero que haremos ser un ping -c 1 al ip y ver si nuestra maquina ya esta activa usamos wichSystem.py (utilidad desarrollada por @s4vitar) para ver con que clase de maquina estamos trabajando Ahora realizamos un primer escaneo de puertos usando la nmap Descripción de...","categories": ["tryhackme"],
+        "excerpt":"1. Escaneo de puertos Lo primero que haremos ser un ping -c 1 al ip y ver si nuestra maquina ya esta activa ❯ ping -c 1 10.10.238.78 PING 10.10.238.78 (10.10.238.78) 56(84) bytes of data. 64 bytes from 10.10.238.78: icmp_seq=1 ttl=63 time=235 ms --- 10.10.238.78 ping statistics --- 1 packets...","categories": ["tryhackme"],
         "tags": ["web","SUID","RFI"],
         "url": "http://localhost:4000/Rootme/",
         "teaser":"http://localhost:4000/assets/images/rootme/logo.jpg"},{
@@ -60,7 +60,7 @@ var store = [{
         "url": "http://localhost:4000/attacktive-directory/",
         "teaser":"http://localhost:4000/assets/images/kenobi/logo.jpg"},{
         "title": "tryhackme: Basic pentesting",
-        "excerpt":" ","categories": ["tryhackme"],
+        "excerpt":"Comprovamos que la maquina este iniciada correctamente enviandole un ping ❯ ping -c 1 10.10.110.104 PING 10.10.110.104 (10.10.110.104) 56(84) bytes of data. 64 bytes from 10.10.110.104: icmp_seq=1 ttl=63 time=270 ms --- 10.10.110.104 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt min/avg/max/mdev = 270.163/270.163/270.163/0.000 ms...","categories": ["tryhackme"],
         "tags": ["brute forcing","hash cracking","service enumeration","Linux Enumeration"],
         "url": "http://localhost:4000/basicPentesting/",
         "teaser":"http://localhost:4000/assets/images/basicPentesting/logo.png"}]

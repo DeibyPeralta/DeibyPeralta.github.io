@@ -328,11 +328,21 @@
 
 <p>Lo primero que haremos ser un <em>ping -c 1</em> al <em>ip</em> y ver si nuestra maquina ya esta activa</p>
 
-<p><img src="/assets/images/rootme/ping.png" alt="descripcion imagene" /></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ ping <span class="nt">-c</span> 1 10.10.238.78
+PING 10.10.238.78 <span class="o">(</span>10.10.238.78<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+64 bytes from 10.10.238.78: <span class="nv">icmp_seq</span><span class="o">=</span>1 <span class="nv">ttl</span><span class="o">=</span>63 <span class="nb">time</span><span class="o">=</span>235 ms
+
+<span class="nt">---</span> 10.10.238.78 ping statistics <span class="nt">---</span>
+1 packets transmitted, 1 received, 0% packet loss, <span class="nb">time </span>0ms
+rtt min/avg/max/mdev <span class="o">=</span> 234.930/234.930/234.930/0.000 ms
+</code></pre></div></div>
 
 <p>usamos <em>wichSystem.py</em> (utilidad desarrollada por @s4vitar) para ver con que clase de maquina estamos trabajando</p>
 
-<p><img src="/assets/images/rootme/linux.png" alt="descripcion imagene" /></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ wichSystem.py 10.10.238.78
+
+10.10.238.78 <span class="o">(</span>ttl -&gt; 63<span class="o">)</span>: Linux
+</code></pre></div></div>
 
 <ul>
   <li>Ahora realizamos un primer escaneo de puertos usando la <em>nmap</em></li>
@@ -354,13 +364,12 @@
   <li>-oG : Guarda la salida del escaneo en un formato grepeable (no sea util mas adelante)</li>
 </ul>
 
-<p><img src="/assets/images/rootme/linux1.png" alt="descripcion imagene" /></p>
-
 <p>vemos el resultado del escaneo usando un scripts llamado <em>extractPorts</em> ya configurado en mi <em>~./zshrc</em></p>
 
 <p><img src="/assets/images/rootme/ports.png" alt="descripcion imagene" /></p>
 
-<p>Ya que sabemos que la maquina tiene abierto los puerto s <em>80,22</em>  intentaremos averiguar que servicios corren y en que versiones</p>
+<p>Ya que sabemos que la maquina tiene abierto los puertos <em>80,22</em>  intentaremos averiguar que servicios corren, en que versiones y
+posible vulnerabilidades</p>
 
 <p><img src="/assets/images/rootme/nmap2.png" alt="descripcion imagene" /></p>
 
@@ -380,7 +389,7 @@
 
 <p><img src="/assets/images/rootme/gobuster.png" alt="descripcion imagene" /></p>
 
-<p>Vemos que tenemos varias rutas, iniciemos probando con <em>https://10.10.244.164/panel</em></p>
+<p>Vemos que tenemos varias rutas, iniciemos probando con <em>https://10.10.238.78/panel</em></p>
 
 <p><img src="/assets/images/rootme/panel.png" alt="descripcion imagene" /></p>
 
@@ -396,11 +405,9 @@
 
 <h1 id="3-ganando-acceso-a-la-maquina">3. Ganando acceso a la maquina</h1>
 
-<p><img src="/assets/images/rootme/shell2.png" alt="descripcion imagene" /></p>
-
 <p>vamos una de las rutas que encontramos con <em>gobuster</em></p>
 
-<p><img src="/assets/images/rootme/shell3.png" alt="descripcion imagene" /></p>
+<p><img src="/assets/images/rootme/shell.png" alt="descripcion imagene" /></p>
 
 <ul>
   <li>ponemos nuestra maquina en escucha para recivir la conexion desde la maquina que estamos trabajando</li>
