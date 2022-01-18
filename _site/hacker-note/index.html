@@ -9,40 +9,40 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>tryhackme: Rootme - Pentester - Ctf’s</title>
-<meta name="description" content="Un ctf para principiantes, ¿puedes rootearme?">
+<!-- begin _includes/seo.html --><title>tryhackme: HackerNote - Pentester - Ctf’s</title>
+<meta name="description" content="Una aplicación web personalizada que presenta la enumeración de nombres de usuario, listas de palabras personalizadas y un exploit básico de escalada de privilegios.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Pentester - Ctf's">
-<meta property="og:title" content="tryhackme: Rootme">
-<meta property="og:url" content="http://localhost:4000/Rootme/">
+<meta property="og:title" content="tryhackme: HackerNote">
+<meta property="og:url" content="http://localhost:4000/hacker-note/">
 
 
-  <meta property="og:description" content="Un ctf para principiantes, ¿puedes rootearme?">
-
-
-
-  <meta property="og:image" content="http://localhost:4000/assets/images/rootme/logo.jpg">
+  <meta property="og:description" content="Una aplicación web personalizada que presenta la enumeración de nombres de usuario, listas de palabras personalizadas y un exploit básico de escalada de privilegios.">
 
 
 
-
-
-  <meta property="article:published_time" content="2021-10-21T00:00:00-05:00">
+  <meta property="og:image" content="http://localhost:4000/assets/images/hackerNote/logo.png">
 
 
 
 
 
-  
+  <meta property="article:published_time" content="2021-12-22T00:00:00-05:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/Rootme/">
+
+<link rel="canonical" href="http://localhost:4000/hacker-note/">
 
 
 
@@ -162,7 +162,7 @@
         <span class="sep">/</span>
       
       
-        <li class="current">tryhackme: Rootme</li>
+        <li class="current">tryhackme: HackerNote</li>
       
     
   </ol>
@@ -302,15 +302,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="tryhackme: Rootme">
-    <meta itemprop="description" content="Un ctf para principiantes, ¿puedes rootearme?">
-    <meta itemprop="datePublished" content="October 21, 2021">
+    <meta itemprop="headline" content="tryhackme: HackerNote">
+    <meta itemprop="description" content="Una aplicación web personalizada que presenta la enumeración de nombres de usuario, listas de palabras personalizadas y un exploit básico de escalada de privilegios.">
+    <meta itemprop="datePublished" content="December 22, 2021">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">tryhackme: Rootme
+          <h1 id="page-title" class="page__title" itemprop="headline">tryhackme: HackerNote
 </h1>
           
         </header>
@@ -320,7 +320,7 @@
         
         <p class="page__meta">
           
-            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-10-21T00:00:00-05:00">October 21, 2021 </time>&emsp;
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-12-22T00:00:00-05:00">December 22, 2021 </time>&emsp;
           
           
         </p>
@@ -328,136 +328,55 @@
 
 <p>Lo primero que haremos ser un <em>ping -c 1</em> al <em>ip</em> y ver si nuestra maquina ya esta activa</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ ping <span class="nt">-c</span> 1 10.10.238.78
-PING 10.10.238.78 <span class="o">(</span>10.10.238.78<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
-64 bytes from 10.10.238.78: <span class="nv">icmp_seq</span><span class="o">=</span>1 <span class="nv">ttl</span><span class="o">=</span>63 <span class="nb">time</span><span class="o">=</span>235 ms
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ ping <span class="nt">-c</span> 1 10.10.94.166
+PING 10.10.94.166 <span class="o">(</span>10.10.94.166<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+64 bytes from 10.10.94.166: <span class="nv">icmp_seq</span><span class="o">=</span>1 <span class="nv">ttl</span><span class="o">=</span>63 <span class="nb">time</span><span class="o">=</span>536 ms
 
-<span class="nt">---</span> 10.10.238.78 ping statistics <span class="nt">---</span>
+<span class="nt">---</span> 10.10.94.166 ping statistics <span class="nt">---</span>
 1 packets transmitted, 1 received, 0% packet loss, <span class="nb">time </span>0ms
-rtt min/avg/max/mdev <span class="o">=</span> 234.930/234.930/234.930/0.000 ms
+rtt min/avg/max/mdev <span class="o">=</span> 535.998/535.998/535.998/0.000 ms
 </code></pre></div></div>
 
 <p>usamos <em>wichSystem.py</em> (utilidad desarrollada por @s4vitar) para ver con que clase de maquina estamos trabajando</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ wichSystem.py 10.10.238.78
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ wichSystem.py 10.10.94.166
 
-10.10.238.78 <span class="o">(</span>ttl -&gt; 63<span class="o">)</span>: Linux
+10.10.94.166 <span class="o">(</span>ttl -&gt; 63<span class="o">)</span>: Linux
 </code></pre></div></div>
 
 <ul>
   <li>Ahora realizamos un primer escaneo de puertos usando la <em>nmap</em></li>
 </ul>
 
-<p><img src="/assets/images/rootme/nmap1.png" alt="descripcion imagene" /></p>
-
-<p>Descripción de los parámetros:</p>
+<p><img src="/assets/images/hackerNote/allPorts.png" alt="allPorts" /></p>
 
 <ul>
-  <li>-p- : Escanea los puertos especificados, en este caso escanea los 65535 puertos.</li>
-  <li>-sS : Escanea TCP SYN</li>
-  <li>–min-rate: Envía paquetes no mas lentos que el número indicado por segundo en nuestro caso 5000.</li>
-  <li>–open: Muestra solo los puertos abiertos.</li>
-  <li>-vvv : Muestra la información mientras se esta realizando el escaneo.</li>
-  <li>-Pn : Omite el descubrimiento de host.</li>
-  <li>-n : No realiza resolución DNS.</li>
-  <li>ip: la ip que queremos escanear</li>
-  <li>-oG : Guarda la salida del escaneo en un formato grepeable (no sea util mas adelante)</li>
+  <li>vemos los puertos un poco “mejor” con la utilidad <em>extractPorts</em>, y copiamos los puertos en la clipboard para ejecutar otro analisis</li>
 </ul>
 
-<p>vemos el resultado del escaneo usando un scripts llamado <em>extractPorts</em> ya configurado en mi <em>~./zshrc</em></p>
-
-<p><img src="/assets/images/rootme/ports.png" alt="descripcion imagene" /></p>
-
-<p>Ya que sabemos que la maquina tiene abierto los puertos <em>80,22</em>  intentaremos averiguar que servicios corren, en que versiones y
-posible vulnerabilidades</p>
-
-<p><img src="/assets/images/rootme/nmap2.png" alt="descripcion imagene" /></p>
-
-<h1 id="2-recoleccion-de-información">2. Recoleccion de información</h1>
-
-<p>Iniciamos buscando rutas usando la herramienta <em>gobuster</em>, su metodo de uso es simple:</p>
+<p><img src="/assets/images/hackerNote/extractPorts.png" alt="extractPorts" /></p>
 
 <ul>
-  <li>dir : Utiliza el modo de enumeración de directorios/archivos.</li>
-  <li>-u : Le indicamos que le vamos a pasar una url.</li>
-  <li>ruta: la url objetivo</li>
-  <li>-w : Le indicamos que vamos a usar un diccionario.</li>
-  <li>/PATH/ : Le indicamos la ruta del diccionario a usar.</li>
-  <li>–no-error : No muestra errores por pantalla.</li>
-  <li>-o : Guarda la salida en un archivo.</li>
+  <li>Mientras temina el analisis vamos ganando tiempo, verificando otro posible vector de ataque</li>
 </ul>
 
-<p><img src="/assets/images/rootme/gobuster.png" alt="descripcion imagene" /></p>
-
-<p>Vemos que tenemos varias rutas, iniciemos probando con <em>https://10.10.238.78/panel</em></p>
-
-<p><img src="/assets/images/rootme/panel.png" alt="descripcion imagene" /></p>
-
-<p>Editamos la siguiente shell con nuestra ip y puerto a trabajar</p>
-
-<p><img src="/assets/images/rootme/shell.png" alt="descripcion imagene" /></p>
+<p><img src="/assets/images/hackerNote/targeted.png" alt="targeted" /></p>
 
 <ul>
-  <li><a href="http://https://github.com/pentestmonkey/php-reverse-shell">shell-php</a></li>
+  <li>Vemos que existe el puerto <em>80</em> esta corriento, lo cual significa que existe una pagina web, la vemos</li>
 </ul>
 
-<p>al ver que no nos permite cargar archivos <em>php</em>, intentamos cargar <em>php5</em> y vermos que si nos puermite subirlo</p>
-
-<h1 id="3-ganando-acceso-a-la-maquina">3. Ganando acceso a la maquina</h1>
-
-<p>vamos una de las rutas que encontramos con <em>gobuster</em></p>
-
-<p><img src="/assets/images/rootme/shell.png" alt="descripcion imagene" /></p>
+<p><img src="/assets/images/hackerNote/server.png" alt="server" /></p>
 
 <ul>
-  <li>ponemos nuestra maquina en escucha para recivir la conexion desde la maquina que estamos trabajando</li>
+  <li>No vemos nada relevante al momento, verificamos el <em>login</em></li>
 </ul>
 
-<p>Descripción de los parametros utilizados:</p>
+<p><img src="/assets/images/hackerNote/login.png" alt="login" /></p>
 
-<ul>
-  <li>-n : Solo direcciones de IP numéricas.</li>
-  <li>-l : Modo de escucha, para conexiones entrantes.</li>
-  <li>-v : Muestra información por pantalla.</li>
-  <li>-p : Numero del puerto.</li>
-  <li>
-    <p>1234 : El puerto que se pondrá en escucha.</p>
-  </li>
-  <li>Vemos que usuario somos usando <em>whoami</em></li>
-</ul>
+<p>iniciamos sesion con las credenciales del nuestro usuario y vemos que podemos crear una nota</p>
 
-<p><img src="/assets/images/rootme/user.png" alt="descripcion imagene" /></p>
-
-<blockquote>
-  <p>Estamos dentro del sistema siendo el usuario www-data, vamos buscar la flag</p>
-</blockquote>
-
-<p><img src="/assets/images/rootme/flag.png" alt="flag" /></p>
-
-<h1 id="4-escalamos-privilegios">4. Escalamos privilegios</h1>
-
-<p>Continuando con la maquina, nos pregunta <em>Search for files with SUID permission, which file is weird?</em>
-vamos a usar el comando</p>
-
-<blockquote>
-  <p>find / -perm -u=s -type f 2&gt;/dev/null</p>
-</blockquote>
-
-<ul>
-  <li>el cual nos permiste buscar archivos con permisos <em>SUID</em>, lo cual son permisos especial</li>
-  <li>el 2&gt;/dev/null nos envia los errores (no tiene permisos <em>SUID</em> a dicha ruta</li>
-</ul>
-
-<p><img src="/assets/images/rootme/suid.png" alt="permisos suid" /></p>
-
-<p>Entre los <em>files</em> que podemos ver llama la atencion que <em>python</em> tenga dichos permisos asi que buscamos en - <a href="https://gtfobins.github.io/">GTFOBins</a></p>
-
-<p><img src="/assets/images/rootme/root.png" alt="root" /></p>
-
-<p>comprovamos que usuario somos y pasamos a buscar la flag.</p>
-
-<h2 id="fin-de-la-maquina-rootme">fin de la maquina Rootme</h2>
-
+<p><img src="/assets/images/hackerNote/notes.png" alt="notes" /></p>
 
         
       </section>
@@ -478,11 +397,11 @@ vamos a usar el comando</p>
     
       
       
-      <a href="/tags/#rfi" class="page__taxonomy-item" rel="tag">RFI</a><span class="sep">, </span>
+      <a href="/tags/#escalate" class="page__taxonomy-item" rel="tag">escalate</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#suid" class="page__taxonomy-item" rel="tag">SUID</a><span class="sep">, </span>
+      <a href="/tags/#exploit" class="page__taxonomy-item" rel="tag">exploit</a><span class="sep">, </span>
     
       
       
@@ -514,7 +433,7 @@ vamos a usar el comando</p>
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-10-21T00:00:00-05:00">October 21, 2021</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-12-22T00:00:00-05:00">December 22, 2021</time></p>
         
       </footer>
 
@@ -523,12 +442,11 @@ vamos a usar el comando</p>
       
   <nav class="pagination">
     
-      <a href="/first-bandit/" class="pagination--pager" title="Bandit0: Bash para principiantes
+      <a href="/basicPentesting/" class="pagination--pager" title="tryhackme: Basic pentesting
 ">Previous</a>
     
     
-      <a href="/kenobi/" class="pagination--pager" title="tryhackme: Kenobi
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

