@@ -18,9 +18,9 @@ tags:
 
 ## antes que nada
 
-Cabe resaltar que un hacker no es ningun delicuente que aprovecha sus conocimientos en informatica, todo lo contrario, hacker es toda persona aquella que lleva al limite sus conocimientos (no solo existen hacker informaticos).
+> Cabe resaltar que un hacker no es ningun delicuente que aprovecha sus conocimientos en informatica, todo lo contrario, hacker es toda persona aquella que lleva al limite sus conocimientos (no solo existen hacker informaticos).
 
-> ¿Qué proceso sigue un Hacker?
+## ¿Qué proceso sigue un Hacker?
 
 Aunque se podría pensar que un hacker hace lo que le da la gana, lo cierto es que los hackers/probadores de intrusión profesionales suelen seguir un proceso establecido para entender y explotar sus objetivos. Esto asegura que haya consistencia entre cómo se realizan las evaluaciones en toda la industria, y es la metodología que impulsa las evaluaciones.
 
@@ -48,7 +48,7 @@ El reconocimiento es un concepto bastante simple, piensa en las herramientas que
 
 En este caso, vamos a utilizar como ejemplo la empresa SpaceX. Detente aquí y dedica 2 minutos a investigar sobre SpaceX y anota los sitios web que hayas utilizado para realizar la investigación.
 
-###¿Dónde comenzamos la investigación sobre SpaceX?
+### ¿Dónde comenzamos la investigación sobre SpaceX?
 
 > Lo más probable es que hayas empezado por una de las herramientas más útiles que posee un Hacker:  
 > Google
