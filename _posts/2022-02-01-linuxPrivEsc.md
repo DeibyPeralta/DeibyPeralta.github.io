@@ -1,10 +1,10 @@
 ---
 title: "tryhackme: Escalar privilegios"
 share: false
-excerpt: "Un CTF de Rick y Morty. ¡Ayuda a que Rick vuelva a ser humano! "
+excerpt: "Aprenda los fundamentos de la escalada de privilegios en Linux. Desde la enumeración hasta la explotación, conozca más de 8 técnicas diferentes de escalada de privilegios."
 share: false
 header:
-  teaser:  /assets/images/rick/logo.jpg
+  teaser:  /assets/images/linEscPriv/logo.jpg
   teaser_home_page: true
 categories:
   - tryhackme
