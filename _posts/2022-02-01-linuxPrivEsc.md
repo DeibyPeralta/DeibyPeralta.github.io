@@ -1,5 +1,5 @@
 ---
-title: "tryhackme: Pickle Rick"
+title: "tryhackme: Escalar privilegios"
 share: false
 excerpt: "Un CTF de Rick y Morty. ¡Ayuda a que Rick vuelva a ser humano! "
 share: false
