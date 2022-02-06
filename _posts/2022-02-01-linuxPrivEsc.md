@@ -26,12 +26,12 @@ brinde acceso administrativo directo.
 - La escalada de privilegios es crucial porque le permite obtener niveles de acceso de administrador 
 del sistema, lo que le permite realizar acciones como:
 
-> Restablecimiento de contraseñas
-> Eludir los controles de acceso para comprometer los datos protegidos
-> Edición de configuraciones de software
-> Habilitación de la persistencia
-> Cambiar el privilegio de los usuarios existentes (o nuevos)
-> Ejecutar cualquier comando administrativo 
+1. Restablecimiento de contraseñas
+1. Eludir los controles de acceso para comprometer los datos protegidos
+1. Edición de configuraciones de software
+1. Habilitación de la persistencia
+1. Cambiar el privilegio de los usuarios existentes (o nuevos)
+1. Ejecutar cualquier comando administrativo 
 
 
 # Enumeración
