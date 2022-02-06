@@ -98,4 +98,16 @@ ps aux: The aux option will show processes for all users (a), display the user t
 
 El comando env mostrará las variables de entorno.
 
+![](images/linuxPrivEsc/env.png){width='100px'}
 
+La variable PATH puede tener un compilador o un lenguaje de scripting (por ejemplo, Python) que podría ser utilizado para ejecutar código en el sistema de destino o aprovechado para la escalada de privilegios.
+
+### sudo -l
+
+El sistema objetivo puede estar configurado para permitir a los usuarios ejecutar algunos (o todos) los comandos con privilegios de root. El comando sudo -l puede ser usado para listar todos los comandos que el usuario puede ejecutar usando sudo.
+
+### ls
+
+Uno de los comandos más comunes utilizados en Linux es probablemente *ls*.
+
+Al buscar potenciales vectores de escalada de privilegios, recuerde utilizar siempre el comando ls con el parámetro *-la*. El ejemplo de abajo muestra cómo el archivo "secret.txt" puede ser fácilmente pasado por alto usando los comandos ls o *ls -l*.
