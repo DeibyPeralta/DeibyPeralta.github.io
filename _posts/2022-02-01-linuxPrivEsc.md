@@ -63,7 +63,7 @@ sabores diferentes de Linux, lo que lo convierte en una herramienta esencial par
 Mirar /proc/version puede brindarle información sobre la versión del kernel y datos adicionales, como si está instalado un 
 compilador (por ejemplo, GCC).
 
-### /etc/problema
+### /etc/issue
 
 Los sistemas también se pueden identificar consultando el archivo /etc/issue. Este archivo generalmente contiene información 
 sobre el sistema operativo, pero se puede personalizar o cambiar fácilmente. Hablando sobre el tema, cualquier archivo que contenga 
