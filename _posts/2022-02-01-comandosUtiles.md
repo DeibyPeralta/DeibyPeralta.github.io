@@ -111,8 +111,25 @@ Mirar comandos anteriores con el comando *history* puede darnos alguna idea sobr
 
 ### ifconfig
 
-ifconfig
-
 El sistema de destino puede ser un punto de pivote hacia otra red. El comando ifconfig nos dará información sobre las interfaces de red del sistema. El ejemplo siguiente muestra que el sistema objetivo tiene tres interfaces (eth0, tun0 y tun1). Nuestra máquina atacante puede alcanzar la interfaz eth0 pero no puede acceder directamente a las otras dos redes.
 
 ![brute force passwd](https://i.imgur.com/hcdZnwK.png)
+
+Esto se puede confirmar utilizando el comando ip route para ver qué rutas de red existen.
+
+![brute force passwd](https://i.imgur.com/PSrmz5O.png)
+
+### netstat
+
+Following an initial check for existing interfaces and network routes, it is worth looking into existing communications. The netstat command can be used with several different options to gather information on existing connections.
+
+
+Tras una comprobación inicial de las interfaces y rutas de red existentes, merece la pena examinar las comunicaciones existentes. El comando netstat se puede utilizar con varias opciones diferentes para recopilar información sobre las conexiones existentes.
+
+
+- netstat -a: muestra todos los puertos de escucha y las conexiones establecidas.
+También se puede utilizar.
+- netstat -at o netstat -au para listar los protocolos TCP o UDP respectivamente.
+- netstat -l: lista los puertos en modo "escucha". Estos puertos están abiertos y listos para aceptar conexiones entrantes. Se puede utilizar con la opción "t" para listar sólo los puertos que están a la escucha utilizando el protocolo TCP (abajo)
+
+
