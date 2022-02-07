@@ -81,3 +81,38 @@ El sistema objetivo puede estar configurado para permitir a los usuarios ejecuta
 Uno de los comandos más comunes utilizados en Linux es probablemente *ls*.
 
 Al buscar potenciales vectores de escalada de privilegios, recuerde utilizar siempre el comando ls con el parámetro *-la*. El ejemplo de abajo muestra cómo el archivo "secret.txt" puede ser fácilmente pasado por alto usando los comandos ls o *ls -l*.
+![imagen ls](https://i.imgur.com/2jOtOat.png)
+
+### Id
+
+El comando id proporcionará una visión general del nivel de privilegios del usuario y su pertenencia a un grupo.
+
+Vale la pena recordar que el comando id también puede ser utilizado para obtener la misma información para otro usuario como se ve a continuación.
+
+![imagen id](https://i.imgur.com/YzfJliG.png)
+
+### /etc/passwd
+
+La lectura del archivo /etc/passwd puede ser una manera fácil de descubrir los usuarios en el sistema.
+
+![imagen passwd](https://i.imgur.com/r6oYOEi.png)
+
+Aunque la salida puede ser larga y un poco intimidante, se puede cortar fácilmente y convertirla en una lista útil para ataques de fuerza bruta.
+
+![brute force passwd](https://i.imgur.com/cpS2U93.png)
+
+Recuerde que esto devolverá todos los usuarios, algunos de los cuales son usuarios del sistema o del servicio que no serían muy útiles. Otro enfoque podría ser buscar "home", ya que los usuarios reales probablemente tendrán sus carpetas en el directorio "home".
+
+![brute force passwd](https://i.imgur.com/psxE6V4.png)
+
+### history
+
+Mirar comandos anteriores con el comando *history* puede darnos alguna idea sobre el sistema de destino y, aunque rara vez, tener información almacenada como _contraseñas_ o nombres de usuario.
+
+### ifconfig
+
+ifconfig
+
+El sistema de destino puede ser un punto de pivote hacia otra red. El comando ifconfig nos dará información sobre las interfaces de red del sistema. El ejemplo siguiente muestra que el sistema objetivo tiene tres interfaces (eth0, tun0 y tun1). Nuestra máquina atacante puede alcanzar la interfaz eth0 pero no puede acceder directamente a las otras dos redes.
+
+![brute force passwd](https://i.imgur.com/hcdZnwK.png)
