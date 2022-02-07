@@ -132,4 +132,6 @@ También se puede utilizar.
 - netstat -at o netstat -au para listar los protocolos TCP o UDP respectivamente.
 - netstat -l: lista los puertos en modo "escucha". Estos puertos están abiertos y listos para aceptar conexiones entrantes. Se puede utilizar con la opción "t" para listar sólo los puertos que están a la escucha utilizando el protocolo TCP (abajo)
 
+![brute force passwd](https://i.imgur.com/BbLdyrr.png)
 
+- netstat -s: lista las estadísticas de uso de la red por protocolo (abajo) También se puede utilizar con las opciones -t o -u para limitar la salida a un protocolo específico.
