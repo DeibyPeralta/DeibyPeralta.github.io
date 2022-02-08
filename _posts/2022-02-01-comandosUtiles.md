@@ -135,3 +135,6 @@ También se puede utilizar.
 ![brute force passwd](https://i.imgur.com/BbLdyrr.png)
 
 - netstat -s: lista las estadísticas de uso de la red por protocolo (abajo) También se puede utilizar con las opciones -t o -u para limitar la salida a un protocolo específico.
+- netstat -tp: lista las conexiones con el nombre del servicio y la información PID.  
+- También se puede utilizar con la opción -l para listar los puertos de escucha
+- netstat -i: Muestra las estadísticas de la interfaz. Vemos a continuación que "eth0" y "tun0" están más activos que "tun1".
