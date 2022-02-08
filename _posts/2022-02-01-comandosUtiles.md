@@ -136,5 +136,42 @@ También se puede utilizar.
 
 - netstat -s: lista las estadísticas de uso de la red por protocolo (abajo) También se puede utilizar con las opciones -t o -u para limitar la salida a un protocolo específico.
 - netstat -tp: lista las conexiones con el nombre del servicio y la información PID.  
-- También se puede utilizar con la opción -l para listar los puertos de escucha
-- netstat -i: Muestra las estadísticas de la interfaz. Vemos a continuación que "eth0" y "tun0" están más activos que "tun1".
+  También se puede utilizar con la opción -l para listar los puertos de escucha
+- netstat -i: Muestra las estadísticas de la interfaz. 
+
+El uso de netstat que probablemente verás más a menudo en las entradas del blog, en los escritos y en los cursos es netstat -ano, que podría desglosarse de la siguiente manera
+
+-a: Muestra todos los sockets
+-n: No resolver nombres
+-o: Mostrar los temporizadores
+
+![brute force passwd](https://i.imgur.com/UxzLBRw.png)
+
+### find Command
+
+Buscar en el sistema objetivo información importante y potenciales vectores de escalada de privilegios puede ser fructífero. El comando "find" incorporado es útil y vale la pena tenerlo en su arsenal.
+
+A continuación hay algunos ejemplos útiles para el comando "find".
+
+## Encontrar archivos
+
+- find . -name flag1.txt: encontrar el archivo llamado "flag1.txt" en el directorio actual
+- find /home -name flag1.txt: encontrar los nombres de archivo "flag1.txt" en el directorio /home
+- find / -type d -name config: encontrar el directorio llamado config bajo "/"
+- find / -type f -perm 0777: encontrar archivos con los permisos 777 (archivos legibles, escribibles y ejecutables por todos los usuarios)
+- find / -perm a=x: encontrar archivos ejecutables
+- find /home -user frank: encontrar todos los archivos para el usuario "frank" en "/home"
+
+El ejemplo anterior devuelve archivos de más de 100 MB. Es importante tener en cuenta que el comando "find" tiende a generar errores que a veces hacen que la salida sea difícil de leer. Por eso sería conveniente utilizar el comando "find" con "-type f 2>/dev/null" para redirigir los errores a "/dev/null" y tener una salida más limpia (abajo).
+
+![brute force passwd](https://i.imgur.com/UKYSdE3.png)
+
+- Find development tools and supported languages: 
+1. find / -name perl*
+1. find / -name python*
+1. find / -name gcc*
+
+# SUID 
+
+- find / -perm -u=s -type f 2>/dev/null: Encuentra archivos con el bit SUID
+- 
