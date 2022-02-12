@@ -32,3 +32,5 @@ Ahora que sabemos qué carpetas existen, tenemos que utilizar el comando "cd"  p
 
 Ahora que sabemos qué carpetas existen, necesitamos usar el comando " cd " (abreviatura de change d irectory ) para cambiar a ese directorio. Digamos que si quisiera abrir el directorio "Imágenes", haría " Imágenes de cd ".
 
+> What is the username of who you're logged in as on your deployed Linux machine?  
+> tryhackme
