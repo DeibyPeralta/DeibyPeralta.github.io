@@ -12,3 +12,8 @@ tags:
   - Shell
   - Running commands 
 ---
+
+# Comandos basicos
+|echo	|Salida de cualquier texto que proporcionamos|
+| ------ | -------- |
+|whoami	|¡Descubre con qué usuario estamos conectados actualmente!|
