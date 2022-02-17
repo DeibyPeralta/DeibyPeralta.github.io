@@ -41,5 +41,5 @@ En algunas situaciones, especificar solo el nombre de un archivo no será sufici
 
 *-user*: Bandera para especificar el nombre del propiertario del archivo   
 *-size*: Se especifica el tamaño del archivo    
-*-perm*: Se usa para especificar permisos   
+*-perm*: Se usa para especificar permisos
 - ya sea en forma octal (ej. 644) o en forma simbólica (ej. u=r)
