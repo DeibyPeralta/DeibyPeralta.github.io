@@ -27,7 +27,7 @@ Dos banderas muy útiles son las banderas *-type* y *-name*.
 ## Example
 
 > Encuentra todos los archivos cuyo nombre termina con ".xml"  
-> find / -type f -name "*.xml"
+> -find / -type f -name "*.xml"
 
 > Encuentre todos los archivos en el directorio /home (recursivo) cuyo nombre sea "user.txt" (sin distinción entre mayúsculas y minúsculas)  
 > find /home -type f -iname user.txt
