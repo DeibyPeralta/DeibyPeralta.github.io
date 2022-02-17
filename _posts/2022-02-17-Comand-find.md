@@ -35,8 +35,11 @@ Dos banderas muy útiles son las banderas *-type* y *-name*.
 > Encuentra todos los directorios cuyo nombre contenga la palabra "exploits"  
 - find / -type -d -name "*exploits*"
 
+## Otros casos
+
 En algunas situaciones, especificar solo el nombre de un archivo no será suficiente. También puede especificar el propietario, el tamaño, los permisos y la última vez que se accedió/modificó el archivo.
 
-*-user*: Bandera para especificar el nombre del propiertario del archivo
-*-size*: Se especifica el tamaño del archivo 
-*-perm*: Se usa para especificar permisos
+*-user*: Bandera para especificar el nombre del propiertario del archivo   
+*-size*: Se especifica el tamaño del archivo    
+*-perm*: Se usa para especificar permisos   
+- ya sea en forma octal (ej. 644) o en forma simbólica (ej. u=r)
