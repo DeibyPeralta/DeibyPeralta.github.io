@@ -42,4 +42,6 @@ En algunas situaciones, especificar solo el nombre de un archivo no será sufici
 *-user*: Bandera para especificar el nombre del propiertario del archivo   
 *-size*: Se especifica el tamaño del archivo    
 *-perm*: Se usa para especificar permisos
-- ya sea en forma octal (ej. 644) o en forma simbólica (ej. u=r)
+- ya sea en forma octal (ej. 644) o en forma simbólica (ej. u=r)    
+- Usar el */* prefijo devolverá archivosque coincidan con cualquiera de los permisos que haya establecido     
+- El uso del –prefijo devolverá archivos con al menos los permisos que especifique; esto significa que el -444modo coincidirá con los archivos que todos pueden leer
