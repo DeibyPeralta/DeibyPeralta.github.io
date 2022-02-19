@@ -45,3 +45,33 @@ En algunas situaciones, especificar solo el nombre de un archivo no será sufici
 - ya sea en forma octal (ej. 644) o en forma simbólica (ej. u=r)    
 - Usar el */* prefijo devolverá archivosque coincidan con cualquiera de los permisos que haya establecido     
 - El uso del –prefijo devolverá archivos con al menos los permisos que especifique; esto significa que el -444modo coincidirá con los archivos que todos pueden leer
+
+## Permisos
+ usamos la bandera *-perm* y podemos buscar permisos de maneras diferentes, ya sea octal o de forma simbolica
+ 
+ - Octal: *644*, para este ejemplo permite al propietario del archivo leer y escribir, y los demas usuarios solo leer
+ - simbolica: *o=w*, permite al grupo "otros" escribir
+
+## SUID
+
+usamos la bandera *-perm*, sin embargo, en esta ocación se hace asi: *-u=s*
+
+## Tiempo de modificación
+
+- usamos la bandera especificar que se accedió por última vez a un archivo hace más de 30 minutos *-amin +30*
+- Para especificar que se modificó hace menos de 7 días se utiliza la opción *-mtime -7*
+
+> Encuentra todos los archivos propiedad del usuario "kittycat"  
+- find / -type f -user kittycat
+
+> Encuentre todos los archivos que tengan exactamente 150 bytes de tamaño  
+- find / -type f -size -150c
+
+> Encuentre todos los archivos en el directorio /home (recursivo) con un tamaño inferior a 2 KiB y extensión ".txt"  
+- find /home -type f -size -2k -name "*.txt"
+
+> Encuentre todos los archivos en el directorio /usr/bin (recursivo) que son propiedad de root y tienen al menos el permiso SUID (use formato simbólico)  
+- find /usr/bin -type f -user root -perm -u=s
+
+> Encuentre todos los archivos a los que no se accedió en los últimos 10 días con la extensión ".png"  
+- find / -type f -atime +10 -name "*.png
