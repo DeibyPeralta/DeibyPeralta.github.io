@@ -33,7 +33,6 @@ I'm a passionate Full Stack Developer and Junior Cybersecurity Analyst from **Co
 [![Github Trophies](https://github-profile-trophy.vercel.app/?username=DeibyPeralta&theme=monokai&no-frame=true&no-bg=true&margin-w=4)](#)
 
 ---
-
 <h3 align="center">🛠️ Languages, Libraries & Tools</h3>
 
 <table align="center">
@@ -43,55 +42,96 @@ I'm a passionate Full Stack Developer and Junior Cybersecurity Analyst from **Co
       <strong>Angular</strong>
     </td>
     <td align="center">
-      <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-plain.svg" width="40" alt="Node.js"/><br/>
-      <strong>Node.js</strong>
-    </td>
-    <td align="center">
-      <img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-plain.svg" width="40" alt="Docker"/><br/>
-      <strong>Docker</strong>
-    </td>
-    <td align="center">
-      <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" width="40" alt="JavaScript"/><br/>
-      <strong>JavaScript</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" width="40" alt="CSS3"/><br/>
-      <strong>CSS3</strong>
+      <img src="https://skillicons.dev/icons?i=ts" height="40" alt="TypeScript"/><br/>
+      <strong>TypeScript</strong>
     </td>
     <td align="center">
       <img src="https://skillicons.dev/icons?i=html" height="40" alt="HTML5"/><br/>
       <strong>HTML5</strong>
     </td>
     <td align="center">
-      <img src="https://github.com/devicons/devicon/blob/master/icons/android/android-original-wordmark.svg" width="40" alt="Android"/><br/>
+      <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" width="40" alt="CSS3"/><br/>
+      <strong>CSS3</strong>
+    </td>
+    <td align="center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="40" alt="Bootstrap"/><br/>
+      <strong>Bootstrap</strong>
+    </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=androidstudio" height="40" alt="Android Studio"/><br/>
       <strong>Android</strong>
     </td>
     <td align="center">
-      <img src="https://www.svgrepo.com/show/353478/bash-icon.svg" width="40" alt="Bash"/><br/>
-      <strong>Bash</strong>
+      <img src="https://skillicons.dev/icons?i=javascript" height="40" alt="JavaScript"/><br/>
+      <strong>JavaScript</strong>
     </td>
   </tr>
+
+  <!-- Fila 2: Backend -->
   <tr>
-    <td align="center">
-      <img src="https://www.svgrepo.com/show/448236/linux.svg" width="60" alt="Linux"/><br/>
-      <strong>Linux</strong>
-    </td>
-    <td align="center">
-      <img src="https://skillicons.dev/icons?i=ts" height="40" alt="TypeScript"/><br/>
-      <strong>TypeScript</strong>
-    </td>
     <td align="center">
       <img src="https://skillicons.dev/icons?i=git" height="40" alt="Git"/><br/>
       <strong>Git</strong>
     </td>
     <td align="center">
+      <img src="https://www.svgrepo.com/show/452075/node-js.svg" width="40" alt="Node.js"/><br/>
+      <strong>Node</strong>
+    </td>
+    <td align="center">
+      <img src="https://www.svgrepo.com/show/452091/python.svg" height="40" alt="Linux"/><br/>
+      <strong>Python</strong>
+    </td>
+    <td align="center">
+      <img src="https://www.svgrepo.com/show/448221/docker.svg" height="40" alt="Docker"/><br/>
+      <strong>Docker</strong>
+    </td>
+    <td align="center">
       <img src="https://skillicons.dev/icons?i=postgres" height="40" alt="PostgreSQL"/><br/>
       <strong>PostgreSQL</strong>
     </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=mysql" height="40" alt="MySQL"/><br/>
+      <strong>MySQL</strong>
+    </td>    
+    <td align="center">
+      <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" width="40" alt="SQL Server"/><br/>
+      <strong>SQL Server</strong>
+    </td>    
+  </tr>
+
+  <!-- Fila 3: Seguridad Informática -->
+  <tr>
+    <td align="center">
+      <img src="https://www.svgrepo.com/show/448236/linux.svg" width="40" alt="Parrot OS"/><br/>
+      <strong>linux OS</strong>
+    </td>
+    <td align="center">
+      <img src="https://www.svgrepo.com/show/353478/bash-icon.svg" width="40" alt="Bash"/><br/>
+      <strong>Bash</strong>
+    </td>
+    <td align="center">
+      <img src="https://nmap.org/images/nmap-project-logo.png" width="40" alt="Nmap"/><br/>
+      <strong>Nmap</strong>
+    </td>
+    <td align="center">
+      <img src="https://e7.pngegg.com/pngimages/884/566/png-clipart-nessus-vulnerability-scanner-tenable-computer-security-logo-professional-text-logo.png" width="40" alt="Nessus"/><br/>
+      <strong>Nessus</strong>
+    </td>
+    <td align="center">
+      <img src="https://e7.pngegg.com/pngimages/80/683/png-clipart-owasp-web-application-security-project-world-wide-web-web-application-electric-blue.png" width="40" alt="OWASP"/><br/>
+      <strong>OWASP</strong>
+    </td>
+    <td align="center">
+      <img src="https://dashboard.snapcraft.io/site_media/appmedia/2022/08/metasploit-framework-logo.svg.png" height="40" alt="Metasploit"/><br/>
+      <strong>Metasploit</strong>
+    </td>
+    <td align="center">
+      <img src="https://skillicons.dev/icons?i=powershell" height="40" alt="PowerShell"/><br/>
+      <strong>PowerShell</strong>
+    </td>
   </tr>
 </table>
+
 
 ---
 
