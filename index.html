@@ -1,646 +1,1471 @@
-<!-- <!DOCTYPE html> -->
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PGZH8HT');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Materialize - Compiled and minified CSS-->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
-  <!-- Font Awesome Icon - CSS-->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <!-- Custom Styles-->
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <title>Deiby Espinosa | Software Developer</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126939217-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-126939217-2');
-  </script>
-
-  <!-- Open Graph-->
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Deiby Espinosa | Software Developer" />
-  <meta property="og:description" content="Software Developer" />
-  <meta property="og:url" content="https://deibyperalta.github.io/" />
-  <meta property="og:site_name" content="Deiby Espinosa | Software Developer" />
-  <meta property="article:publisher" content="https://deibyperalta.github.io/" />
-  <meta property="og:image" content="https://deibyperalta.github.io/examples/preview.JPG" />
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="" />
-  <meta name="twitter:title" content="Coder | Technofreak | Explorer | Minimalist | Humane" />
-  <meta name="twitter:description" content="Software Developer" />
-  <meta name="twitter:url" content="https://twitter.com/" />
-  <meta name="author" content="Deiby Espinosa" />
-  <meta name="description" content="Software Developer with a passion for backend development and artificial intelligence." />
-  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicon/apple-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicon/apple-icon-60x60.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon/apple-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicon/apple-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicon/apple-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-icon-180x180.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon/android-icon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/assets/img/favicon/manifest.json" />
-  <meta name="msapplication-TileColor" content="#ffffff" />
-  <meta name="msapplication-TileImage" content="/assets/img/favicon/ms-icon-144x144.png" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="robots" content="index, follow" />
-  <!-- Google Site Verification for indexing -->
-  <meta name="google-site-verification" content="_qxK8tePiU2fhnwlwnJ7pkDFnj1k2EiKq_cYGy1Cb84" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deiby Espinosa | Cybersecurity Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style id="app-style">
+    :root {
+      --primary: #00ffff;
+      --primary-dark: #00cccc;
+      --secondary: #6610f2;
+      --dark: #050505;
+      --dark-mid: #121212;
+      --dark-light: #1e1e1e;
+      --text-main: #e0e0e0;
+      --text-dim: #a0a0a0;
+      --gradient-1: linear-gradient(135deg, var(--primary), var(--secondary));
+      --glow: 0 0 10px var(--primary), 0 0 20px var(--primary-dark);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background-color: var(--dark-mid);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 3px;
+    }
+    
+    /* Cursor */
+    .cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.2s, width 0.2s, height 0.2s, background 0.2s;
+      mix-blend-mode: difference;
+    }
+    
+    .cursor-dot {
+      width: 5px;
+      height: 5px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      padding: 1rem 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-accent {
+      color: var(--primary);
+      margin-right: 0.3rem;
+      position: relative;
+    }
+    
+    .logo-accent::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 2rem;
+      height: 2rem;
+      background: transparent;
+      border: none;
+      padding: 0;
+      z-index: 101;
+    }
+    
+    .hamburger span {
+      width: 2rem;
+      height: 0.25rem;
+      background-color: var(--primary);
+      border-radius: 0.5rem;
+      transition: all 0.3s linear;
+      transform-origin: 1px;
+    }
+    
+    /* Hero Section */
+    #home {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 1.5rem;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+      pointer-events: none;
+      background: 
+        linear-gradient(45deg, var(--dark) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--dark) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--dark) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--dark) 75%);
+      background-size: 20px 20px;
+      background-color: var(--dark-mid);
+    }
+    
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .name-glitch {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      color: var(--text-main);
+      letter-spacing: 3px;
+      text-shadow: var(--glow);
+      animation: glitch 5s infinite;
+    }
+    
+    @keyframes glitch {
+      0% { text-shadow: var(--glow); }
+      2% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
+      3% { text-shadow: -2px -2px var(--primary), 2px 2px var(--secondary); }
+      4% { text-shadow: var(--glow); }
+      97% { text-shadow: var(--glow); }
+      98% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
+      99% { text-shadow: -2px -2px var(--primary), 2px 2px var(--secondary); }
+      100% { text-shadow: var(--glow); }
+    }
+    
+    .title {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.5s;
+    }
+    
+    .hero-cta {
+      display: inline-block;
+      background: transparent;
+      color: var(--primary);
+      font-size: 1rem;
+      padding: 0.8rem 2rem;
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1s;
+    }
+    
+    .hero-cta:hover {
+      box-shadow: var(--glow);
+    }
+    
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+    
+    .hero-cta:hover::before {
+      left: 0;
+    }
+    
+    .hero-cta:hover {
+      color: var(--dark);
+    }
+    
+    /* Sections common styles */
+    section {
+      padding: 6rem 1.5rem;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--gradient-1);
+      border-radius: 2px;
+    }
+    
+    /* About */
+    #about {
+      position: relative;
+      background-color: var(--dark-mid);
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-image {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      filter: grayscale(20%);
+      transition: filter 0.5s ease;
+    }
+    
+    .about-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 255, 255, 0.1), transparent);
+      pointer-events: none;
+    }
+    
+    .about-image:hover img {
+      filter: grayscale(0%);
+    }
+    
+    .about-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .tech-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .tech-icon {
+      font-size: 1.8rem;
+      color: var(--text-dim);
+      transition: all 0.3s ease;
+    }
+    
+    .tech-icon:hover {
+      color: var(--primary);
+      transform: translateY(-5px);
+      text-shadow: var(--glow);
+    }
+    
+    /* Experience */
+    #experience {
+      position: relative;
+    }
+    
+    .experience-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .experience-card {
+      background-color: var(--dark-mid);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0%;
+      background: var(--gradient-1);
+      transition: height 0.5s ease;
+    }
+    
+    .experience-card:hover::before {
+      height: 100%;
+    }
+    
+    .experience-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: var(--primary-dark);
+    }
+    
+    .job-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .company {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .duration {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .duration i {
+      margin-right: 0.5rem;
+    }
+    
+    .job-description {
+      margin-top: 1rem;
+    }
+    
+    .job-description ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    
+    .job-description li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .job-description li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-family: 'Roboto Mono', monospace;
+    }
+    
+    /* Skills */
+    #skills {
+      position: relative;
+      background-color: var(--dark-mid);
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .technical-skills h3,
+    .soft-skills h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    
+    .technical-skills h3::after,
+    .soft-skills h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-1);
+    }
+    
+    .skills-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .skill-badge {
+      background-color: var(--dark-light);
+      color: var(--text-main);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-badge i {
+      color: var(--primary);
+    }
+    
+    .skill-badge:hover {
+      transform: scale(1.05);
+      background-color: var(--dark);
+      border-color: var(--primary);
+      box-shadow: var(--glow);
+    }
+    
+    .soft-skills-list {
+      list-style: none;
+    }
+    
+    .soft-skill {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .soft-skill-name {
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background-color: var(--dark-light);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient-1);
+      border-radius: 4px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1s ease;
+    }
+    
+    /* Education and Languages */
+    #education {
+      position: relative;
+    }
+    
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .education-container h3,
+    .languages-container h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    
+    .education-container h3::after,
+    .languages-container h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-1);
+    }
+    
+    .education-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .education-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background-color: rgba(0, 255, 255, 0.2);
+      border-radius: 1px;
+    }
+    
+    .education-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .education-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      background-color: var(--primary);
+      border-radius: 50%;
+      box-shadow: var(--glow);
+    }
+    
+    .education-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+    }
+    
+    .education-place {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    
+    .education-date {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    
+    .language-item {
+      margin-bottom: 1.5rem;
+    }
+    
+    .language-name {
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+    
+    .language-level {
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    
+    /* Contact */
+    #contact {
+      position: relative;
+      background-color: var(--dark-mid);
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .contact-icon {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--dark-light);
+      border-radius: 50%;
+      font-size: 1.3rem;
+      color: var(--primary);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+    
+    .contact-item:hover .contact-icon {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: var(--glow);
+      border-color: var(--primary);
+    }
+    
+    .contact-detail h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    
+    .contact-detail a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-detail a:hover {
+      color: var(--primary);
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      position: relative;
+    }
+    
+    .form-control {
+      width: 100%;
+      background-color: var(--dark-light);
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      border-radius: 5px;
+      padding: 1rem;
+      color: var(--text-main);
+      font-family: 'Space Grotesk', sans-serif;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+    
+    .form-label {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      color: var(--text-dim);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .form-control:focus + .form-label,
+    .form-control:not(:placeholder-shown) + .form-label {
+      transform: translateY(-1.5rem) scale(0.8);
+      color: var(--primary);
+      background-color: var(--dark-mid);
+      padding: 0 0.5rem;
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Space Grotesk', sans-serif;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      align-self: flex-start;
+    }
+    
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+    
+    .submit-btn:hover::before {
+      left: 0;
+    }
+    
+    .submit-btn:hover {
+      color: var(--dark);
+      box-shadow: var(--glow);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(0, 255, 255, 0.1);
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-link {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--dark-light);
+      border-radius: 50%;
+      font-size: 1.3rem;
+      color: var(--primary);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+    
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--glow);
+      border-color: var(--primary);
+    }
+    
+    .copyright {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+    }
+    
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Media Queries */
+    @media (max-width: 992px) {
+      .about-grid,
+      .skills-grid,
+      .education-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .name-glitch {
+        font-size: 3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background-color: var(--dark-mid);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        z-index: 100;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      nav a {
+        margin: 1rem 0;
+      }
+      
+      .hamburger {
+        display: flex;
+        z-index: 101;
+      }
+      
+      .hamburger.active span:first-child {
+        transform: rotate(45deg);
+      }
+      
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active span:last-child {
+        transform: rotate(-45deg);
+      }
+      
+      .name-glitch {
+        font-size: 2.5rem;
+      }
+      
+      .title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .name-glitch {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .cursor, .cursor-dot {
+        display: none;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGZH8HT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-
-  <!-- Navigation Menu-->
-  <!-- Nav class 1 -->
-  <nav class="hide-on-small-only">
-    <ul class="side-nav fixed section table-of-contents">
-
-      <li class="logo">
-        <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
-          class="brand-logo grey-blue-text">
-          <img src="/assets/img/passport-new.jpeg" class="circle img-responsive profile-pic" alt="avatar">
-        </a>
-      </li>
-
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About me</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li>
-<!--
-      <li class="bold">
-         mdi-av-web small
-             mdi-av-my-library-books small
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>-->
-
-      <li class="bold">
-        <!--
-        ICONS:
-        mdi-action-assessment
-        mdi-social-poll
-        mdi-av-equalizer
-        -->
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        ICONS:
-        -->
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        1. mdi-communication-contacts
-        2. mdi-content-mail
-        3. mdi-communication-email
-        -->
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        ICONS:
-        1. mdi-action-description
-        2. mdi-file-folder
-        3. mdi-file-folder-open
-        4. mdi-file-attachment
-        5. mdi-file-folder-shared
-        -->
-        <!-- <a aria-label="Open Varad's resume in a new tab" href="#resume" target="_blank"
-          onclick="window.open('https://drive.google.com/file/d/1vYi-bMyIsZPve0x_clxY8xsDtiHiOMd3/view?usp=sharing')"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a> -->
-        <a aria-label="Open Varad's resume in a new tab" href="https://drive.google.com/file/d/1jZO4BFnIXNLKIqYtsFJeLn_9qMglXwSK/view?usp=drive_link" target="_blank"
-        class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Nav class 2 -->
-  <nav class="hide-on-large only trigger z-depth-1">
-    <a aria-label="Toggle visibility of the mobile navbar" href="#" data-activates="slide-out"
-      class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    <div class="name-title">
-      <a id="name" aria-label="Navigate to the beginning of the page" href="#" class="teal-text">Varad
-        Bhogayata</a><span class="black-text">Software Developer</span>
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+  
+  <header>
+    <div class="logo">
+      <span class="logo-accent">&lt;</span>DE<span class="logo-accent">/&gt;</span>
     </div>
-  </nav>
-
-  <!-- Nav class 3 -->
-  <nav class="hide-on-large only">
-    <ul id="slide-out" class="side-nav">
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li>
-
-      <li class="bold">
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Open Varad's Resume in a new tab"
-          href="https://drive.google.com/file/d/1msXC-NisiYwbsrxlQ_Z-62YIEM5QFGw4/view?usp=sharing" target="_blank"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Main Content-->
+    
+    <button class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav>
+      <a href="#home">Inicio</a>
+      <a href="#about">Perfil</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#skills">Habilidades</a>
+      <a href="#education">Educación</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+  
   <main>
-    <!-- First Section: Heading lines and image -->
-    <section id="intro" class="section scrollspy full-height">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="col-md-9">
-          <div class="content section-padding valign" style="margin-left: 10%; margin-top: 50px;">
-            <div class="caption">
-              <h2>Hola, soy <span class="teal">Deiby Espinosa.</span></h2>
-              <h5 style="color:#fff">Un <span class="typing" style="font-weight: 300; color:#004d40"></span></h5>
-              <!-- <h5 style="color:#00796b">A <span class="typing" style="font-weight: 300; color:#fff"></span></h5> -->
-              <h5>
-                Autodidacta, Pentester jr de rápido aprendizaje, desarrollador apasionado con una mente curiosa que disfruta resolviendo problemas complejos y desafiantes del mundo
-                real.
-              </h5>
-            </div>
-            <div class="social">
-              <a href="http://linkedin.com/in/deiby-steven-espinosa-peralta/" target="_blank">
-                <button class="icon-btn linkedin">
-                  <i class="fa fa-linkedin"></i>
-                </button>
-              </a>
-              <a href="https://github.com/deibyperalta/" target="_blank">
-                <button class="icon-btn github">
-                  <i class="fa fa-github"></i>
-                </button>
-              </a>
-
-              <!-- <a href="https://angel.co/u/varad_bhogayata" target="_blank">
-                <button class="icon-btn angellist">
-                  <i class="fa fa-angellist"></i>
-                </button>
-              </a> -->
-
-              <!-- <a href="http://linkedin.com/in/varadbhogayata" target="_blank">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-
-                  </span>
-              </a> -->
-            </div>
-            <div class='buttons'>
-              <a href="#about" class="readme">Read More</a>
-              <a href="#contact" class="contactme">Contact Me</a>
-            </div>
+    <section id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-content" data-aos="fade-up">
+        <h1 class="name-glitch">Deiby Espinosa</h1>
+        <h2 class="title">Ingeniero de sistemas | Analista de ciberseguridad </h2>
+        <a href="#about" class="hero-cta">Conoce más</a>
+      </div>
+    </section>
+    
+    <section id="about" data-aos="fade-up">
+      <h2 class="section-title">Mi Perfil</h2>
+      <div class="about-grid">
+        <div class="about-image" data-aos="fade-right">
+          <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg" alt="Cybersecurity Expert">
+        </div>
+        <div class="about-content" data-aos="fade-left">
+          <p>
+            Ingeniero de Sistemas con experiencia en hacking ético, pruebas de penetración y auditorías de seguridad.
+            Sólidos conocimientos en detección de vulnerabilidades, protocolos de red (TCP/IP, DNS, DHCP) y sistemas 
+            operativos Windows, Linux y macOS.
+          </p>
+          <p>
+            Manejo de herramientas como Nessus, Nmap, OWASP, Burp Suite y Wireshark. Con experiencia en
+            scripting con Python, Bash para la automatización de pruebas de seguridad.
+          </p>
+          <div class="tech-icons">
+            <i class="fab fa-linux tech-icon" title="Linux"></i>
+            <i class="fab fa-windows tech-icon" title="Windows"></i>
+            <i class="fab fa-apple tech-icon" title="macOS"></i>
+            <i class="fab fa-python tech-icon" title="Python"></i>
+            <i class="fab fa-js-square tech-icon" title="JavaScript"></i>
+            <i class="fas fa-terminal tech-icon" title="Bash"></i>
+            <i class="fas fa-shield-alt tech-icon" title="Cybersecurity"></i>
+            <i class="fas fa-network-wired tech-icon" title="Networking"></i>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Second Section: About -->
-    <section id="about" class="section scrollspy">
-      <h3 class="page-title white-text teal">About me</h3>
-      <div class="container flow-text">
-        <!-- <blockquote>
-          <h2>
-            A Software Developer with a passion for Backend Development and Artificial Intelligence.
-
-          </h2>
-        </blockquote> -->
-        <p>
-          Ingeniero de sistemas con experiencia en ciberseguridad, desarrollo de
-software y administración de infraestructuras tecnológicas. Sólidos
-conocimientos en detección de vulnerabilidades, auditorías de seguridad
-y herramientas como Nessus, Nmap y OWASP. Conocimiento en scripting
-con Python, Bash y PowerShell, así como en la implementación de
-soluciones para optimizar infraestructura y seguridad tecnológica.
-        </p>
-        <p>
-          <ul>
-            <li><b>Languages:</b> Python, TypeScript, JavaScript, Python, Bash Scripting</li>
-            <li><b>Databases:</b> MySQL, PostgreSQL, SQL server</li>
-            <li><b>Frameworks:</b> Angular, TypeScrip, Node.js, Angular Material, Nestjs, Android Studio</li>
-              <li><b>OS & Servers:</b> Kali linux, Parrot Security, Ubuntu Server</li>
-            <li><b>Tools & Technologies:</b> Git, Docker, AWS, JIRA</li>
+    
+    <section id="experience" data-aos="fade-up">
+      <h2 class="section-title">Experiencia Laboral</h2>
+      <div class="experience-container">
+        <div class="experience-card" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="job-title">Cybersecurity Lead | Full Stack Developer</h3>
+          <h4 class="company">KosmetikOn</h4>
+          <div class="duration">
+            <i class="far fa-calendar-alt"></i>
+            28/03/2023 - Actualmente
+          </div>
+          <div class="job-description">
+            <ul>
+              <li>Uso de herramientas de hacking ético como Nessus, Nmap y OWASP para identificar riesgos de seguridad.</li>
+              <li>Monitoreo y protección de servidores contra ataques cibernéticos y brechas de seguridad.</li>
+              <li>Implementación de controles de acceso y seguridad en redes para mitigar ataques internos y externos.</li>
+              <li>Automatización de procesos de seguridad con Python y Bash, mejorando la eficiencia en la detección de amenazas.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-card" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="job-title">Full stack Developer</h3>
+          <h4 class="company">Santacruz del Valle Servicios</h4>
+          <div class="duration">
+            <i class="far fa-calendar-alt"></i>
+            01/02/2022 - 30/02/2023
+          </div>
+          <div class="job-description">
+            <ul>
+              <li>Administración y configuración de servidores en entornos Linux y Windows, garantizando su seguridad.</li>
+              <li>Implementación de mejores prácticas de ciberseguridad para reducir la exposición a amenazas.</li>
+              <li>Desarrollé sistemas personalizados que optimizaron los flujos de trabajo de la empresa utilizando Node.js y Angular.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-card" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="job-title">Android Developer Freelance</h3>
+          <h4 class="company">Universidad Popular del Cesar</h4>
+          <div class="duration">
+            <i class="far fa-calendar-alt"></i>
+            15/01/2021 - 30/06/2021
+          </div>
+          <div class="job-description">
+            <ul>
+              <li>Implementar el entorno de desarrollo integrado oficial para la plataforma Android (Android studio) para la construcción de la aplicación móvil, con el fin de crear una aplicación para Android.</li>
+              <li>Configuración y mantenimiento de servidores en la nube, así como la integración de soluciones de SQLite para respaldo en dispositivos móviles.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="skills" data-aos="fade-up">
+      <h2 class="section-title">Habilidades</h2>
+      <div class="skills-grid">
+        <div class="technical-skills" data-aos="fade-right">
+          <h3>Habilidades Técnicas</h3>
+          <div class="skills-badges">
+            <div class="skill-badge">
+              <i class="fas fa-bug"></i>
+              Pruebas de penetración
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-user-secret"></i>
+              Hacking ético
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-shield-alt"></i>
+              Auditorías de seguridad
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-lock"></i>
+              Cumplimiento normativo
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-search"></i>
+              Nessus
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-network-wired"></i>
+              Nmap
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-traffic-light"></i>
+              Burp Suite
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-bug"></i>
+              OWASP
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-skull"></i>
+              Metasploit
+            </div>
+            <div class="skill-badge">
+              <i class="fab fa-git"></i>
+              Git
+            </div>
+            <div class="skill-badge">
+              <i class="fab fa-github"></i>
+              GitHub
+            </div>
+            <div class="skill-badge">
+              <i class="fab fa-gitlab"></i>
+              GitLab
+            </div>
+            <div class="skill-badge">
+              <i class="fab fa-linux"></i>
+              Kali Linux
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-feather-alt"></i>
+              Parrot
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-database"></i>
+              SQL Server
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-elephant"></i>
+              PostgreSQL
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-server"></i>
+              Servidores
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-chart-line"></i>
+              Monitoreo
+            </div>
+          </div>
+        </div>
+        
+        <div class="soft-skills" data-aos="fade-left">
+          <h3>Habilidades Blandas</h3>
+          <ul class="soft-skills-list">
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Trabajo en Equipo</span>
+                <span>95%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%"></div>
+              </div>
+            </li>
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Comunicación</span>
+                <span>90%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+              </div>
+            </li>
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Adaptación</span>
+                <span>85%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+            </li>
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Autoaprendizaje</span>
+                <span>95%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%"></div>
+              </div>
+            </li>
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Aprendizaje continuo</span>
+                <span>90%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+              </div>
+            </li>
           </ul>
-
-        </p>
-        <p>
-          Busco una oportunidad para trabajar en un puesto desafiante combinando mis habilidades en Ingeniería de Software, que proporcione desarrollo profesional,
-          experiencias interesantes y crecimiento personal.
-        </p>
+        </div>
       </div>
     </section>
-
-
-    <!-- Third Section: Experience -->
-    <section id="experience" class="section scrollspy">
-      <h3 class="page-title white-text teal">Experience</h3>
-      <div class="container">
-
-        <!-- Latest Experience -->
-        
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="" target="_blank"><img alt="SantaCruz logo"
-                    src="https://media.discordapp.net/attachments/1281603798166405132/1362146972454096956/logo.png?ex=680a9039&is=68093eb9&hm=3ca7051ddd5c512377b404491038d8e2ff89a581d5d922f67a0696d010f127a1&=&format=webp&quality=lossless&width=336&height=511" class="responsive-img center-block" /></a>
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://github.com/DeibyPeralta/grado" target="_blank"
-                      class="teal-text hoverline">KosmetikOn</a></span>
-                </p>
-              </div>
+    
+    <section id="education" data-aos="fade-up">
+      <h2 class="section-title">Educación e Idiomas</h2>
+      <div class="education-grid">
+        <div class="education-container" data-aos="fade-right">
+          <h3>Educación</h3>
+          <div class="education-timeline">
+            <div class="education-item">
+              <h4 class="education-title">Maestría de Seguridad Informática</h4>
+              <div class="education-place">Universidad Tecnológica</div>
+              <div class="education-date">2022 - 2024</div>
             </div>
-            <div class="role brown-text text-darken-2">Cybersecurity Lead | Full Stack Developer
-</div>
-            <ul>
-              <li>
-                Diseñé e implementé sistemas de monitoreo y seguridad
-para servidores y bases de datos, mejorando su
-rendimiento y protegiéndolos contra vulnerabilidades.
-              </li>
-              <li>
-                Configuré herramientas de virtualización para optimizar
-recursos y mejorar la seguridad de la infraestructura..
-              </li>
-              <li>
-               Uso de herramientas como Nessus y Nmap para detectar y
-mitigar riesgos en la infraestructura tecnológica.
-              </li>
-              <li>Desarrollé soluciones en el backend utilizando Node.js,
-TypeScript, SQL Server para la creación de APIS.
-              </li>
-               <li>Implemente herramientas de virtualización para optimizar los
-recursos en la infraestructura
-
-              </li>
-                <b>Tools:</b> Node.js, Kali linux, Shell Scripting, Python
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>Abril 2023 - Actualmente </span>
+            <div class="education-item">
+              <h4 class="education-title">Ingeniería de Sistemas</h4>
+              <div class="education-place">Universidad Popular del Cesar</div>
+              <div class="education-date">2016 - 2021</div>
+            </div>
           </div>
         </div>
         
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="" target="_blank"><img alt="SantaCruz logo"
-                    src="/assets/img/logoSantaCruz.png" class="responsive-img center-block" /></a>
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://github.com/DeibyPeralta/grado" target="_blank"
-                      class="teal-text hoverline">SantaCruz del Valle Servicios</a></span>
-                </p>
-              </div>
+        <div class="languages-container" data-aos="fade-left">
+          <h3>Idiomas</h3>
+          <div class="language-item">
+            <div class="language-name">
+              <span>Español</span>
+              <span class="language-level">Nativo</span>
             </div>
-            <div class="role brown-text text-darken-2">Desarrollador web</div>
-            <ul>
-              <li>
-                Implementar un sistema de información para la gestión administrativa de la empresa “Santa Cruz
-                Servicios” en la ciudad de Valledupar.
-              </li>
-              <li>
-                Gestión de la infraestructura tecnológica, incluyendo la
-configuración y monitoreo de firewalls y redes seguras.
-              </li>
-              <li>
-                Configuración y monitoreo de firewalls, redes de
-comunicación y servidores para garantizar la seguridad y
-continuidad del servicio.
-              </li>
-              <li>Desarrollé sistemas personalizados que optimizaron los flujos
-de trabajo de la empresa utilizando Node.js y Angular.
-              </li>
-                <b>Tools:</b> Node.js, NestJS, TypeScript, AngularJS, MySQL, Android Studio
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>Enero 2022 - Febrero 2023 </span>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="" target="_blank"><img alt="Mi colegio hogar"
-                    src="/assets/img/" class="responsive-img center-block" /></a>
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="" target="_blank"
-                      class="teal-text hoverline">Mi colegio hogar</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Desarrollador web</div>
-            <ul>
-              <li>
-                Implementar el framework de angular - .net core para la construcción de la plataforma
-                web, con el fin de que los maestros puedan registrar las actividades y/o tomar notas
-                de las mismas, los acudientes de los alumnos puedan ver el estado académico de cada
-                estudiante, el administrador pueda registrar docentes como asignar el horario para cada curso.
-              </li>
-              <li>Mejora del tiempo de respuesta en un 35% mediante la implementación del sistema web y cambio
-                del diseño de la base de datos.
-              </li>
-                <b>Tools:</b> .Net Core, Angular, Boostrap, TypeScript, Git hub
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>Marzo. 2021 - Julio. 2021 </span>
-          </div>
-        </div>
-
-        <!-- Experience 2 -->
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <img alt="vallenapp" src="/assets/img/vallenap.png" class="responsive-img center-block" />
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://github.com/DeibyPeralta/Proyecto" class="teal-text hoverline"> Vallenapp</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Android Developer</div>
-            <ul>
-              <li>
-                Implementar el entorno de desarrollo integrado oficial para la plataforma Android (Android studio) para la construcción de la
-                aplicación móvil, con el fin de crear una aplicación para Android.</li>
-              <li>
-                Además, conectar el APP con una API REST la cual usa firestore y en caso de no tener
-                acceso a internet se conectará a sqlite. Así mismo, conectarse a google maps con el
-                fin de mostrar la ubicación y poderse guiar mejor.
-              </li>
-                <b>Tools:</b> Android Studio, Sql lite, Git hub, Api rest, Git flow
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>Febrero. 2020 - Octubre. 2020</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- Fifth Section: Skills -->
-    <section id="skills" class="section scrollspy">
-      <h3 class="page-title white-text teal">Skills</h3>
-      <div class="container">
-        <!-- Languages and Databases -->
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Languages and Databases</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/typescript.png" class="responsive-img" />Typescript
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/html5-300x300.jpg" class="responsive-img" />HTML5
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/python-logo-1-300x300.jpg" class="responsive-img" />Python
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/mysql-logo-1-300x300.jpg" class="responsive-img" />MySQL
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/sql-server-1.png" class="responsive-img" />SQL Server
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/shell-logo-1-300x300.jpg" class="responsive-img" />Shell Scripting
-              </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%"></div>
             </div>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Frameworks</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/angular.png" class="responsive-img" />Angular
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/nodejs.png" class="responsive-img" />Node js
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/AndroidStudio.png" class="responsive-img" />Android Studio
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/nestjs.png" class="responsive-img" />NEST js
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/bootstrap.png" class="responsive-img" />Angular material
-              </div>
+          <div class="language-item">
+            <div class="language-name">
+              <span>Inglés</span>
+              <span class="language-level">A2</span>
             </div>
-          </div>
-        </div>
-
-        <!-- Other -->
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Other</h4>
-            <div class="row text-center">
-
-
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/git.png" class="responsive-img" />Git
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/github.png" class="responsive-img" />GitHub
-              </div>
-              <div class="col s4 m2">
-                <img alt="" width="150" height="240" src="/assets/img/parrot.png" class="responsive-img" />Parrot
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/heroku.png" class="responsive-img" />Heroku
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Seventh Section: Education -->
-    <section id="education" class="section scrollspy">
-      <h3 class="page-title white-text teal">Education</h3>
-      <div class="container">
-        <div class="row">
-          <!-- Education -->
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://www.asu.edu/" target="_blank" class="teal-text hoverline">Universidad Popular del Cesar</a></span>
-                </p>
-                <p class="brown-text">Valledupar, Cesar</p>
-                <p>
-                  <b>Título: </b>Ingeniero de sistemas
-                  <br>
-                </p>
-
-                <ul>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://www.asu.edu/" target="_blank" class="teal-text hoverline">Universidad Da Vinci</a></span>
-                </p>
-                <p class="brown-text">Valledupar, Cesar</p>
-                <p>
-                  <b>Título: </b>Magíster en seguridad informática
-                  <br>
-                </p>
-
-                <ul>
-              </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 40%"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Eight Section: Contact -->
-    <section id="contact" class="section scrollspy full-height">
-      <h3 class="page-title white-text teal">Contact me</h3>
-      <div class="container">
-        <p>
-          <a aria-label="Call Deiby" data-position="top" data-tooltip="Call Deiby"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-phone"></i><a
-              aria-label="Call Deiby">+57 3227918995</a></a>
-        </p>
-        <p>
-          <a aria-label="Email Deiby" href="mailto:deibysp39@gmail.com" target="_blank" data-position="top"
-            data-tooltip="Email Deiby" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-envelope"></i><a aria-label="Email Deiby" href="mailto:deibysp39@gmail.com"
-              class="hoverline">deibysp39@gmail.com</a></a>
-        </p>
-        <p>
-          <a aria-label="View Deiby on GitHub" href="http://github.com/deibyperalta" target="_blank"
-            data-position="top" data-tooltip="View Deiby on GitHub"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-github"></i><a
-              aria-label="Deiby on Github" href="http://github.com/deibyperalta" class="hoverline"
-              target="_blank">github.com/deibyperalta</a></a>
-        </p>
-        <p>
-          <a aria-label="View Deiby on LinkedIn" href="http://linkedin.com/in/deiby-steven-espinosa-peralta/" target="_blank"
-            data-position="top" data-tooltip="View Deiby on LinkedIn"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-linkedin"></i><a aria-label="Deiby on LinkedIn" href="http://linkedin.com/in/deiby-steven-espinosa-peralta/"
-              class="hoverline" target="_blank">linkedin.com/in/deiby-steven-espinosa-peralta/</a></a>
-        </p>
+    
+    <section id="contact" data-aos="fade-up">
+      <h2 class="section-title">Contacto</h2>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-detail">
+              <h4>Teléfono</h4>
+              <a href="tel:+573227918995">+57 322 791 8995</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-detail">
+              <h4>Email</h4>
+              <a href="mailto:deibysp39@gmail.com">deibysp39@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="contact-detail">
+              <h4>LinkedIn</h4>
+              <a href="https://www.linkedin.com/in/deiby-steven-espinosa-peralta/" target="_blank">Deiby Steven Espinosa Peralta</a>
+            </div>
+          </div>
+        </div>
+        
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="contact-form" data-aos="fade-left">
+            <!-- Campo oculto con tu Access Key -->
+            <input type="hidden" name="access_key" value="c5caa891-9d41-4724-b7aa-d82b05b5f0cd">
+            
+            <!-- Añade atributos 'name' a tus campos (IMPORTANTE) -->
+            <div class="form-group">
+              <input type="text" class="form-control" id="name" name="name" placeholder=" " required>
+              <label for="name" class="form-label">Nombre</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" class="form-control" id="email" name="email" placeholder=" " required>
+              <label for="email" class="form-label">Email</label>
+            </div>
+            
+            <div class="form-group">
+              <textarea class="form-control" id="message" name="message" placeholder=" " required></textarea>
+              <label for="message" class="form-label">Mensaje</label>
+            </div>
+            
+            <!-- Opcional: Redirección después de enviar -->
+            <!-- <input type="hidden" name="redirect" value="https://tusitio.com/gracias.html"> -->
+            
+            <button type="submit" class="submit-btn">Enviar mensaje</button>
+        </form>
       </div>
     </section>
   </main>
+  
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/deibyperalta/" class="social-link" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/deiby.peralta/" class="social-link" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/deiby-steven-espinosa-peralta/" class="social-link" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <p class="copyright">&copy; 2025 Deiby Espinosa. Todos los derechos reservados.</p>
+</footer>
 
-  <!-- typed.js -->
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script type="text/javascript">
-    var typed = new Typed('.typing',{
-      strings: ["Entusiasta", "Desarrollador web", "Ingeniero"],
-      loop: true,
-      typeSpeed: 80,
-      backSpeed: 40
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  
+  <script id="app-script">
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
+      mirror: true
+    });
+    
+    // Custom cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      cursorDot.style.left = e.clientX + 'px';
+      cursorDot.style.top = e.clientY + 'px';
+    });
+    
+    document.addEventListener('mousedown', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    });
+    
+    document.addEventListener('mouseup', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+    
+    // Elements hover effect
+    const hoverables = document.querySelectorAll('a, button, .skill-badge, .social-link');
+    hoverables.forEach(hoverable => {
+      hoverable.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        cursor.style.border = '1px solid var(--primary)';
+        cursor.style.background = 'rgba(0, 255, 255, 0.2)';
+      });
+      
+      hoverable.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursor.style.border = '2px solid var(--primary)';
+        cursor.style.background = 'transparent';
+      });
+    });
+    
+    // Menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+    
+    // Close menu when a nav item is clicked
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+    
+    // Sticky header
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Animate progress bars when in view
+    const progressFills = document.querySelectorAll('.progress-fill');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transform = 'scaleX(1)';
+        } else {
+          entry.target.style.transform = 'scaleX(0)';
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    progressFills.forEach(fill => {
+      observer.observe(fill);
+    });
+    
+    // Form submission
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      // In a real app, you would send this data to a server
+      // For now, we'll just simulate a success with an alert
+      alert(`¡Gracias ${name}! Tu mensaje ha sido enviado. Te contactaremos pronto.`);
+      contactForm.reset();
     });
   </script>
-
-
-  <!-- jQuery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-  <!-- Materialize - Compiled and minified JavaScript-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
-  <script>
-    // Materialize - Initializers
-    $(document).ready(function () {
-      $(".scrollspy").scrollSpy()
-      // Initialize collapse button
-      $(".button-collapse").sideNav({
-        menuWidth: 190, // Default is 240
-        edge: "left", // Choose the horizontal origin
-        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      })
-    })
-  </script>
 </body>
-
 </html>
