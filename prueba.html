@@ -1,308 +1,1471 @@
-<!-- Fourth Section: Projects ->
-    <section id="projects" class="section scrollspy">
-      <!-- <h3 class="page-title white-text teal">Projects</h3> ->
-      <div class="container">
-        <div class="row">
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="music streaming app" src="/assets/img/project-music-player.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Music Player Web-App<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A music streaming web app based on Django
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> ->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Django, HTML, CSS, Bootstrap, SQLite, AWS S3, Heroku</li>
-                  <li>Register/login to the web app(with OAuth-based Google Sign-In).</li>
-                  <li>Search and filter songs based on language and singer.</li>
-                  <li>Create multiple playlists and add/remove songs to/from playlist.</li>
-                  <li>Scroll through recently played/viewed songs.</li>
-
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit " href="https://galvanic-music.herokuapp.com/" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/music-player"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deiby Espinosa | Cybersecurity Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style id="app-style">
+    :root {
+      --primary: #00ffff;
+      --primary-dark: #00cccc;
+      --secondary: #6610f2;
+      --dark: #050505;
+      --dark-mid: #121212;
+      --dark-light: #1e1e1e;
+      --text-main: #e0e0e0;
+      --text-dim: #a0a0a0;
+      --gradient-1: linear-gradient(135deg, var(--primary), var(--secondary));
+      --glow: 0 0 10px var(--primary), 0 0 20px var(--primary-dark);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background-color: var(--dark-mid);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 3px;
+    }
+    
+    /* Cursor */
+    .cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.2s, width 0.2s, height 0.2s, background 0.2s;
+      mix-blend-mode: difference;
+    }
+    
+    .cursor-dot {
+      width: 5px;
+      height: 5px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      padding: 1rem 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-accent {
+      color: var(--primary);
+      margin-right: 0.3rem;
+      position: relative;
+    }
+    
+    .logo-accent::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 2rem;
+      height: 2rem;
+      background: transparent;
+      border: none;
+      padding: 0;
+      z-index: 101;
+    }
+    
+    .hamburger span {
+      width: 2rem;
+      height: 0.25rem;
+      background-color: var(--primary);
+      border-radius: 0.5rem;
+      transition: all 0.3s linear;
+      transform-origin: 1px;
+    }
+    
+    /* Hero Section */
+    #home {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 1.5rem;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+      pointer-events: none;
+      background: 
+        linear-gradient(45deg, var(--dark) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--dark) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--dark) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--dark) 75%);
+      background-size: 20px 20px;
+      background-color: var(--dark-mid);
+    }
+    
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .name-glitch {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      color: var(--text-main);
+      letter-spacing: 3px;
+      text-shadow: var(--glow);
+      animation: glitch 5s infinite;
+    }
+    
+    @keyframes glitch {
+      0% { text-shadow: var(--glow); }
+      2% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
+      3% { text-shadow: -2px -2px var(--primary), 2px 2px var(--secondary); }
+      4% { text-shadow: var(--glow); }
+      97% { text-shadow: var(--glow); }
+      98% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
+      99% { text-shadow: -2px -2px var(--primary), 2px 2px var(--secondary); }
+      100% { text-shadow: var(--glow); }
+    }
+    
+    .title {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.5s;
+    }
+    
+    .hero-cta {
+      display: inline-block;
+      background: transparent;
+      color: var(--primary);
+      font-size: 1rem;
+      padding: 0.8rem 2rem;
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1s;
+    }
+    
+    .hero-cta:hover {
+      box-shadow: var(--glow);
+    }
+    
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+    
+    .hero-cta:hover::before {
+      left: 0;
+    }
+    
+    .hero-cta:hover {
+      color: var(--dark);
+    }
+    
+    /* Sections common styles */
+    section {
+      padding: 6rem 1.5rem;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--gradient-1);
+      border-radius: 2px;
+    }
+    
+    /* About */
+    #about {
+      position: relative;
+      background-color: var(--dark-mid);
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-image {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      filter: grayscale(20%);
+      transition: filter 0.5s ease;
+    }
+    
+    .about-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 255, 255, 0.1), transparent);
+      pointer-events: none;
+    }
+    
+    .about-image:hover img {
+      filter: grayscale(0%);
+    }
+    
+    .about-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .tech-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .tech-icon {
+      font-size: 1.8rem;
+      color: var(--text-dim);
+      transition: all 0.3s ease;
+    }
+    
+    .tech-icon:hover {
+      color: var(--primary);
+      transform: translateY(-5px);
+      text-shadow: var(--glow);
+    }
+    
+    /* Experience */
+    #experience {
+      position: relative;
+    }
+    
+    .experience-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .experience-card {
+      background-color: var(--dark-mid);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0%;
+      background: var(--gradient-1);
+      transition: height 0.5s ease;
+    }
+    
+    .experience-card:hover::before {
+      height: 100%;
+    }
+    
+    .experience-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: var(--primary-dark);
+    }
+    
+    .job-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .company {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .duration {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .duration i {
+      margin-right: 0.5rem;
+    }
+    
+    .job-description {
+      margin-top: 1rem;
+    }
+    
+    .job-description ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    
+    .job-description li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .job-description li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-family: 'Roboto Mono', monospace;
+    }
+    
+    /* Skills */
+    #skills {
+      position: relative;
+      background-color: var(--dark-mid);
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .technical-skills h3,
+    .soft-skills h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    
+    .technical-skills h3::after,
+    .soft-skills h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-1);
+    }
+    
+    .skills-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .skill-badge {
+      background-color: var(--dark-light);
+      color: var(--text-main);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-badge i {
+      color: var(--primary);
+    }
+    
+    .skill-badge:hover {
+      transform: scale(1.05);
+      background-color: var(--dark);
+      border-color: var(--primary);
+      box-shadow: var(--glow);
+    }
+    
+    .soft-skills-list {
+      list-style: none;
+    }
+    
+    .soft-skill {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .soft-skill-name {
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background-color: var(--dark-light);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient-1);
+      border-radius: 4px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1s ease;
+    }
+    
+    /* Education and Languages */
+    #education {
+      position: relative;
+    }
+    
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .education-container h3,
+    .languages-container h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    
+    .education-container h3::after,
+    .languages-container h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-1);
+    }
+    
+    .education-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .education-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background-color: rgba(0, 255, 255, 0.2);
+      border-radius: 1px;
+    }
+    
+    .education-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .education-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      background-color: var(--primary);
+      border-radius: 50%;
+      box-shadow: var(--glow);
+    }
+    
+    .education-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+    }
+    
+    .education-place {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    
+    .education-date {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    
+    .language-item {
+      margin-bottom: 1.5rem;
+    }
+    
+    .language-name {
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+    
+    .language-level {
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    
+    /* Contact */
+    #contact {
+      position: relative;
+      background-color: var(--dark-mid);
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .contact-icon {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--dark-light);
+      border-radius: 50%;
+      font-size: 1.3rem;
+      color: var(--primary);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+    
+    .contact-item:hover .contact-icon {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: var(--glow);
+      border-color: var(--primary);
+    }
+    
+    .contact-detail h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    
+    .contact-detail a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-detail a:hover {
+      color: var(--primary);
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      position: relative;
+    }
+    
+    .form-control {
+      width: 100%;
+      background-color: var(--dark-light);
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      border-radius: 5px;
+      padding: 1rem;
+      color: var(--text-main);
+      font-family: 'Space Grotesk', sans-serif;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+    
+    .form-label {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      color: var(--text-dim);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .form-control:focus + .form-label,
+    .form-control:not(:placeholder-shown) + .form-label {
+      transform: translateY(-1.5rem) scale(0.8);
+      color: var(--primary);
+      background-color: var(--dark-mid);
+      padding: 0 0.5rem;
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Space Grotesk', sans-serif;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      align-self: flex-start;
+    }
+    
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+    
+    .submit-btn:hover::before {
+      left: 0;
+    }
+    
+    .submit-btn:hover {
+      color: var(--dark);
+      box-shadow: var(--glow);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(0, 255, 255, 0.1);
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-link {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--dark-light);
+      border-radius: 50%;
+      font-size: 1.3rem;
+      color: var(--primary);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+    
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--glow);
+      border-color: var(--primary);
+    }
+    
+    .copyright {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+    }
+    
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Media Queries */
+    @media (max-width: 992px) {
+      .about-grid,
+      .skills-grid,
+      .education-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .name-glitch {
+        font-size: 3rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background-color: var(--dark-mid);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        z-index: 100;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      nav a {
+        margin: 1rem 0;
+      }
+      
+      .hamburger {
+        display: flex;
+        z-index: 101;
+      }
+      
+      .hamburger.active span:first-child {
+        transform: rotate(45deg);
+      }
+      
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active span:last-child {
+        transform: rotate(-45deg);
+      }
+      
+      .name-glitch {
+        font-size: 2.5rem;
+      }
+      
+      .title {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .name-glitch {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .cursor, .cursor-dot {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+  
+  <header>
+    <div class="logo">
+      <span class="logo-accent">&lt;</span>DE<span class="logo-accent">/&gt;</span>
+    </div>
+    
+    <button class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav>
+      <a href="#home">Inicio</a>
+      <a href="#about">Perfil</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#skills">Habilidades</a>
+      <a href="#education">Educación</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-content" data-aos="fade-up">
+        <h1 class="name-glitch">Deiby Espinosa</h1>
+        <h2 class="title">Ingeniero de sistemas | Analista de ciberseguridad </h2>
+        <a href="#about" class="hero-cta">Conoce más</a>
+      </div>
+    </section>
+    
+    <section id="about" data-aos="fade-up">
+      <h2 class="section-title">Mi Perfil</h2>
+      <div class="about-grid">
+        <div class="about-image" data-aos="fade-right">
+          <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg" alt="Cybersecurity Expert">
+        </div>
+        <div class="about-content" data-aos="fade-left">
+          <p>
+            Ingeniero de Sistemas con experiencia en hacking ético, pruebas de penetración y auditorías de seguridad.
+            Sólidos conocimientos en detección de vulnerabilidades, protocolos de red (TCP/IP, DNS, DHCP) y sistemas 
+            operativos Windows, Linux y macOS.
+          </p>
+          <p>
+            Manejo de herramientas como Nessus, Nmap, OWASP, Burp Suite y Wireshark. Con experiencia en
+            scripting con Python, Bash para la automatización de pruebas de seguridad.
+          </p>
+          <div class="tech-icons">
+            <i class="fab fa-linux tech-icon" title="Linux"></i>
+            <i class="fab fa-windows tech-icon" title="Windows"></i>
+            <i class="fab fa-apple tech-icon" title="macOS"></i>
+            <i class="fab fa-python tech-icon" title="Python"></i>
+            <i class="fab fa-js-square tech-icon" title="JavaScript"></i>
+            <i class="fas fa-terminal tech-icon" title="Bash"></i>
+            <i class="fas fa-shield-alt tech-icon" title="Cybersecurity"></i>
+            <i class="fas fa-network-wired tech-icon" title="Networking"></i>
           </div>
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="quiz app" src="/assets/img/project-quizup-logo-1.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Quiz Web-App<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A quiz playing web app based on Django
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Django, HTML, CSS, Bootstrap, SQLite, Heroku</li>
-                  <li>Register/login to the web app(with OAuth-based Google Sign-In).</li>
-                  <li>Play Quiz and see the leaderboard</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit " href="https://quiz-up-app.herokuapp.com/" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/QuizUp"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 1. Django Project -->
-          <!-- <div class="col s12 m6 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="django web app" src="/assets/img/project-library-logo.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Local Library Web-App<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A web-app that creates an online catalog for a small local library, where users can browse available books and manage their accounts.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> HTML, CSS, Bootstrap, SQLite, Django, Heroku</li>
-                  <li>Users can view list and detail information for books and authors.</li>
-                  <li>Admin users can create and manage models.</li>
-                  <li>Librarians can renew reserved books.</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit " href="https://django-local-lib.herokuapp.com" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/django-local-library"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- Flask Project -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of web app" src="/assets/img/project-blog-logo.jpg"
-                style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Blog Web-App<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A simple and extensible blog web-app based on Flask.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title teal-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> HTML, CSS, Bootstrap, Flask, SQLAlchemy, Postgresql, Python</li>
-                  <li>Users can view posts and contact the admin via Contact Page.</li>
-                  <li>Admin can Add, Delete, Update posts.</li>
-
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit Blog website" href="https://flask-heroku-blog.herokuapp.com/" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/flask-blog"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- VQA -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/project-aim_bert-bias.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Visual Question Answering<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  An attention-based classification model that aims at generating an answer for a given input image.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title teal-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Incorporated Convolution Neural Networks (CNN) for extracting image features and Long Short Term
-                    Memory for extracting question
-                    embeddings.</li>
-                  <li>Tested the model on the COCO dataset, abstract scenes images, and got 69% overall accuracy on the
-                    VQA evaluation metric.</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project"
-                    href="https://github.com/varadbhogayata/visual-question-answering" target="_blank"
-                    data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Video Summarizer -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/computer-vision-v2-04.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Video Summarizer<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A Seq2Seq model that generates a short summary of the given input video.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Incorporated CNN to detect and classify objects in the video frames and Long Short Term Memory for
-                    generating a summary.</li>
-                  <li>Evaluated the model on MSVD (Microsoft Video Description Corpus) dataset; achieved 0.77, 0.71,
-                    0.52 scores respectively on ROGUE,
-                    BLEU, METEOR evaluation metrics.</li>
-
-                </ul>
-                <!-- TODO: UPLOAD THIS PROJECT ON GITHUB -->
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image Generator -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/gan.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Image Generator<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  An image generator based on the concept of adversarial networks (GANs)
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Developed system was tested on a human-face database and loss was calculated by comparing the PCAs
-                    of generated and original image.</li>
-                  <li>Calculated difference in PCA was less than 10%, depicting the successful generation of an image by
-                    the generator.</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Head Counting System ->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/Blog-Images-Forget-Machine-Learning-Humans-Still-Have-a-Lot-to-Learn-Part-II.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Head Counting System<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A system that calculates the attendance of the class from a panoramic image of a live classroom.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!- TODO: change this -- only close button ->
-                <!- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> ->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Used Singular Value Decomposition for image compression; applied various image processing
-                    techniques and morphological operations to
-                    detect the number of heads.</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project"
-                    href="https://github.com/varadbhogayata/visual-question-answering" target="_blank"
-                    data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!- ************* ->
         </div>
       </div>
-    </section> -->
+    </section>
+    
+    <section id="experience" data-aos="fade-up">
+      <h2 class="section-title">Experiencia Laboral</h2>
+      <div class="experience-container">
+        <div class="experience-card" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="job-title">Cybersecurity Lead | Full Stack Developer</h3>
+          <h4 class="company">KosmetikOn</h4>
+          <div class="duration">
+            <i class="far fa-calendar-alt"></i>
+            28/03/2023 - Actualmente
+          </div>
+          <div class="job-description">
+            <ul>
+              <li>Uso de herramientas de hacking ético como Nessus, Nmap y OWASP para identificar riesgos de seguridad.</li>
+              <li>Monitoreo y protección de servidores contra ataques cibernéticos y brechas de seguridad.</li>
+              <li>Implementación de controles de acceso y seguridad en redes para mitigar ataques internos y externos.</li>
+              <li>Automatización de procesos de seguridad con Python y Bash, mejorando la eficiencia en la detección de amenazas.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-card" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="job-title">Full stack Developer</h3>
+          <h4 class="company">Santacruz del Valle Servicios</h4>
+          <div class="duration">
+            <i class="far fa-calendar-alt"></i>
+            01/02/2022 - 30/02/2023
+          </div>
+          <div class="job-description">
+            <ul>
+              <li>Administración y configuración de servidores en entornos Linux y Windows, garantizando su seguridad.</li>
+              <li>Implementación de mejores prácticas de ciberseguridad para reducir la exposición a amenazas.</li>
+              <li>Desarrollé sistemas personalizados que optimizaron los flujos de trabajo de la empresa utilizando Node.js y Angular.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-card" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="job-title">Android Developer Freelance</h3>
+          <h4 class="company">Universidad Popular del Cesar</h4>
+          <div class="duration">
+            <i class="far fa-calendar-alt"></i>
+            15/01/2021 - 30/06/2021
+          </div>
+          <div class="job-description">
+            <ul>
+              <li>Implementar el entorno de desarrollo integrado oficial para la plataforma Android (Android studio) para la construcción de la aplicación móvil, con el fin de crear una aplicación para Android.</li>
+              <li>Configuración y mantenimiento de servidores en la nube, así como la integración de soluciones de SQLite para respaldo en dispositivos móviles.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="skills" data-aos="fade-up">
+      <h2 class="section-title">Habilidades</h2>
+      <div class="skills-grid">
+        <div class="technical-skills" data-aos="fade-right">
+          <h3>Habilidades Técnicas</h3>
+          <div class="skills-badges">
+            <div class="skill-badge">
+              <i class="fas fa-bug"></i>
+              Pruebas de penetración
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-user-secret"></i>
+              Hacking ético
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-shield-alt"></i>
+              Auditorías de seguridad
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-lock"></i>
+              Cumplimiento normativo
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-search"></i>
+              Nessus
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-network-wired"></i>
+              Nmap
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-traffic-light"></i>
+              Burp Suite
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-bug"></i>
+              OWASP
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-skull"></i>
+              Metasploit
+            </div>
+            <div class="skill-badge">
+              <i class="fab fa-git"></i>
+              Git
+            </div>
+            <div class="skill-badge">
+              <i class="fab fa-github"></i>
+              GitHub
+            </div>
+            <div class="skill-badge">
+              <i class="fab fa-gitlab"></i>
+              GitLab
+            </div>
+            <div class="skill-badge">
+              <i class="fab fa-linux"></i>
+              Kali Linux
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-feather-alt"></i>
+              Parrot
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-database"></i>
+              SQL Server
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-elephant"></i>
+              PostgreSQL
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-server"></i>
+              Servidores
+            </div>
+            <div class="skill-badge">
+              <i class="fas fa-chart-line"></i>
+              Monitoreo
+            </div>
+          </div>
+        </div>
+        
+        <div class="soft-skills" data-aos="fade-left">
+          <h3>Habilidades Blandas</h3>
+          <ul class="soft-skills-list">
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Trabajo en Equipo</span>
+                <span>95%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%"></div>
+              </div>
+            </li>
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Comunicación</span>
+                <span>90%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+              </div>
+            </li>
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Adaptación</span>
+                <span>85%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+            </li>
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Autoaprendizaje</span>
+                <span>95%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%"></div>
+              </div>
+            </li>
+            <li class="soft-skill">
+              <div class="soft-skill-name">
+                <span>Aprendizaje continuo</span>
+                <span>90%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <section id="education" data-aos="fade-up">
+      <h2 class="section-title">Educación e Idiomas</h2>
+      <div class="education-grid">
+        <div class="education-container" data-aos="fade-right">
+          <h3>Educación</h3>
+          <div class="education-timeline">
+            <div class="education-item">
+              <h4 class="education-title">Maestría de Seguridad Informática</h4>
+              <div class="education-place">Universidad Tecnológica</div>
+              <div class="education-date">2022 - 2024</div>
+            </div>
+            <div class="education-item">
+              <h4 class="education-title">Ingeniería de Sistemas</h4>
+              <div class="education-place">Universidad Popular del Cesar</div>
+              <div class="education-date">2016 - 2021</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="languages-container" data-aos="fade-left">
+          <h3>Idiomas</h3>
+          <div class="language-item">
+            <div class="language-name">
+              <span>Español</span>
+              <span class="language-level">Nativo</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%"></div>
+            </div>
+          </div>
+          <div class="language-item">
+            <div class="language-name">
+              <span>Inglés</span>
+              <span class="language-level">A2</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 40%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact" data-aos="fade-up">
+      <h2 class="section-title">Contacto</h2>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-detail">
+              <h4>Teléfono</h4>
+              <a href="tel:+573227918995">+57 322 791 8995</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-detail">
+              <h4>Email</h4>
+              <a href="mailto:deibysp39@gmail.com">deibysp39@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="contact-detail">
+              <h4>LinkedIn</h4>
+              <a href="https://www.linkedin.com/in/deiby-steven-espinosa-peralta/" target="_blank">Deiby Steven Espinosa Peralta</a>
+            </div>
+          </div>
+        </div>
+        
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="contact-form" data-aos="fade-left">
+            <!-- Campo oculto con tu Access Key -->
+            <input type="hidden" name="access_key" value="c5caa891-9d41-4724-b7aa-d82b05b5f0cd">
+            
+            <!-- Añade atributos 'name' a tus campos (IMPORTANTE) -->
+            <div class="form-group">
+              <input type="text" class="form-control" id="name" name="name" placeholder=" " required>
+              <label for="name" class="form-label">Nombre</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" class="form-control" id="email" name="email" placeholder=" " required>
+              <label for="email" class="form-label">Email</label>
+            </div>
+            
+            <div class="form-group">
+              <textarea class="form-control" id="message" name="message" placeholder=" " required></textarea>
+              <label for="message" class="form-label">Mensaje</label>
+            </div>
+            
+            <!-- Opcional: Redirección después de enviar -->
+            <!-- <input type="hidden" name="redirect" value="https://tusitio.com/gracias.html"> -->
+            
+            <button type="submit" class="submit-btn">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/deibyperalta/" class="social-link" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/deiby.peralta/" class="social-link" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/deiby-steven-espinosa-peralta/" class="social-link" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <p class="copyright">&copy; 2025 Deiby Espinosa. Todos los derechos reservados.</p>
+</footer>
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  
+  <script id="app-script">
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
+      mirror: true
+    });
+    
+    // Custom cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      cursorDot.style.left = e.clientX + 'px';
+      cursorDot.style.top = e.clientY + 'px';
+    });
+    
+    document.addEventListener('mousedown', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    });
+    
+    document.addEventListener('mouseup', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+    
+    // Elements hover effect
+    const hoverables = document.querySelectorAll('a, button, .skill-badge, .social-link');
+    hoverables.forEach(hoverable => {
+      hoverable.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        cursor.style.border = '1px solid var(--primary)';
+        cursor.style.background = 'rgba(0, 255, 255, 0.2)';
+      });
+      
+      hoverable.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursor.style.border = '2px solid var(--primary)';
+        cursor.style.background = 'transparent';
+      });
+    });
+    
+    // Menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+    
+    // Close menu when a nav item is clicked
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+    
+    // Sticky header
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Animate progress bars when in view
+    const progressFills = document.querySelectorAll('.progress-fill');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transform = 'scaleX(1)';
+        } else {
+          entry.target.style.transform = 'scaleX(0)';
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    progressFills.forEach(fill => {
+      observer.observe(fill);
+    });
+    
+    // Form submission
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      // In a real app, you would send this data to a server
+      // For now, we'll just simulate a success with an alert
+      alert(`¡Gracias ${name}! Tu mensaje ha sido enviado. Te contactaremos pronto.`);
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
