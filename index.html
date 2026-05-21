@@ -1390,7 +1390,7 @@
     });
     
     document.addEventListener('mouseup', () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursor.style.transform = 'trcontactForm anslate(-50%, -50%) scale(1)';
     });
     
     // Elements hover effect
@@ -1453,19 +1453,53 @@
       observer.observe(fill);
     });
     
-    // Form submission
-    const contactForm = document.querySelector('.contact-form');
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      
-      // In a real app, you would send this data to a server
-      // For now, we'll just simulate a success with an alert
-      alert(`¡Gracias ${name}! Tu mensaje ha sido enviado. Te contactaremos pronto.`);
-      contactForm.reset();
-    });
+
   </script>
+  
+  <!-- Form submission -->
+<script>
+  const contactForm = document.getElementById('contactForm');
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    const date = new Date().toLocaleString('es-CO');
+
+    const markdown = `# Nuevo mensaje de contacto
+
+**Nombre:** ${name}
+
+**Email:** ${email}
+
+**Fecha:** ${date}
+
+## Mensaje
+
+${message}
+`;
+
+    const blob = new Blob([markdown], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+
+    const fileName = `mensaje-${name
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]/g, '')}-${Date.now()}.md`;
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    link.click();
+
+    URL.revokeObjectURL(url);
+
+    alert(`¡Gracias ${name}! Se generó tu archivo Markdown.`);
+    contactForm.reset();
+  });
+</script>
 </body>
 </html>
